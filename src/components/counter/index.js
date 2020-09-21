@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import Typography from "@material-ui/core/Typography";
 import { SecondaryButton } from "../buttons";
-import {noop} from "../../utils/noop";
+import { noop } from "../../utils/noop";
 import './styles.css';
 
 export const Counter = ({ initCount = 0, onUpdate = noop }) => {

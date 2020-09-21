@@ -3,7 +3,7 @@ import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import withStyles from "@material-ui/core/styles/withStyles";
-import {theme} from "../../constants/theme";
+import { colors } from "../../constants/theme";
 
 export const PrimaryButton = props => <Button color='primary' variant="contained" {...props} />;
 
@@ -15,9 +15,9 @@ export const SearchButton = props => <GhostButton startIcon={<SearchIcon />} {..
 
 export const RadioButton = withStyles({
   root: {
-    color: theme.primaryColor,
+    color: colors.primaryColor,
     '&$checked': {
-      color: theme.primaryColor,
+      color: colors.primaryColor,
     },
   },
   checked: {},
