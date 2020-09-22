@@ -1,5 +1,5 @@
 import React from 'react';
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { themeConfig } from './constants/theme';
@@ -9,7 +9,7 @@ const customTheme = createMuiTheme(themeConfig);
 
 function App() {
   return (
-    <MuiThemeProvider theme={customTheme}>
+    <ThemeProvider theme={customTheme}>
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -18,7 +18,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 }
 
