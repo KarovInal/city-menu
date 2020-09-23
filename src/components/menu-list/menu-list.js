@@ -22,9 +22,6 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop: '16px',
   },
   position: {
-    '&:first-child': {
-      marginTop: 0,
-    },
     margin: '20px 0',
   },
   body2: {
@@ -32,15 +29,26 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ids = {}
+const getCategoryId = (category) => {
+  if (category in ids) {
+    return null;
+  }
+
+  ids[category] = category;
+
+  return category;
+}
+
 export const MenuList = React.memo(({ data }) => {
   const classes = useStyles();
 
   return (
     <div>
       {
-        data.map(({title, preview, description, weight, price}) => {
+        data.map(({title, preview, description, weight, price, category}) => {
           return (
-            <>
+            <div id={getCategoryId(category)}>
               <FlexColumn className={classes.position}>
                 <FlexRow>
                   <div className={classes.preview}>
@@ -62,7 +70,7 @@ export const MenuList = React.memo(({ data }) => {
                 </FlexRow>
               </FlexColumn>
               <Divider />
-            </>
+            </div>
           )
         })
       }
