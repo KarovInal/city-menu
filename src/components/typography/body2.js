@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     /* Header */
     fontFamily: 'Roboto',
     fontStyle: 'normal',
-    fontWeight: medium ? '500': 'normal',
+    fontWeight: medium ? '500' : 'normal',
     fontSize: '14px',
     lineHeight: '24px',
   }),

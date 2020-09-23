@@ -2,18 +2,18 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
-  root: ({ medium }) => ({
+  root: ({ bold }) => ({
     color: theme.mode.primary.primaryTextColor,
     /* Header */
     fontFamily: 'Roboto',
     fontStyle: 'normal',
-    fontWeight: medium ? '500' : 'normal',
-    fontSize: '16px',
-    lineHeight: '24px',
+    fontWeight: bold ? '500' : 'normal',
+    fontSize: bold ? '14px' : '12px',
+    lineHeight: bold ? '18px' : '16px',
   }),
 }));
 
-export const Body1 = React.memo(({ children, ...rest }) => {
+export const Caption = React.memo(({ children, ...rest }) => {
   const classes = useStyles(rest);
 
   return <span className={classes.root}>{children}</span>;
