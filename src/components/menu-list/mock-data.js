@@ -58,9 +58,9 @@ export const mockData = [
   {
     id: 4,
     availability: true,
-    title: "Копченый лосось",
+    title: "Суп",
     category: ECategories.Soup,
-    description: 'Вкусный копченый лосось, рис, нори.',
+    description: 'Вкусный суп',
     price: 149,
     weight: 120,
     preview: './static/images/7.jpg',
@@ -68,9 +68,9 @@ export const mockData = [
   {
     id: 5,
     availability: true,
-    title: "Суп",
+    title: "Копченый лосось",
     category: ECategories.Sushi,
-    description: 'Вкусный суп',
+    description: 'Вкусный копченый лосось, рис, нори.',
     price: 349,
     weight: 320,
     preview: './static/images/5.jpg',
