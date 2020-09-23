@@ -55,5 +55,69 @@ export const mockData = [
       }
     ]
   },
+  {
+    id: 4,
+    availability: true,
+    title: "Копченый лосось",
+    category: ECategories.Soup,
+    description: 'Вкусный копченый лосось, рис, нори.',
+    price: 149,
+    weight: 120,
+    preview: './static/images/7.jpg',
+  },
+  {
+    id: 5,
+    availability: true,
+    title: "Суп",
+    category: ECategories.Sushi,
+    description: 'Вкусный суп',
+    price: 349,
+    weight: 320,
+    preview: './static/images/5.jpg',
+  },
+  {
+    id: 6,
+    availability: true,
+    title: "Лайт сяке",
+    category: ECategories.Sushi,
+    description: 'Сливочный сыр, лайт сяке',
+    price: 309,
+    weight: 200,
+    preview: './static/images/6.jpg',
+  },
+  {
+    id: 7,
+    availability: true,
+    title: "Суши классика",
+    category: ECategories.Sushi,
+    description: 'Вкусный суши - классика',
+    price: 318,
+    weight: 530,
+    preview: './static/images/4.jpg',
+    options: [
+      {
+        title: 'Тип порции',
+        type: EOptionType.Radio,
+        optionId: 1,
+        values: [
+          {
+            title: 'Классика',
+            additionalPrice: 0,
+            availability: true,
+          },
+          {
+            title: 'Премиум',
+            additionalPrice: 60,
+            availability: true,
+          },
+          {
+            title: 'Для пары',
+            additionalPrice: 130,
+            availability: true,
+          },
+        ]
+      }
+    ]
+  },
 ];
 
