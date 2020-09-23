@@ -10,7 +10,7 @@ import { Header as H } from "./components/typography/header";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const mode = !prefersDarkMode ? 'light' : 'dark';
+  const mode = prefersDarkMode ? 'light' : 'dark';
   const customTheme = createMuiTheme(createThemeConfig(mode));
 
   return (
