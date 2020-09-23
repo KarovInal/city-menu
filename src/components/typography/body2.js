@@ -1,5 +1,6 @@
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import classnames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   root: ({ medium }) => ({
@@ -13,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   }),
 }));
 
-export const Body2 = React.memo(({ children, ...rest }) => {
+export const Body2 = React.memo(({ children, className, ...rest }) => {
   const classes = useStyles(rest);
 
-  return <span className={classes.root}>{children}</span>;
+  return <span className={classnames(classes.root, className)}>{children}</span>;
 });
