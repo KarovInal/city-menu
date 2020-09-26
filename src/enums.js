@@ -1,6 +1,12 @@
 export const ECategories = {
-  Sushi: 'sushi',
-  Soup: 'soup',
+  sushi: {
+    title: 'Суши',
+    category: 'sushi',
+  },
+  soup: {
+    title: 'Супы',
+    category: 'soup',
+  },
 };
 
 export const EOptionType = {

@@ -5,8 +5,10 @@ import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createThemeConfig } from './constants/theme';
 import { Header } from "./components/header";
-import { MenuList, mockData } from "./components/menu-list";
-import { ECategories } from "./enums";
+import { MenuList } from "./components/menu-list";
+import { mockData } from "./mock-data";
+import { StickyContainer } from 'react-sticky';
+import { Categories } from "./components/categories/categories";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -19,12 +21,11 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Header withOrder />
-            <Typography color='textSecondary'>Molvee - qr menu for restaurants</Typography>
-            {/*TODO [NZ] 24.09.2020: Remove temp link later*/}
-            <a href={`#${ECategories.Soup}`}>soup link</a>
-            <br/>
-            <a href={`#${ECategories.Sushi}`}>sushi link</a>
-            <MenuList data={mockData} />
+            <StickyContainer>
+              <Typography color='textSecondary'>Molvee - qr menu for restaurants</Typography>
+              <Categories categories={mockData.dictionary.dishCategories} />
+              <MenuList data={mockData.menuList} />
+            </StickyContainer>
           </Route>
         </Switch>
       </Router>

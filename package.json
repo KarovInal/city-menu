@@ -9,10 +9,15 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "classnames": "^2.2.6",
+    "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-scroll": "^1.8.1",
+    "react-scroll-into-view-if-needed": "^2.1.7",
+    "react-sticky": "^6.0.3",
+    "swiper": "^6.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

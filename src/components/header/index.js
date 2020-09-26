@@ -1,38 +1,40 @@
 import React from 'react';
-import { logo } from "../../constants/theme";
 import { GhostButton } from "../buttons";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Grid from "@material-ui/core/Grid";
+import { logo } from "../../constants/theme";
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const useStyles = makeStyles ({
-  root: {
-    flexGrow: 1,
+const useStyles = makeStyles(theme => ({
+  wrap: {
+    height: '60px',
   },
-  toolBar: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  root: {
+    height: '60px',
+    padding: '0 16px',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: 999,
+    backgroundColor: theme.mode.primary.primaryBackgroundColor,
   },
   logo: {
     width: 'auto',
     height: '32px',
   },
-});
+}));
 
 export const Header = ({ withOrder = false }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar className={classes.toolBar}>
-          <img src={logo} className={classes.logo} />
-          {
-            withOrder && <GhostButton startIcon={<ReceiptIcon />}>ЗАКАЗ</GhostButton>
-          }
-        </Toolbar>
-      </AppBar>
+    <div className={classes.wrap}>
+      <Grid container direction='row' justify='space-between' alignItems='center' className={classes.root}>
+        <img src={logo} alt='logo' className={classes.logo} />
+        {
+          withOrder && <GhostButton startIcon={<ReceiptIcon />}>ЗАКАЗ</GhostButton>
+        }
+      </Grid>
     </div>
   );
 };
