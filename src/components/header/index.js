@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     top: 0,
     left: 0,
+    zIndex: 999,
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
   },
   logo: {

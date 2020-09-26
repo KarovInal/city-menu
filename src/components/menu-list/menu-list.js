@@ -8,7 +8,10 @@ import { FlexRow } from "../flex-row";
 import { Preview } from "../position/preview";
 import { Subtitle } from "../typography/subtitle";
 import { Body2 } from "../typography/body2";
+import { Element } from 'react-scroll';
 import Divider from "@material-ui/core/Divider";
+import groupBy from "lodash/groupBy";
+import map from "lodash/map";
 
 export const useStyles = makeStyles((theme) => ({
   preview: {
@@ -26,52 +29,50 @@ export const useStyles = makeStyles((theme) => ({
   },
   body2: {
     color: theme.mode.secondary.secondaryTextColor,
-  },
-}));
-
-const ids = {}
-const getCategoryId = (category) => {
-  if (category in ids) {
-    return null;
   }
-
-  ids[category] = category;
-
-  return category;
-}
+}));
 
 export const MenuList = React.memo(({ data }) => {
   const classes = useStyles();
+  const groupedByCategory = groupBy(data, 'category');
 
   return (
     <div>
       {
-        data.map(({title, preview, description, weight, price, category}) => {
+        map(groupedByCategory, (dishs, categoryKey) => {
           return (
-            <div id={getCategoryId(category)}>
-              <FlexColumn className={classes.position}>
-                <FlexRow>
-                  <div className={classes.preview}>
-                    <Preview preview={preview}/>
-                  </div>
-                  <FlexColumn className={classes.text}>
-                    <Subtitle>{title}</Subtitle>
-                    <Body2 className={classes.body2}>{description}</Body2>
-                    <Body2 className={classes.body2}>{gramToText(weight)}</Body2>
-                  </FlexColumn>
-                </FlexRow>
-                <FlexRow justifyContent="space-between" className={classes.bottomBlock}>
-                  <div>
-                    <Price price={price} />
-                  </div>
-                  <div>
-                    <SecondaryButton>В конзину</SecondaryButton>
-                  </div>
-                </FlexRow>
-              </FlexColumn>
-              <Divider />
-            </div>
-          )
+            <Element key={categoryKey} name={categoryKey}>
+              {
+                map(dishs, ({title, preview, description, weight, price, category}, index) => {
+                  return (
+                    <div key={index}>
+                      <FlexColumn className={classes.position}>
+                        <FlexRow>
+                          <div className={classes.preview}>
+                            <Preview preview={preview}/>
+                          </div>
+                          <FlexColumn className={classes.text}>
+                            <Subtitle>{title}</Subtitle>
+                            <Body2 className={classes.body2}>{description}</Body2>
+                            <Body2 className={classes.body2}>{gramToText(weight)}</Body2>
+                          </FlexColumn>
+                        </FlexRow>
+                        <FlexRow justifyContent="space-between" className={classes.bottomBlock}>
+                          <div>
+                            <Price price={price} />
+                          </div>
+                          <div>
+                            <SecondaryButton>В конзину</SecondaryButton>
+                          </div>
+                        </FlexRow>
+                      </FlexColumn>
+                      <Divider />
+                    </div>
+                  )
+                })
+              }
+            </Element>
+          );
         })
       }
     </div>

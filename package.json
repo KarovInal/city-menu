@@ -15,8 +15,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-scroll": "^1.8.1",
+    "react-scroll-into-view-if-needed": "^2.1.7",
     "react-sticky": "^6.0.3",
-    "scroll-into-view-if-needed": "^2.2.26"
+    "swiper": "^6.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

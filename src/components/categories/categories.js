@@ -1,73 +1,88 @@
-import React, { useState, useRef, useEffect } from 'react';
-import map from 'lodash/map';
+import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { Sticky } from 'react-sticky';
 import { CircleButton } from "../buttons";
-import Grid from "@material-ui/core/Grid";
-import scrollIntoView from 'scroll-into-view-if-needed';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import 'swiper/swiper-bundle.css';
 
 const useStyle = makeStyles(theme => ({
   root: {
-    height: '64px',
+    zIndex: 999,
+    height: '60px',
     overflowY: 'auto',
-    padding: '0 16px',
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
+  },
+  swiper: {
+    height: '60px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  slide: {
+    height: 'auto',
+    width: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  sliderGap: {
+    height: '1px',
+    width: '13px',
   }
 }));
 
 export const Categories = ({ categories = {} }) => {
   const classes = useStyle();
-  const categoryRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [controlledSwiper, setControlledSwiper] = useState(null);
 
-  useEffect(() => {
-    const url = window.location.href;
-    const idx = window.location.href.indexOf("#");
-    const hash = idx != -1 ? url.substring(idx+1) : "";
-
-    setActiveCategory(hash);
-  }, []);
-
-  useEffect(() => {
-    if(categoryRef && categoryRef.current) {
-      scrollIntoView(categoryRef.current, {
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center'
-      })
-    }
-  }, [activeCategory]);
+  const onSetActive = (activeCategory, slideIndex) => {
+    setActiveCategory(activeCategory);
+    controlledSwiper && controlledSwiper.slideTo(slideIndex, 0);
+  }
 
   return (
-    <Sticky topOffset={-60}>
+    <Sticky topOffset={60}>
       {({ style, isSticky }) => (
-        <Grid
-          container
-          wrap='nowrap'
-          spacing={0}
-          direction='row'
-          alignItems='center'
-          id='categoriesList'
+        <div
           className={classes.root}
           style={{ ...style, top: isSticky ? 60 : 0 }}
         >
-          {
-            map(categories, (categoryTitle, categoryKey) => (
-              <div key={categoryKey} ref={(categoryKey === activeCategory) && categoryRef}>
-                <Link offset={-60} hashSpy onSetActive={setActiveCategory} spy={true} to={categoryKey}>
-                  <CircleButton
-                    disableRipple
-                    color={activeCategory === categoryKey ? 'primary' : 'default'}
-                    variant={activeCategory === categoryKey ? 'contained' : 'text'}
-                  >
-                    { categoryTitle }
-                  </CircleButton>
-                </Link>
-              </div>
-            ))
-          }
-        </Grid>
+          <Swiper
+            freeMode
+            height={60}
+            slidesPerView='auto'
+            className={classes.swiper}
+            onSwiper={setControlledSwiper}
+          >
+            <SwiperSlide className={classes.sliderGap} />
+            {
+              Object.keys(categories).map((categoryKey, index, categoriesArray) => {
+                const { category, title } = categories[categoryKey];
+
+                return (
+                  <SwiperSlide className={classes.slide} key={index}>
+                    <Link
+                      spy={true}
+                      to={category}
+                      offset={-120}
+                      onSetActive={activeCategory => onSetActive(activeCategory, index)}
+                    >
+                      <CircleButton
+                        disableRipple
+                        color={activeCategory === category ? 'primary' : 'default'}
+                        variant={activeCategory === category ? 'contained' : 'text'}
+                      >
+                        { title }
+                      </CircleButton>
+                    </Link>
+                  </SwiperSlide>
+                );
+              })
+            }
+            <SwiperSlide className={classes.sliderGap} />
+          </Swiper>
+        </div>
       )}
     </Sticky>
   );
