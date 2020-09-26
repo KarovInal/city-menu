@@ -42,7 +42,7 @@ export const Categories = ({ categories = {} }) => {
   }
 
   return (
-    <Sticky topOffset={60}>
+    <Sticky topOffset={-60}>
       {({ style, isSticky }) => (
         <div
           className={classes.root}

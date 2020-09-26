@@ -21,8 +21,8 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Header withOrder />
+            <Typography color='textSecondary'>Molvee - qr menu for restaurants</Typography>
             <StickyContainer>
-              <Typography color='textSecondary'>Molvee - qr menu for restaurants</Typography>
               <Categories categories={mockData.dictionary.dishCategories} />
               <MenuList data={mockData.menuList} />
             </StickyContainer>
