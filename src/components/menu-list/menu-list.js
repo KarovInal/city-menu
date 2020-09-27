@@ -12,6 +12,8 @@ import { Element } from 'react-scroll';
 import Divider from "@material-ui/core/Divider";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
+import { words } from "lodash";
+import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 
 export const useStyles = makeStyles((theme) => ({
   preview: {
@@ -53,7 +55,13 @@ export const MenuList = React.memo(({ data }) => {
                           </div>
                           <FlexColumn className={classes.text}>
                             <Subtitle>{title}</Subtitle>
-                            <Body2 className={classes.body2}>{description}</Body2>
+                            <Body2 className={classes.body2}>
+                              {
+                                description.length >= MAX_DESCRIPTION_CHAR_LENGTH
+                                  ? description.slice(0, MAX_DESCRIPTION_CHAR_LENGTH) + '...'
+                                  : description
+                              }
+                            </Body2>
                             <Body2 className={classes.body2}>{gramToText(weight)}</Body2>
                           </FlexColumn>
                         </FlexRow>
