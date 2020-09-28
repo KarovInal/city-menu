@@ -1,7 +1,7 @@
 import { ECategories, EOptionType } from "./enums";
 
-const menuList = [
-  {
+const menuList = {
+  1: {
     id: 1,
     availability: true,
     title: "Филадельфия шудо (копченый лосось) в кунжуте",
@@ -11,7 +11,7 @@ const menuList = [
     weight: 220,
     preview: './static/images/1.jpg',
   },
-  {
+  2: {
     id: 2,
     availability: true,
     title: "Филадельфия лайт сяке",
@@ -21,7 +21,7 @@ const menuList = [
     weight: 200,
     preview: './static/images/2.jpg',
   },
-  {
+  3: {
     id: 3,
     availability: true,
     title: "Филадельфия классика",
@@ -55,7 +55,7 @@ const menuList = [
       }
     ]
   },
-  {
+  4: {
     id: 4,
     availability: true,
     title: "Суп",
@@ -65,7 +65,7 @@ const menuList = [
     weight: 120,
     preview: './static/images/7.jpg',
   },
-  {
+  5: {
     id: 5,
     availability: true,
     title: "Копченый лосось",
@@ -75,7 +75,7 @@ const menuList = [
     weight: 320,
     preview: './static/images/5.jpg',
   },
-  {
+  6: {
     id: 6,
     availability: true,
     title: "Лайт сяке",
@@ -85,7 +85,7 @@ const menuList = [
     weight: 200,
     preview: './static/images/6.jpg',
   },
-  {
+  7: {
     id: 7,
     availability: true,
     title: "Суши классика",
@@ -119,7 +119,7 @@ const menuList = [
       }
     ]
   },
-  {
+  8: {
     id: 8,
     availability: true,
     title: "Том ям набэ",
@@ -129,7 +129,7 @@ const menuList = [
     weight: 250,
     preview: './static/images/8.jpg',
   },
-  {
+  9: {
     id: 9,
     availability: true,
     title: "Дзосуй",
@@ -138,8 +138,18 @@ const menuList = [
     price: 377,
     weight: 290,
     preview: './static/images/9.jpg',
+  },
+  10: {
+    id: 10,
+    availability: true,
+    title: "Тартар из тунца",
+    category: ECategories.salads.category,
+    description: 'с трюфельным маслом, авокадо и понзу-цитрусовым дрессингом. Сервируется с «бородинскими» чипсами',
+    price: 499,
+    weight: 196,
+    preview: './static/images/10.jpg',
   }
-];
+};
 
 export const mockData = {
   menuList,

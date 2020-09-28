@@ -1,0 +1,1 @@
+export const CART_UPDATE_COUNT = 'CART_UPDATE_COUNT';
