@@ -8,6 +8,7 @@ import { Header } from "./components/header";
 import { MenuList } from "./components/menu-list";
 import { Provider } from 'react-redux';
 import { store } from './redux-init';
+import { CartPage } from "./pages/cart-page";
 import { StickyContainer } from 'react-sticky';
 import { Categories } from "./components/categories/categories";
 
@@ -29,6 +30,9 @@ function App() {
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dictionary.dishes} />
               </StickyContainer>
+            </Route>
+            <Route exact path='/cart'>
+              <CartPage />
             </Route>
           </Switch>
         </Router>

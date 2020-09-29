@@ -5,7 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { colors } from "../../constants/theme";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-export const PrimaryButton = props => <Button color='primary' variant="contained" {...props} />;
+export const PrimaryButton = props => <Button disableElevation color='primary' variant="contained" {...props} />;
 
 export const SecondaryButton = props => <Button color='secondary' variant="contained" {...props} />;
 
