@@ -46,7 +46,7 @@ export const Categories = ({ categories = {} }) => {
       {({ style, isSticky }) => (
         <div
           className={classes.root}
-          style={{ ...style, top: isSticky ? 60 : 0 }}
+          style={{ ...style, top: isSticky ? 60 : 0, boxShadow: isSticky ? '0px 2px 4px rgba(0, 0, 0, 0.08)' : 'none' }}
         >
           <Swiper
             freeMode
