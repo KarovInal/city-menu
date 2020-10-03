@@ -1,9 +1,9 @@
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = type => makeStyles((theme) => ({
   root: ({ bold }) => ({
-    color: theme.mode.primary.primaryTextColor,
+    color: type === 'primary' ? theme.mode.primary.primaryTextColor : theme.mode.secondary.secondaryTextColor,
     /* Header */
     fontFamily: 'Roboto',
     fontStyle: 'normal',
@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
   }),
 }));
 
-export const Caption = React.memo(({ children, ...rest }) => {
-  const classes = useStyles(rest);
+export const Caption = React.memo(({ children, type = 'primary', ...rest }) => {
+  const classes = useStyles(type)(rest);
 
-  return <span className={classes.root}>{children}</span>;
+  return <span className={classes.root} {...rest}>{children}</span>;
 });

@@ -148,6 +148,14 @@ const menuList = {
     price: 499,
     weight: 196,
     preview: './static/images/10.jpg',
+    options: [
+      {
+        title: 'Заправка',
+        type: EOptionType.Radio,
+        optionId: 1,
+        values: ['01', '02', '03']
+      }
+    ]
   }
 };
 

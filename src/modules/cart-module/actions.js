@@ -1,4 +1,4 @@
-import { CART_UPDATE_COUNT } from './constants';
+import { CART_UPDATE_COUNT, CART_CLEAR } from './constants';
 
 export const cartUpdateCountAction = (dishId = '', optionId = '', count = 0) => ({
   type: CART_UPDATE_COUNT,
@@ -8,3 +8,7 @@ export const cartUpdateCountAction = (dishId = '', optionId = '', count = 0) => 
     optionId,
   }
 });
+
+export const cartClearAction = () => ({
+  type: CART_CLEAR,
+})

@@ -7,11 +7,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 export const PrimaryButton = props => <Button disableElevation color='primary' variant="contained" {...props} />;
 
-export const SecondaryButton = props => <Button color='secondary' variant="contained" {...props} />;
+export const SecondaryButton = props => <Button disableElevation color='secondary' variant="contained" {...props} />;
 
-export const GhostButton = props => <Button color='default' variant="outlined" {...props} />;
+export const GhostButton = props => <Button disableElevation color='default' variant="outlined" {...props} />;
 
-export const SearchButton = props => <GhostButton startIcon={<SearchIcon />} {...props} />;
+export const SearchButton = props => <GhostButton disableElevation startIcon={<SearchIcon />} {...props} />;
 
 export const CircleButton = withStyles({
   root: {

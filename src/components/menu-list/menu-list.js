@@ -12,7 +12,6 @@ import { Element } from 'react-scroll';
 import Divider from "@material-ui/core/Divider";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
-import { words } from "lodash";
 import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 
 export const useStyles = makeStyles((theme) => ({

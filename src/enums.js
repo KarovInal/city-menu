@@ -19,24 +19,28 @@ export const EOptionType = {
 };
 
 export const EDishOptions = {
-  'O0': {
-    id: 'O0',
+  '00': {
+    id: '00',
     title: 'По умолчанию',
-    price: 0
+    price: 0,
+    available: true
   },
-  'O1': {
-    id: 'O1',
-    title: 'Масло',
-    price: 150
+  '01': {
+    id: '01',
+    title: 'Оливковое масло',
+    price: 150,
+    available: true
   },
-  'O2': {
-    id: 'O2',
-    title: 'Майонез',
-    price: 100
+  '02': {
+    id: '02',
+    title: 'Авакадо',
+    price: 100,
+    available: true
   },
-  'O3': {
-    id: 'O3',
-    title: 'Сметана',
-    price: 150
+  '03': {
+    id: '03',
+    title: 'Лайм+Авакадо',
+    price: 150,
+    available: true
   }
 }
