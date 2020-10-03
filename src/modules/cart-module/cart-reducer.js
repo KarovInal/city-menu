@@ -1,5 +1,5 @@
 import omit from 'lodash/omit';
-import { CART_UPDATE_COUNT } from './constants';
+import {CART_CLEAR, CART_UPDATE_COUNT} from './constants';
 
 /*
 * <dishId>: {
@@ -9,32 +9,41 @@ import { CART_UPDATE_COUNT } from './constants';
 * */
 
 const defaultStore = {
+  1: {
+    '00': { count: 1 },
+  },
+  6: {
+    '00': { count: 1 },
+  },
   10: {
-    'O0': { count: 1 },
-    'O1_O2': { count: 1 },
-    'O2': { count: 2 },
+    '00': { count: 1 },
+    '01': { count: 2 },
+    '01_02': { count: 1 },
   }
 };
 
 export const cartReducer = (store = defaultStore, action) => {
   switch (action.type) {
     case CART_UPDATE_COUNT: {
-      const { nextCount, dishId, optionId } = action.payload;
-      const nextOptions = omit(store[dishId], [optionId]);
+      const { count, dishId, optionId } = action.payload;
+      let nextOptions = {};
+
+      if(count === 0) {
+        nextOptions = omit(store[dishId], optionId);
+      } else {
+        nextOptions = {
+          ...store[dishId],
+          [optionId]: { count }
+        }
+      }
 
       return {
         ...store,
-        [dishId]: {
-          ...nextOptions,
-          ...(
-            nextCount === 0
-              ? {}
-              : { [optionId]: { count: nextCount }
-            }
-          ),
-        }
+        [dishId]: nextOptions
       }
     }
+    case CART_CLEAR:
+      return {};
     default: {
       return store;
     }

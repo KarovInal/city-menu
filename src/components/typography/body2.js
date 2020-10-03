@@ -2,9 +2,9 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import classnames from "classnames";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = type => makeStyles((theme) => ({
   root: ({ medium }) => ({
-    color: theme.mode.primary.primaryTextColor,
+    color: type === 'primary' ? theme.mode.primary.primaryTextColor : theme.mode.secondary.secondaryTextColor,
     /* Header */
     fontFamily: 'Roboto',
     fontStyle: 'normal',
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   }),
 }));
 
-export const Body2 = React.memo(({ children, className, ...rest }) => {
-  const classes = useStyles(rest);
+export const Body2 = React.memo(({ children, className, type = 'primary', ...rest }) => {
+  const classes = useStyles(type)(rest);
 
   return <span className={classnames(classes.root, className)}>{children}</span>;
 });
