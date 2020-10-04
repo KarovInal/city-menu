@@ -3,6 +3,8 @@ import cn from 'classnames';
 import Grid from "@material-ui/core/Grid";
 import { Element } from 'react-scroll';
 import Divider from "@material-ui/core/Divider";
+import { fade } from "@material-ui/core";
+import { noop } from "lodash";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -14,6 +16,7 @@ import { FlexRow } from "../flex-row";
 import { Subtitle } from "../typography/subtitle";
 import { Body2 } from "../typography/body2";
 import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
+import vector from './assets/Vector.png'
 
 export const useStyles = makeStyles((theme) => ({
   preview: {
@@ -33,10 +36,10 @@ export const useStyles = makeStyles((theme) => ({
   bottomBlock: {
     paddingTop: '16px',
   },
-  position: {
+  m20_0: {
     margin: '20px 0',
   },
-  body2: {
+  description: {
     color: `${theme.mode.secondary.secondaryTextColor} !important`,
   },
   trans: {
@@ -44,6 +47,24 @@ export const useStyles = makeStyles((theme) => ({
   },
   relative: {
     position: 'relative',
+  },
+  skipButton: {
+    transition: 'opacity .05s ease-in-out',
+    '&:active': {
+      cursor: 'pointer',
+      backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.6),
+    },
+    display: 'block',
+    height: '36px',
+    width: '36px',
+    position: 'absolute',
+    right: '10px',
+    top: '10px',
+    borderRadius: '50%',
+    backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.4),
+    backgroundImage: `url(${vector})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
   },
 }));
 
@@ -72,16 +93,20 @@ export const MenuList = React.memo(({ data }) => {
 
                   return (
                     <div key={index}>
-                      <FlexColumn className={classes.position}>
+                      <FlexColumn className={classes.m20_0}>
                         <FlexRow>
                           <Grid container spacing={0}>
                             <Grid
                               item
                               xs={previewWidth}
-                              onClick={handleOpenDishClick(id)}
+                              onClick={isDishFullOpened ? noop : handleOpenDishClick(id)}
                               className={classes.trans}
                             >
                               <div className={cn(classes.relative)}>
+                                <div
+                                  className={cn({[classes.skipButton]: isDishFullOpened})}
+                                  onClick={isDishFullOpened ? handleOpenDishClick(id) : noop}
+                                />
                                 <img
                                   className={cn(classes.preview, {[classes.openedPreview]: isDishFullOpened} )}
                                   src={preview}
@@ -94,14 +119,14 @@ export const MenuList = React.memo(({ data }) => {
                               <div className={cn({[classes.pl16]: !isDishFullOpened} )}>
                                 <FlexColumn className={classes.text}>
                                   <Subtitle>{title}</Subtitle>
-                                  <Body2 className={classes.body2}>
+                                  <Body2 className={classes.description}>
                                     {
                                       description.length >= MAX_DESCRIPTION_CHAR_LENGTH
                                         ? description.slice(0, MAX_DESCRIPTION_CHAR_LENGTH) + '...'
                                         : description
                                     }
                                   </Body2>
-                                  <Body2 className={classes.body2}>{gramToText(weight)}</Body2>
+                                  <Body2 className={classes.description}>{gramToText(weight)}</Body2>
                                 </FlexColumn>
                               </div>
                             </Grid>
