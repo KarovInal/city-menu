@@ -17,8 +17,9 @@ import { Subtitle } from "../typography/subtitle";
 import { Body2 } from "../typography/body2";
 import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 import vector from "./assets/Vector.png";
+import { PaddingWrapper } from "../padding-wrapper";
 
-export const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   preview: {
     height: "140px",
     border: "0.5px solid rgba(0, 0, 0, 0.08)",
@@ -81,7 +82,7 @@ export const MenuList = React.memo(({ data }) => {
   };
 
   return (
-    <div>
+    <PaddingWrapper>
       {map(groupedByCategory, (dishs, categoryKey) => {
         return (
           <Element key={categoryKey} name={categoryKey}>
@@ -176,6 +177,6 @@ export const MenuList = React.memo(({ data }) => {
           </Element>
         );
       })}
-    </div>
+    </PaddingWrapper>
   );
 });
