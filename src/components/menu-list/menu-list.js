@@ -95,11 +95,10 @@ export const MenuList = React.memo(({ data }) => {
                     <div key={index}>
                       <FlexColumn className={classes.m20_0}>
                         <FlexRow>
-                          <Grid container spacing={0}>
+                          <Grid container spacing={0} onClick={isDishFullOpened ? noop : handleOpenDishClick(id)}>
                             <Grid
                               item
                               xs={previewWidth}
-                              onClick={isDishFullOpened ? noop : handleOpenDishClick(id)}
                               className={classes.trans}
                             >
                               <div className={cn(classes.relative)}>
