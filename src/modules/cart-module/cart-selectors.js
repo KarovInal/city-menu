@@ -9,8 +9,10 @@ const parseOptionId = (optionId = '') => {
   return split(optionId, '_');
 };
 
+export const getCartSelector = state => get(state, 'cart', {});
+
 export const getPriceSelector = state => {
-  const cart = get(state, 'cart', {});
+  const cart = getCartSelector(state);
   const dishes = dishesSelector(state);
   const dishOptions = dishOptionsSelector(state);
 
@@ -48,7 +50,7 @@ export const getPriceSelector = state => {
 * ]
 * */
 export const getDishesSelector = state => {
-  const cart = get(state, 'cart', {});
+  const cart = getCartSelector(state);
 
   return reduce(cart, (cartAcc, dish, dishId) => {
     const dishByOptions = reduce(dish, (dishAcc, option, optionId) => {
@@ -75,7 +77,7 @@ export const getOptionDataByIdSelector = state => optionId => {
 }
 
 export const getDishDataFromCartSelector = state => (dishId, optionId) => {
-  const cart = get(state, 'cart', {});
+  const cart = getCartSelector(state);
   const dish = getDishByIdSelector(state)(dishId);
   const options = getOptionDataByIdSelector(state)(optionId);
 
