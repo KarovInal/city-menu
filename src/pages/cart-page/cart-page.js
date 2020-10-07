@@ -12,12 +12,7 @@ import { Title } from "../../components/typography/title";
 import Grid from "@material-ui/core/Grid";
 import { GhostButton, PrimaryButton } from "../../components/buttons";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getPriceSelector,
-  getDishesSelector,
-  getDishDataFromCartSelector,
-  getCartSelector
-} from "../../modules/cart-module/cart-selectors";
+import { getCartSelector } from "../../modules/cart-module/cart-selectors";
 import { Preview } from "../../components/position/preview";
 import { Divider } from "@material-ui/core";
 import { Subtitle } from "../../components/typography/subtitle";
@@ -26,10 +21,11 @@ import { Counter } from "../../components/counter";
 import AddIcon from '@material-ui/icons/Add';
 import { cartUpdateCountAction, cartClearAction } from "../../modules/cart-module/actions";
 import { DiscountText } from "../../components/typography/discount-text";
-import { DEFAULT_DISCOUNT } from "../../modules/cart-module/constants";
+import { DEFAULT_DISCOUNT } from "../../constants/discount";
 import { Caption } from "../../components/typography/caption";
 import { useHistory } from "react-router-dom";
 import { addNewOrderAction } from "../../modules/order-module/actions";
+import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -77,9 +73,9 @@ export const CartPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const cartData = useSelector(getCartSelector);
-  const cartDishes = useSelector(getDishesSelector);
-  const getDishDataFromCart = useSelector(getDishDataFromCartSelector);
-  const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector);
+  const cartDishes = useSelector(getDishesAsArraySelector)(true);
+  const getDishDataFromCart = useSelector(getOrderDishDataSelector);
+  const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector)(true);
 
   const confirmOrder = () => {
     //0. create uniq id for order and save dishes
@@ -110,7 +106,7 @@ export const CartPage = () => {
 
       {
         map(cartDishes, ({ dishId, optionId, count }, index) => {
-          const { title = '', preview, priceWithOptions, optionsFromCart } = getDishDataFromCart(dishId, optionId);
+          const { title = '', preview, priceWithOptions, optionsFromCart } = getDishDataFromCart(dishId, optionId, true);
 
           return (
             <Fragment key={index}>

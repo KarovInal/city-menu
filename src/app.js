@@ -11,6 +11,7 @@ import { store } from './redux-init';
 import { CartPage } from "./pages/cart-page";
 import { StickyContainer } from 'react-sticky';
 import { Categories } from "./components/categories/categories";
+import { OrderPage } from "./pages/order-page";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -24,7 +25,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path='/'>
-              <Header withOrder />
+              <Header />
               <Typography color='textSecondary'>Molvee - qr menu for restaurants</Typography>
               <StickyContainer>
                 <Categories categories={dictionary.dishCategories} />
@@ -33,6 +34,9 @@ function App() {
             </Route>
             <Route exact path='/cart'>
               <CartPage />
+            </Route>
+            <Route exact path='/order'>
+              <OrderPage />
             </Route>
           </Switch>
         </Router>

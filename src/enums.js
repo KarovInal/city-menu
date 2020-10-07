@@ -21,7 +21,7 @@ export const EOptionType = {
 export const EDishOptions = {
   '00': {
     id: '00',
-    title: 'По умолчанию',
+    title: '',
     price: 0,
     available: true
   },
