@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import map from 'lodash/map';
 import join from 'lodash/join';
+import random from 'lodash/random';
 import AppBar from "@material-ui/core/AppBar";
 import { ArrowBack } from "@material-ui/icons";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,7 +12,7 @@ import { Title } from "../../components/typography/title";
 import Grid from "@material-ui/core/Grid";
 import { GhostButton, PrimaryButton } from "../../components/buttons";
 import { useSelector, useDispatch } from "react-redux";
-import { getPriceSelector, getDishesSelector, getDishDataFromCartSelector } from "../../modules/cart-module/cart-selectors";
+import { getCartSelector } from "../../modules/cart-module/cart-selectors";
 import { Preview } from "../../components/position/preview";
 import { Divider } from "@material-ui/core";
 import { Subtitle } from "../../components/typography/subtitle";
@@ -20,9 +21,11 @@ import { Counter } from "../../components/counter";
 import AddIcon from '@material-ui/icons/Add';
 import { cartUpdateCountAction, cartClearAction } from "../../modules/cart-module/actions";
 import { DiscountText } from "../../components/typography/discount-text";
-import { DEFAULT_DISCOUNT } from "../../modules/cart-module/constants";
+import { DEFAULT_DISCOUNT } from "../../constants/discount";
 import { Caption } from "../../components/typography/caption";
 import { useHistory } from "react-router-dom";
+import { addNewOrderAction } from "../../modules/order-module/actions";
+import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -69,9 +72,22 @@ export const CartPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const cartDishes = useSelector(getDishesSelector);
-  const getDishDataFromCart = useSelector(getDishDataFromCartSelector);
-  const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector);
+  const cartData = useSelector(getCartSelector);
+  const cartDishes = useSelector(getDishesAsArraySelector)(true);
+  const getDishDataFromCart = useSelector(getOrderDishDataSelector);
+  const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector)(true);
+
+  const confirmOrder = () => {
+    //0. create uniq id for order and save dishes
+    dispatch(addNewOrderAction({
+      orderId: random(1000000, 9999999),
+      dishes: cartData,
+    }));
+    //2. clear cart
+    dispatch(cartClearAction());
+    //3. redirect to order page
+    history.push('/order');
+  }
 
   return (
     <div>
@@ -90,7 +106,7 @@ export const CartPage = () => {
 
       {
         map(cartDishes, ({ dishId, optionId, count }, index) => {
-          const { title = '', preview, priceWithOptions, optionsFromCart } = getDishDataFromCart(dishId, optionId);
+          const { title = '', preview, priceWithOptions, optionsFromCart } = getDishDataFromCart(dishId, optionId, true);
 
           return (
             <Fragment key={index}>
@@ -140,7 +156,9 @@ export const CartPage = () => {
               <Title>{finalPriceWithDiscount} ₽</Title>
             </Grid>
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
-              <PrimaryButton className={classes.confirmOrderButton}>Подтвердить заказ</PrimaryButton>
+              <PrimaryButton onClick={confirmOrder} className={classes.confirmOrderButton}>
+                Подтвердить заказ
+              </PrimaryButton>
             </Grid>
           </Grid>
         </Toolbar>
