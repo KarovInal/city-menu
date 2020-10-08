@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import cn from "classnames";
 import Grid from "@material-ui/core/Grid";
 import { Element } from "react-scroll";
@@ -9,6 +10,7 @@ import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { gramToText } from "../../utils";
+import { dishOptionsSelector } from "../../modules/dictionary-module";
 import { SecondaryButton } from "../buttons";
 import { Price } from "../position/price";
 import { FlexColumn } from "../flex-column";
@@ -19,6 +21,7 @@ import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 import vector from "./assets/Vector.png";
 import { PaddingWrapper } from "../padding-wrapper";
 import { OptionHeader } from "./option-header";
+import { OptionBody } from "./option-body";
 
 const useStyles = makeStyles((theme) => ({
   preview: {
@@ -71,6 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const MenuList = React.memo(({ data }) => {
+  const dishOptions = useSelector(dishOptionsSelector);
+
   const classes = useStyles();
   const groupedByCategory = groupBy(data, "category");
 
@@ -176,6 +181,14 @@ export const MenuList = React.memo(({ data }) => {
                                 // TODO [NZ] 09.10.2020: Pass correct total price
                                 totalPrice={0}
                               />
+                              {option.values.map((value, index, values) => (
+                                <OptionBody
+                                  option={dishOptions[value]}
+                                  values={values}
+                                  // TODO [NZ] 09.10.2020: Pass `onChange` handler
+                                  onChange={noop}
+                                />
+                              ))}
                             </div>
                           ))}
                         </div>
