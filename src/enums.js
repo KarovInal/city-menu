@@ -42,5 +42,41 @@ export const EDishOptions = {
     title: 'Лайм+Авакадо',
     price: 150,
     available: true
-  }
+  },
+  '300': {
+    id: '300',
+    title: 'Классика',
+    price: 0,
+    available: true,
+  },
+  '301': {
+    id: '301',
+    title: 'Премиум',
+    price: 60,
+    available: true,
+  },
+  '302': {
+    id: '302',
+    title: 'Для пары',
+    price: 130,
+    available: true,
+  },
+  '700': {
+    id: '700',
+    title: 'Классика',
+    price: 0,
+    available: true,
+  },
+  '701': {
+    id: '701',
+    title: 'Премиум',
+    price: 60,
+    available: true,
+  },
+  '702': {
+    id: '702',
+    title: 'Для пары',
+    price: 130,
+    available: true,
+  },
 }
