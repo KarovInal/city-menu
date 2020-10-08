@@ -18,6 +18,7 @@ import { Body2 } from "../typography/body2";
 import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 import vector from "./assets/Vector.png";
 import { PaddingWrapper } from "../padding-wrapper";
+import { OptionsHeader } from "./options-header";
 
 const useStyles = makeStyles((theme) => ({
   preview: {
@@ -89,7 +90,16 @@ export const MenuList = React.memo(({ data }) => {
             {map(
               dishs,
               (
-                { title, preview, description, weight, price, category, id },
+                {
+                  title,
+                  preview,
+                  description,
+                  weight,
+                  price,
+                  category,
+                  id,
+                  options,
+                },
                 index
               ) => {
                 const isDishFullOpened = state[id];
@@ -157,6 +167,19 @@ export const MenuList = React.memo(({ data }) => {
                           </Grid>
                         </Grid>
                       </FlexRow>
+                      {isDishFullOpened && (
+                        <div>
+                          {options.map((option) => (
+                            <div>
+                              <OptionsHeader
+                                title={option.title}
+                                // TODO [NZ] 09.10.2020: Pass correct total price
+                                totalPrice={0}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
                       <FlexRow
                         justifyContent="space-between"
                         className={classes.bottomBlock}
