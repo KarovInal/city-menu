@@ -18,7 +18,7 @@ import { Body2 } from "../typography/body2";
 import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 import vector from "./assets/Vector.png";
 import { PaddingWrapper } from "../padding-wrapper";
-import { OptionsHeader } from "./options-header";
+import { OptionHeader } from "./option-header";
 
 const useStyles = makeStyles((theme) => ({
   preview: {
@@ -171,7 +171,7 @@ export const MenuList = React.memo(({ data }) => {
                         <div>
                           {options.map((option) => (
                             <div>
-                              <OptionsHeader
+                              <OptionHeader
                                 title={option.title}
                                 // TODO [NZ] 09.10.2020: Pass correct total price
                                 totalPrice={0}

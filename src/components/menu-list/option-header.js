@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const OptionsHeader = React.memo(({ title, totalPrice }) => {
+export const OptionHeader = React.memo(({ title, totalPrice }) => {
   const classes = useStyles();
 
   return (
