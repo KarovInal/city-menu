@@ -34,24 +34,8 @@ const menuList = {
       {
         title: 'Тип порции',
         type: EOptionType.Radio,
-        optionId: 1,
-        values: [
-          {
-            title: 'Классика',
-            additionalPrice: 0,
-            availability: true,
-          },
-          {
-            title: 'Премиум',
-            additionalPrice: 60,
-            availability: true,
-          },
-          {
-            title: 'Для пары',
-            additionalPrice: 130,
-            availability: true,
-          },
-        ]
+        optionId: 30,
+        values: ['300', '301', '302']
       }
     ]
   },
@@ -98,24 +82,8 @@ const menuList = {
       {
         title: 'Тип порции',
         type: EOptionType.Radio,
-        optionId: 1,
-        values: [
-          {
-            title: 'Классика',
-            additionalPrice: 0,
-            availability: true,
-          },
-          {
-            title: 'Премиум',
-            additionalPrice: 60,
-            availability: true,
-          },
-          {
-            title: 'Для пары',
-            additionalPrice: 130,
-            availability: true,
-          },
-        ]
+        optionId: 70,
+        values: ['700', '701', '702'],
       }
     ]
   },
