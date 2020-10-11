@@ -9,6 +9,10 @@ import { noop } from "lodash";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { gramToText } from "../../utils";
 import { dishOptionsSelector } from "../../modules/dictionary-module";
 import { SecondaryButton } from "../buttons";
@@ -71,6 +75,24 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${vector})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
+  },
+  negativeOrder: {
+    order: "-1",
+  },
+  p0: {
+    padding: "0",
+  },
+  p0_0_0_14: {
+    padding: "0 0 0 14px !important",
+  },
+  m0: {
+    margin: "0 !important",
+  },
+  noBoxShadow: {
+    boxShadow: "none",
+  },
+  noMinHeight: {
+    minHeight: "0 !important",
   },
 }));
 
@@ -176,21 +198,33 @@ export const MenuList = React.memo(({ data }) => {
                       {isDishFullOpened && (
                         <div>
                           {options.map((option) => (
-                            <div>
-                              <OptionHeader
-                                title={option.title}
-                                // TODO [NZ] 09.10.2020: Pass correct total price
-                                totalPrice={0}
-                              />
-                              {option.values.map((value, index, values) => (
-                                <OptionBody
-                                  option={dishOptions[value]}
-                                  values={values}
-                                  // TODO [NZ] 09.10.2020: Pass `onChange` handler
-                                  onChange={noop}
+                            <Accordion defaultExpanded classes={{
+                              root: classes.noBoxShadow
+                            }}>
+                              <AccordionSummary IconButtonProps={{ edge: false }} expandIcon={<ExpandMoreIcon />} classes={{
+                                expandIcon: classes.negativeOrder,
+                                root: classes.p0,
+                                expanded: cn(classes.noMinHeight, classes.m0),
+                              }}>
+                                <OptionHeader
+                                  title={option.title}
+                                  // TODO [NZ] 09.10.2020: Pass correct total price
+                                  totalPrice={0}
                                 />
+                              </AccordionSummary>
+                              {option.values.map((value, index, values) => (
+                                <AccordionDetails classes={{
+                                  root: classes.p0_0_0_14,
+                                }}>
+                                  <OptionBody
+                                    option={dishOptions[value]}
+                                    values={values}
+                                    // TODO [NZ] 09.10.2020: Pass `onChange` handler
+                                    onChange={noop}
+                                  />
+                                </AccordionDetails>
                               ))}
-                            </div>
+                            </Accordion>
                           ))}
                         </div>
                       )}
