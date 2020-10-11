@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
     right: "10px",
     top: "10px",
     borderRadius: "50%",
+    transform: "rotate(180deg)",
     backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.4),
     backgroundImage: `url(${vector})`,
     backgroundRepeat: "no-repeat",
