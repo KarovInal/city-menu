@@ -1,3 +1,4 @@
+import { createSelector } from "reselect";
 import { get as getFp } from "lodash/fp";
 import { SELECT_OPTIONS_STORE_KEY } from "./constants";
 
