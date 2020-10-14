@@ -197,10 +197,8 @@ export const MenuList = React.memo(({ data }) => {
                       </FlexRow>
                       {isDishFullOpened && (
                         <div>
-                          {options.map((option) => (
-                            <Accordion defaultExpanded classes={{
-                              root: classes.noBoxShadow
-                            }}>
+                          {options.map((option, index) => (
+                            <Accordion key={index} defaultExpanded classes={{ root: classes.noBoxShadow }}>
                               <AccordionSummary IconButtonProps={{ edge: false }} expandIcon={<ExpandMoreIcon />} classes={{
                                 expandIcon: classes.negativeOrder,
                                 root: classes.p0,
@@ -213,9 +211,7 @@ export const MenuList = React.memo(({ data }) => {
                                 />
                               </AccordionSummary>
                               {option.values.map((value, index, values) => (
-                                <AccordionDetails classes={{
-                                  root: classes.p0_0_0_14,
-                                }}>
+                                <AccordionDetails classes={{ root: classes.p0_0_0_14 }} key={index}>
                                   <OptionBody
                                     option={dishOptions[value]}
                                     values={values}
