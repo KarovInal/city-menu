@@ -4,7 +4,6 @@ import cn from "classnames";
 import Grid from "@material-ui/core/Grid";
 import { Element } from "react-scroll";
 import Divider from "@material-ui/core/Divider";
-import { fade } from "@material-ui/core";
 import { noop } from "lodash";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
@@ -22,23 +21,12 @@ import { FlexRow } from "../flex-row";
 import { Subtitle } from "../typography/subtitle";
 import { Body2 } from "../typography/body2";
 import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
-import vector from "./assets/Vector.png";
 import { PaddingWrapper } from "../padding-wrapper";
 import { OptionHeader } from "./option-header";
 import { OptionBody } from "./option-body";
+import { Preview } from "./dish";
 
 const useStyles = makeStyles((theme) => ({
-  preview: {
-    height: "140px",
-    border: "0.5px solid rgba(0, 0, 0, 0.08)",
-    boxSizing: "border-box",
-    borderRadius: "12px",
-    objectFit: "cover",
-    width: "100%",
-  },
-  openedPreview: {
-    height: "180px",
-  },
   pl16: {
     paddingLeft: "16px",
   },
@@ -50,31 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     color: `${theme.mode.secondary.secondaryTextColor} !important`,
-  },
-  trans: {
-    transition: "max-width .2s ease-in-out, flex-basis .2s ease-in-out",
-  },
-  relative: {
-    position: "relative",
-  },
-  skipButton: {
-    transition: "opacity .05s ease-in-out",
-    "&:active": {
-      cursor: "pointer",
-      backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.6),
-    },
-    display: "block",
-    height: "36px",
-    width: "36px",
-    position: "absolute",
-    right: "10px",
-    top: "10px",
-    borderRadius: "50%",
-    transform: "rotate(180deg)",
-    backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.4),
-    backgroundImage: `url(${vector})`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
   },
   negativeOrder: {
     order: "-1",
@@ -131,7 +94,6 @@ export const MenuList = React.memo(({ data }) => {
                 index
               ) => {
                 const isDishFullOpened = state[id];
-                const previewWidth = isDishFullOpened ? 12 : 4;
 
                 return (
                   <div key={index}>
@@ -144,32 +106,7 @@ export const MenuList = React.memo(({ data }) => {
                             isDishFullOpened ? noop : handleOpenDishClick(id)
                           }
                         >
-                          <Grid
-                            item
-                            xs={previewWidth}
-                            className={classes.trans}
-                          >
-                            <div className={cn(classes.relative)}>
-                              <div
-                                className={cn({
-                                  [classes.skipButton]: isDishFullOpened,
-                                })}
-                                onClick={
-                                  isDishFullOpened
-                                    ? handleOpenDishClick(id)
-                                    : noop
-                                }
-                              />
-                              <img
-                                className={cn(classes.preview, {
-                                  [classes.openedPreview]: isDishFullOpened,
-                                })}
-                                src={preview}
-                                alt="dish-preview"
-                                draggable="false"
-                              />
-                            </div>
-                          </Grid>
+                          <Preview preview={preview} onClick={() => handleOpenDishClick(id)} isDishFullOpened={isDishFullOpened} />
                           <Grid item xs>
                             <div
                               className={cn({
