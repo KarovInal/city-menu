@@ -6,17 +6,12 @@ import { noop } from "lodash";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { SecondaryButton } from "../buttons";
-import { Price } from "../position/price";
 import { FlexColumn } from "../flex-column";
 import { FlexRow } from "../flex-row";
 import { PaddingWrapper } from "../padding-wrapper";
-import { Description, DishOptions, Preview } from "./dish";
+import { PriceBlock, Description, DishOptions, Preview } from "./dish";
 
 const useStyles = makeStyles({
-  bottomBlock: {
-    paddingTop: "16px",
-  },
   m20_0: {
     margin: "20px 0",
   },
@@ -84,17 +79,7 @@ export const MenuList = React.memo(({ data }) => {
                         isDishFullOpened={isDishFullOpened}
                         options={options}
                       />
-                      <FlexRow
-                        justifyContent="space-between"
-                        className={classes.bottomBlock}
-                      >
-                        <div>
-                          <Price price={price} />
-                        </div>
-                        <div>
-                          <SecondaryButton>В конзину</SecondaryButton>
-                        </div>
-                      </FlexRow>
+                      <PriceBlock price={price} />
                     </FlexColumn>
                     <Divider />
                   </div>
