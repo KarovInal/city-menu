@@ -12,32 +12,22 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { gramToText } from "../../utils";
 import { dishOptionsSelector } from "../../modules/dictionary-module";
 import { SecondaryButton } from "../buttons";
 import { Price } from "../position/price";
 import { FlexColumn } from "../flex-column";
 import { FlexRow } from "../flex-row";
-import { Subtitle } from "../typography/subtitle";
-import { Body2 } from "../typography/body2";
-import { MAX_DESCRIPTION_CHAR_LENGTH } from "./menu-list-constants";
 import { PaddingWrapper } from "../padding-wrapper";
 import { OptionHeader } from "./option-header";
 import { OptionBody } from "./option-body";
-import { Preview } from "./dish";
+import { Description, Preview } from "./dish";
 
-const useStyles = makeStyles((theme) => ({
-  pl16: {
-    paddingLeft: "16px",
-  },
+const useStyles = makeStyles({
   bottomBlock: {
     paddingTop: "16px",
   },
   m20_0: {
     margin: "20px 0",
-  },
-  description: {
-    color: `${theme.mode.secondary.secondaryTextColor} !important`,
   },
   negativeOrder: {
     order: "-1",
@@ -57,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   noMinHeight: {
     minHeight: "0 !important",
   },
-}));
+});
 
 export const MenuList = React.memo(({ data }) => {
   const dishOptions = useSelector(dishOptionsSelector);
@@ -107,29 +97,7 @@ export const MenuList = React.memo(({ data }) => {
                           }
                         >
                           <Preview preview={preview} onClick={() => handleOpenDishClick(id)} isDishFullOpened={isDishFullOpened} />
-                          <Grid item xs>
-                            <div
-                              className={cn({
-                                [classes.pl16]: !isDishFullOpened,
-                              })}
-                            >
-                              <FlexColumn className={classes.text}>
-                                <Subtitle>{title}</Subtitle>
-                                <Body2 className={classes.description}>
-                                  {description.length >=
-                                  MAX_DESCRIPTION_CHAR_LENGTH
-                                    ? description.slice(
-                                        0,
-                                        MAX_DESCRIPTION_CHAR_LENGTH
-                                      ) + "..."
-                                    : description}
-                                </Body2>
-                                <Body2 className={classes.description}>
-                                  {gramToText(weight)}
-                                </Body2>
-                              </FlexColumn>
-                            </div>
-                          </Grid>
+                          <Description isDishFullOpened={isDishFullOpened} title={title} description={description} weight={weight} />
                         </Grid>
                       </FlexRow>
                       {isDishFullOpened && (
