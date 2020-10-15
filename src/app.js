@@ -1,7 +1,6 @@
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createThemeConfig } from './constants/theme';
 import { Header } from "./components/header";
@@ -12,12 +11,13 @@ import { CartPage } from "./pages/cart-page";
 import { StickyContainer } from 'react-sticky';
 import { Categories } from "./components/categories/categories";
 import { OrderPage } from "./pages/order-page";
+import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const mode = prefersDarkMode ? 'light' : 'dark';
   const customTheme = createMuiTheme(createThemeConfig(mode));
-  const { dictionary } = store.getState();
+  const { dictionary, recommendations } = store.getState();
 
   return (
     <Provider store={store}>
@@ -26,7 +26,7 @@ function App() {
           <Switch>
             <Route exact path='/'>
               <Header />
-              <Typography color='textSecondary'>Molvee - qr menu for restaurants</Typography>
+              <RecommendationsList recommendations={recommendations} />
               <StickyContainer>
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dictionary.dishes} />

@@ -127,8 +127,34 @@ const menuList = {
   }
 };
 
+const recommendations = {
+  1: {
+    id: 1,
+    type: 'image',
+    content: 'https://static.yakitoriya.ru/media/cache/73/0a/730ab1749ee366824b7de9dbf42c1c5c.jpg',
+    contentTitle: 'Только сейчас! Скидка на cет "Де Люкс"',
+    contentSubTitle: 'Тайга рору (7 шт.), Бали маки (7 шт.), Драгон рору (7 шт.), Red Драгон (8 шт.), Филадельфия (8 шт.), Калифорния (8 шт.), Киото рору (8 шт.), Сякэ рору (8 шт.), Каппа маки (4 ш.т), Ролл с креветкой (8 шт.), Ролл Инь Янь (5 шт.) - 11 порций роллов (78 шт.)',
+    resourceUrl: 'https://yakitoriya.ru/menu-dostavki/sety/set-de-lyuks',
+    preview: 'https://static.yakitoriya.ru/media/cache/73/0a/730ab1749ee366824b7de9dbf42c1c5c.jpg',
+    previewTitle: 'Скидка 10% на cет "Де Люкс"',
+    buttonTitle: 'Подробнее'
+  },
+  2: {
+    id: 2,
+    type: 'video',
+    content: 'https://stream.mux.com/ZKiKip89FCVwfuW5vow01Y01GwhZPanRIY/low.mp4?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InQ5UHZucm9ZY0hQNjhYSmlRQnRHTEVVSkVSSXJ0UXhKIn0.eyJleHAiOjE2MDI3OTkwODgsImF1ZCI6InYiLCJzdWIiOiJaS2lLaXA4OUZDVndmdVc1dm93MDFZMDFHd2haUGFuUklZIn0.UU9pLuil14lecxIdQ5W2UjIe-UmDAcfW4AUEaSysIUHycnMALiRnBVc9k4HFgal1tZVKaxruaBWVihFSdgZrf17Fw68YfP_I5n92Qxf83wDZxkGl6sPZwhJtnnwG05P-79GnklVRyRgEXoVSho0b02VyyLmumqKhUBbM4Ol0eKv5GOjfIq4G_ms-Ebi7hrpyR5ND3HnmD1yG5SAKu45eDSse2gQ_mBdH-0Vn2uAeHm5AQ96yOQ5TAbJ7pd-LjRyjC7hvXxf1uhYvJv_3ck5oHtSd4J30K-iS1U90uqz0YNiPqJH9AEj7eRulhuEfrglUp8fLKY_KrodohMcodiu8Yg',
+    contentTitle: 'Свежи фрукты',
+    contentSubTitle: 'Черника, клубника и многое другое!',
+    resourceUrl: 'https://yakitoriya.ru/menu-dostavki/sety/set-de-lyuks',
+    preview: 'https://images.unsplash.com/photo-1580691155297-c6dfa3ca61c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=10',
+    previewTitle: 'Скидка 10% на фрукты!',
+    buttonTitle: 'Перейти'
+  }
+};
+
 export const mockData = {
   menuList,
+  recommendations,
   dictionary: {
     dishOptions: EOptionType,
     dishCategories: ECategories,
