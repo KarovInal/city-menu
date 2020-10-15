@@ -1,4 +1,5 @@
 import React from "react";
+import map from 'lodash/map';
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -43,7 +44,7 @@ export const DishOptions = React.memo(({ isDishFullOpened, options }) => {
 
   return (
     <div>
-      {options.map((option, index) => (
+      {map(options, (option, index) => (
         <Accordion
           key={index}
           defaultExpanded
