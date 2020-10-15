@@ -10,6 +10,8 @@ const useStyles = makeStyles({
   }),
 });
 
+// TODO [NZ] 16.10.2020: Подумать над тем, чтобы заюзать `Flex` comp-t как основу для `FlexColumn`
+//  Если сейчас заменять div на Flex то вроде все должно работать, но все равно это слишком рискованно. Я не где и как можно проверить результат.
 export const FlexColumn = React.memo(({ children, className, ...props }) => {
   const classes = useStyles(props);
 
