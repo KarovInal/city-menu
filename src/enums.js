@@ -61,6 +61,24 @@ export const EDishOptions = {
     price: 130,
     available: true,
   },
+  '310': {
+    id: '310',
+    title: 'Сироп',
+    price: 19,
+    available: true,
+  },
+  '311': {
+    id: '311',
+    title: 'Карамель',
+    price: 89,
+    available: true,
+  },
+  '312': {
+    id: '312',
+    title: 'Клубничка',
+    price: 55,
+    available: true,
+  },
   '700': {
     id: '700',
     title: 'Классика',

@@ -14,6 +14,7 @@ import {
   createGetSelectedOptionsByDishId,
   radioOptionsChange,
 } from "../../../modules/select-options-module";
+import { dishOptionsSelector } from "../../../modules/dictionary-module";
 
 const useStyles = makeStyles({
   negativeOrder: {
@@ -62,6 +63,7 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
   }, []);
 
   const selectedOptionsByDishId = useSelector(createGetSelectedOptionsByDishId(dishId));
+  const dishOptions = useSelector(dishOptionsSelector);
 
   if (!isDishFullOpened || !options) {
     return null;
@@ -76,6 +78,7 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
     <div>
       {optionsWithValues.map((option, index) => {
         const selected = selectedOptionsByDishId[option.optionId];
+        const selectedOption = dishOptions[selected];
 
         return (
           <Accordion
@@ -94,8 +97,7 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
             >
               <OptionHeader
                 title={option.title}
-                // TODO [NZ] 09.10.2020: Pass correct total price
-                totalPrice={0}
+                totalPrice={selectedOption.price}
               />
             </AccordionSummary>
             <AccordionDetails classes={{ root: classes.p0_0_0_14 }} key={index}>
