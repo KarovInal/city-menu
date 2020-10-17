@@ -11,6 +11,7 @@ export const selectOptionsReducer = (store = INIT_STORE, action) => {
       return {
         ...store,
         [dishId]: {
+          ...store[dishId],
           [optionId]: value
         },
       };

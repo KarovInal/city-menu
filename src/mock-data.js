@@ -36,6 +36,12 @@ const menuList = {
         type: EOptionType.Radio,
         optionId: 30,
         values: ['300', '301', '302']
+      },
+      {
+        title: 'Добавки',
+        type: EOptionType.Radio,
+        optionId: 31,
+        values: ['310', '311', '312']
       }
     ]
   },
