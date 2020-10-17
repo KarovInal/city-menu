@@ -76,6 +76,7 @@ export const MenuList = React.memo(({ data }) => {
                         </Grid>
                       </FlexRow>
                       <DishOptions
+                        dishId={id}
                         isDishFullOpened={isDishFullOpened}
                         options={options}
                       />
