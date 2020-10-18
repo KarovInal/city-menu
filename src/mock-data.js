@@ -42,6 +42,12 @@ const menuList = {
         type: EOptionType.Radio,
         optionId: 31,
         values: ['310', '311', '312']
+      },
+      {
+        title: 'Добавить',
+        type: EOptionType.CheckBox,
+        optionId: 32,
+        values: ['320', '321', '322']
       }
     ]
   },

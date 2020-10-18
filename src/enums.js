@@ -79,6 +79,24 @@ export const EDishOptions = {
     price: 55,
     available: true,
   },
+  '320': {
+    id: '320',
+    title: 'Влажные салфетки',
+    price: 2,
+    available: true,
+  },
+  '321': {
+    id: '321',
+    title: 'Доп. салфетки',
+    price: 10,
+    available: true,
+  },
+  '322': {
+    id: '322',
+    title: 'Доп. инструменты',
+    price: 0,
+    available: true,
+  },
   '700': {
     id: '700',
     title: 'Классика',
