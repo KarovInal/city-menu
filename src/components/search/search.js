@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import { ReactComponent as SearchIcon } from "./assests/search.svg";
 import { PaddingWrapper } from "../padding-wrapper";
+import IconButton from "@material-ui/core/IconButton";
+import ClearIcon from '@material-ui/icons/Clear';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -38,13 +40,28 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create("width"),
   },
   inputRoot: {
-    width: "100%",
+    width: "calc(100% - 34px)",
     height: "100%",
-  }
+  },
+  buttonRoot: {
+    padding: '6px',
+    fontSize: '22px',
+  },
 }));
 
-export const Search = React.memo(() => {
+export const Search = React.memo(({ onSearch }) => {
   const classes = useStyles();
+  const [value, setValue] = React.useState('');
+
+  const onChange = React.useCallback(({ target: { value }}) => {
+    setValue(value);
+    onSearch(value);
+  });
+
+  const clearInput = React.useCallback(() => {
+    setValue('');
+    onSearch('');
+  });
 
   return (
     <PaddingWrapper>
@@ -54,9 +71,13 @@ export const Search = React.memo(() => {
         </div>
         <InputBase
           placeholder="Поиск блюда"
-          classes={{ input: classes.inputInput, root: classes.inputRoot }}
-          inputProps={{ "aria-label": "search" }}
+          classes={{ root: classes.inputRoot, input: classes.inputInput }}
+          onChange={onChange}
+          value={value}
         />
+        <IconButton classes={{ root: classes.buttonRoot }} onClick={clearInput}>
+          <ClearIcon fontSize="inherit" />
+        </IconButton>
       </div>
     </PaddingWrapper>
   );

@@ -6,6 +6,7 @@ import { createThemeConfig } from './constants/theme';
 import { Header } from "./components/header";
 import { MenuList } from "./components/menu-list";
 import { Provider } from 'react-redux';
+import _ from 'lodash/fp';
 import { store } from './redux-init';
 import { CartPage } from "./pages/cart-page";
 import { StickyContainer } from 'react-sticky';
@@ -19,6 +20,15 @@ function App() {
   const mode = prefersDarkMode ? 'light' : 'dark';
   const customTheme = createMuiTheme(createThemeConfig(mode));
   const { dictionary, recommendations } = store.getState();
+  const [dishes, setDishes] = React.useState(dictionary.dishes);
+
+  const onSearch = React.useCallback((inputValue = '') => {
+    const filteredDishes = _.pickBy(({
+      title = '',
+    }) => _.toLower(title).includes(_.toLower(inputValue)))(dishes);
+
+    setDishes(filteredDishes);
+  }, []);
 
   return (
     <Provider store={store}>
@@ -29,9 +39,9 @@ function App() {
               <Header />
               <RecommendationsList recommendations={recommendations} />
               <StickyContainer>
-                <Search />
+                <Search onSearch={onSearch} />
                 <Categories categories={dictionary.dishCategories} />
-                <MenuList data={dictionary.dishes} />
+                <MenuList data={dishes} />
               </StickyContainer>
             </Route>
             <Route exact path='/cart'>
