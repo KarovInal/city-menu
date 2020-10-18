@@ -6,15 +6,18 @@ import cn from "classnames";
 import { OptionHeader } from "../option-header";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { OptionBody } from "../option-body";
-import { reject, isEmpty, prop, forEach, first } from "lodash/fp";
+import _ from "lodash/fp";
+import { get } from "lodash";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { compose } from "redux";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  checkboxOptionsChange,
   createGetSelectedOptionsByDishId,
   radioOptionsChange,
 } from "../../../modules/select-options-module";
 import { dishOptionsSelector } from "../../../modules/dictionary-module";
+import { EOptionType } from "../../../enums";
 
 const useStyles = makeStyles({
   negativeOrder: {
@@ -40,23 +43,38 @@ const useStyles = makeStyles({
 export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const rejectEmptyValues = _.reject(compose(_.isEmpty, _.prop("values")));
 
   React.useEffect(() => {
     if (!options) {
       return;
     }
 
-    compose(
-      forEach(({ optionId, values }) => {
-        dispatch(
-          radioOptionsChange({
-            dishId,
-            optionId,
-            value: first(values),
-          })
-        );
+    _.compose(
+      _.forEach(({ optionId, type, values }) => {
+        if (_.isEqual(EOptionType.Radio)(type)) {
+          dispatch(
+            radioOptionsChange({
+              dishId,
+              optionId,
+              value: _.first(values),
+            })
+          )
+        }
+
+        if (_.isEqual(EOptionType.CheckBox)(type)) {
+          dispatch(
+            checkboxOptionsChange({
+              dishId,
+              optionId,
+              value: {
+                [_.first(values)]: true,
+              },
+            })
+          )
+        }
       }),
-      reject(compose(isEmpty, prop("values")))
+      rejectEmptyValues,
     )(options);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,16 +87,29 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
     return null;
   }
 
-  const optionsWithValues = reject(compose(
-    isEmpty,
-    prop('values'),
-  ))(options);
+  const optionsWithValues = rejectEmptyValues(options);
 
   return (
     <div>
       {optionsWithValues.map((option, index) => {
         const selected = selectedOptionsByDishId[option.optionId];
-        const selectedOption = dishOptions[selected];
+
+        let selectedOption = { price: 0 };
+
+        if (_.isObject(selected)) {
+          // Checkbox
+          selectedOption = {
+            price: _.compose(
+              _.sum,
+              _.map((key) => get(dishOptions, [key, 'price'])),
+              _.keys,
+              _.pickBy(_.identity),
+            )(selected),
+          };
+        } else if (_.isString(selected)) {
+          // Radio
+          selectedOption = dishOptions[selected];
+        }
 
         return (
           <Accordion
