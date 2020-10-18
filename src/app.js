@@ -12,6 +12,7 @@ import { StickyContainer } from 'react-sticky';
 import { Categories } from "./components/categories/categories";
 import { OrderPage } from "./pages/order-page";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
+import { Search } from "./components/search";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -28,6 +29,7 @@ function App() {
               <Header />
               <RecommendationsList recommendations={recommendations} />
               <StickyContainer>
+                <Search />
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dictionary.dishes} />
               </StickyContainer>
