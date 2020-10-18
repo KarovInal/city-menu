@@ -44,6 +44,8 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
   const classes = useStyles();
   const dispatch = useDispatch();
   const rejectEmptyValues = _.reject(compose(_.isEmpty, _.prop("values")));
+  const isRadioType = _.isEqual(EOptionType.Radio);
+  const isCheckBoxType = _.isEqual(EOptionType.CheckBox);
 
   React.useEffect(() => {
     if (!options) {
@@ -52,7 +54,7 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
 
     _.compose(
       _.forEach(({ optionId, type, values }) => {
-        if (_.isEqual(EOptionType.Radio)(type)) {
+        if (isRadioType(type)) {
           dispatch(
             radioOptionsChange({
               dishId,
@@ -62,7 +64,7 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
           )
         }
 
-        if (_.isEqual(EOptionType.CheckBox)(type)) {
+        if (isCheckBoxType(type)) {
           dispatch(
             checkboxOptionsChange({
               dishId,
@@ -134,15 +136,30 @@ export const DishOptions = React.memo(({ isDishFullOpened, options, dishId }) =>
             <AccordionDetails classes={{ root: classes.p0_0_0_14 }} key={index}>
               <OptionBody
                 selectedValue={selected}
+                type={option.type}
                 values={option.values}
-                onChange={({ target: { value }}) => {
-                  dispatch(
-                    radioOptionsChange({
-                      dishId,
-                      optionId: option.optionId,
-                      value,
-                    })
-                  );
+                onChange={({ target: { value, checked }}) => {
+                  if (isRadioType(option.type)) {
+                    dispatch(
+                      radioOptionsChange({
+                        dishId,
+                        optionId: option.optionId,
+                        value,
+                      })
+                    );
+                  }
+
+                  if (isCheckBoxType(option.type)) {
+                    dispatch(
+                      checkboxOptionsChange({
+                        dishId,
+                        optionId: option.optionId,
+                        value: {
+                          [value]: checked,
+                        },
+                      })
+                    );
+                  }
                 }}
               />
             </AccordionDetails>
