@@ -9,19 +9,7 @@ import { EmptyOptionId } from "../../enums";
 * }
 * */
 
-const defaultStore = {
-  1: {
-    [EmptyOptionId]: { count: 1 },
-  },
-  6: {
-    [EmptyOptionId]: { count: 1 },
-  },
-  10: {
-    [EmptyOptionId]: { count: 1 },
-    '01': { count: 2 },
-    '01_02': { count: 1 },
-  }
-};
+const defaultStore = {};
 
 export const cartReducer = (store = defaultStore, action) => {
   switch (action.type) {
