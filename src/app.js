@@ -14,6 +14,7 @@ import { Categories } from "./components/categories/categories";
 import { OrderPage } from "./pages/order-page";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
 import { Search } from "./components/search";
+import { ProceedButton } from "./components/proceed-button";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -42,6 +43,8 @@ function App() {
                 <Search onSearch={onSearch} />
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dishes} />
+                {/* TODO [NZ] 21.10.2020: Pass correct totalPrice */}
+                <ProceedButton totalPrice={0} />
               </StickyContainer>
             </Route>
             <Route exact path='/cart'>
