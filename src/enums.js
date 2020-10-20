@@ -18,9 +18,11 @@ export const EOptionType = {
   Radio: 'radio',
 };
 
+export const EmptyOptionId = '00';
+
 export const EDishOptions = {
-  '00': {
-    id: '00',
+  [EmptyOptionId]: {
+    id: EmptyOptionId,
     title: '',
     price: 0,
     available: true

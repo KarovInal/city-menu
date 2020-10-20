@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 });
 
 export const PriceBlock = React.memo(({
-  price,
+  price, onClick
 }) => {
   const classes = useStyles();
 
@@ -24,7 +24,7 @@ export const PriceBlock = React.memo(({
         <Price price={price}/>
       </div>
       <div>
-        <SecondaryButton>В корзину</SecondaryButton>
+        <SecondaryButton onClick={onClick}>В корзину</SecondaryButton>
       </div>
     </FlexRow>
   );
