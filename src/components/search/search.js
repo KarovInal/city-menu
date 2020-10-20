@@ -56,12 +56,12 @@ export const Search = React.memo(({ onSearch }) => {
   const onChange = React.useCallback(({ target: { value }}) => {
     setValue(value);
     onSearch(value);
-  });
+  }, [onSearch]);
 
   const clearInput = React.useCallback(() => {
     setValue('');
     onSearch('');
-  });
+  }, [onSearch]);
 
   return (
     <PaddingWrapper>

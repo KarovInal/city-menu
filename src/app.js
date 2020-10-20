@@ -28,7 +28,7 @@ function App() {
     }) => _.toLower(title).includes(_.toLower(inputValue)))(dishes);
 
     setDishes(filteredDishes);
-  }, []);
+  }, [dishes]);
 
   return (
     <Provider store={store}>
