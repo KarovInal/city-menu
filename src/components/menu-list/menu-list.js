@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { Element } from "react-scroll";
 import Divider from "@material-ui/core/Divider";
 import { noop } from "lodash";
+import _ from "lodash/fp";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -10,6 +11,10 @@ import { FlexColumn } from "../flex-column";
 import { FlexRow } from "../flex-row";
 import { PaddingWrapper } from "../padding-wrapper";
 import { PriceBlock, Description, DishOptions, Preview } from "./dish";
+import { cartUpdateCountAction } from "../../modules/cart-module";
+import { useDispatch, useSelector } from "react-redux";
+import { createSelectedOptionsByDishIdGetter } from "../../modules/select-options-module";
+import { EmptyOptionId } from "../../enums";
 
 const useStyles = makeStyles({
   m20_0: {
@@ -27,6 +32,37 @@ export const MenuList = React.memo(({ data }) => {
       ...prevState,
       [id]: !prevState[id],
     }));
+  };
+
+  const selector = useSelector(createSelectedOptionsByDishIdGetter);
+
+  const dispatch = useDispatch();
+
+  const createAddToCartHandler = (dishId, isDishFullOpened) => () => {
+    let valueIds = EmptyOptionId;
+
+    if (isDishFullOpened) {
+      valueIds = _.compose(
+        _.cond([
+          [_.isUndefined, _.constant(EmptyOptionId)],
+          [_.stubTrue,    _.compose(
+            _.join("_"),
+            _.flatten,
+            _.values,
+            _.mapValues(
+              _.cond([
+                [_.isString, _.identity],
+                [_.isObject, _.compose(_.keys, _.pickBy(Boolean))],
+                [_.stubTrue, _.identity],
+              ])
+            ),
+          )],
+        ]),
+        selector,
+      )(dishId);
+    }
+    // TODO [NZ] 21.10.2020: Add button fake loader
+    dispatch(cartUpdateCountAction(dishId, valueIds, 1));
   };
 
   return (
@@ -80,7 +116,10 @@ export const MenuList = React.memo(({ data }) => {
                         isDishFullOpened={isDishFullOpened}
                         options={options}
                       />
-                      <PriceBlock price={price} />
+                      <PriceBlock
+                        onClick={createAddToCartHandler(id, isDishFullOpened)}
+                        price={price}
+                      />
                     </FlexColumn>
                     <Divider />
                   </div>

@@ -1,10 +1,16 @@
 import { createSelector } from "reselect";
-import { get as getFp } from "lodash/fp";
+import _ from 'lodash/fp';
 import { SELECT_OPTIONS_STORE_KEY } from "./constants";
 
-export const getSelectedOptions = getFp(SELECT_OPTIONS_STORE_KEY);
+export const getSelectedOptions = _.get(SELECT_OPTIONS_STORE_KEY);
 
 export const createGetSelectedOptionsByDishId = (dishId) => createSelector(
-  getFp(SELECT_OPTIONS_STORE_KEY),
-  getFp(dishId),
+  getSelectedOptions,
+  _.get(dishId),
+);
+
+export const createSelectedOptionsByDishIdGetter = createSelector(
+  getSelectedOptions,
+  // a.k.a (selectedOptions) => (dishId) => getFp(dishId)(selectedOptions),
+  _.curryN(2, _.flip(_.get)),
 );

@@ -1,5 +1,6 @@
 import omit from 'lodash/omit';
 import {CART_CLEAR, CART_UPDATE_COUNT} from './constants';
+import { EmptyOptionId } from "../../enums";
 
 /*
 * <dishId>: {
@@ -10,13 +11,13 @@ import {CART_CLEAR, CART_UPDATE_COUNT} from './constants';
 
 const defaultStore = {
   1: {
-    '00': { count: 1 },
+    [EmptyOptionId]: { count: 1 },
   },
   6: {
-    '00': { count: 1 },
+    [EmptyOptionId]: { count: 1 },
   },
   10: {
-    '00': { count: 1 },
+    [EmptyOptionId]: { count: 1 },
     '01': { count: 2 },
     '01_02': { count: 1 },
   }
