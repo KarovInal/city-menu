@@ -24,7 +24,7 @@ export const PriceBlock = React.memo(({
         <Price price={price}/>
       </div>
       <div>
-        <SecondaryButton>В конзину</SecondaryButton>
+        <SecondaryButton>В корзину</SecondaryButton>
       </div>
     </FlexRow>
   );
