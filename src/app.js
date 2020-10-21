@@ -33,10 +33,10 @@ function App() {
 
     const filteredDishes = _.pickBy(({
       title = '',
-    }) => _.toLower(title).includes(_.toLower(inputValue)))(dishes);
+    }) => _.toLower(title).includes(_.toLower(inputValue)))(dictionary.dishes);
 
     setDishes(filteredDishes);
-  }, [dictionary.dishes, dishes]);
+  }, [dictionary.dishes]);
 
   return (
     <Provider store={store}>
