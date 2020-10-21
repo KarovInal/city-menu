@@ -11,7 +11,7 @@ import { FlexColumn } from "../flex-column";
 import { FlexRow } from "../flex-row";
 import { PaddingWrapper } from "../padding-wrapper";
 import { PriceBlock, Description, DishOptions, Preview } from "./dish";
-import { cartUpdateCountAction } from "../../modules/cart-module";
+import { cartCountByOptionsGetter, cartUpdateCountAction } from "../../modules/cart-module";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelectedOptionsByDishIdGetter } from "../../modules/select-options-module";
 import { EmptyOptionId } from "../../enums";
@@ -34,11 +34,12 @@ export const MenuList = React.memo(({ data }) => {
     }));
   };
 
-  const selector = useSelector(createSelectedOptionsByDishIdGetter);
+  const optionsByDishIdGetter = useSelector(createSelectedOptionsByDishIdGetter);
+  const countGetter = useSelector(cartCountByOptionsGetter)
 
   const dispatch = useDispatch();
 
-  const createAddToCartHandler = (dishId, isDishFullOpened) => () => {
+  const createAddToCartHandler = React.useCallback((dishId, isDishFullOpened) => () => {
     let valueIds = EmptyOptionId;
 
     if (isDishFullOpened) {
@@ -58,12 +59,14 @@ export const MenuList = React.memo(({ data }) => {
             ),
           )],
         ]),
-        selector,
+        optionsByDishIdGetter,
       )(dishId);
     }
+    const count = countGetter([dishId, valueIds]);
+
     // TODO [NZ] 21.10.2020: Add button fake loader
-    dispatch(cartUpdateCountAction(dishId, valueIds, 1));
-  };
+    dispatch(cartUpdateCountAction(dishId, valueIds, count));
+  });
 
   return (
     <PaddingWrapper>
