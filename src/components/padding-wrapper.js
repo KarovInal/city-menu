@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
@@ -7,10 +8,10 @@ const useStyles = makeStyles({
   },
 });
 
-export const PaddingWrapper = React.memo(({ children }) => {
+export const PaddingWrapper = React.memo(({ children, className }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.wrapper}>{children}</div>
+    <div className={cn(classes.wrapper, className)}>{children}</div>
   );
 });

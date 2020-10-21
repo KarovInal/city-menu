@@ -20,6 +20,9 @@ const useStyles = makeStyles({
   m20_0: {
     margin: "20px 0",
   },
+  pb66: {
+    paddingBottom: "66px",
+  },
 });
 
 export const MenuList = React.memo(({ data }) => {
@@ -69,7 +72,7 @@ export const MenuList = React.memo(({ data }) => {
   }, [countGetter, dispatch, optionsByDishIdGetter]);
 
   return (
-    <PaddingWrapper>
+    <PaddingWrapper className={classes.pb66}>
       {map(groupedByCategory, (dishs, categoryKey) => {
         return (
           <Element key={categoryKey} name={categoryKey}>

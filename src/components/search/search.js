@@ -53,7 +53,7 @@ export const Search = React.memo(({ onSearch }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('');
 
-  const onChange = React.useCallback(({ target: { value }}) => {
+  const onInput = React.useCallback(({ target: { value }}) => {
     setValue(value);
     onSearch(value);
   }, [onSearch]);
@@ -76,7 +76,7 @@ export const Search = React.memo(({ onSearch }) => {
         <InputBase
           placeholder="Поиск блюда"
           classes={{ root: classes.inputRoot, input: classes.inputInput }}
-          onChange={onChange}
+          onInput={onInput}
           value={value}
         />
         <IconButton classes={{ root: classes.buttonRoot }} onClick={clearInput}>
