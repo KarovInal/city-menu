@@ -36,7 +36,7 @@ function App() {
     }) => _.toLower(title).includes(_.toLower(inputValue)))(dishes);
 
     setDishes(filteredDishes);
-  }, [dishes]);
+  }, [dictionary.dishes, dishes]);
 
   return (
     <Provider store={store}>

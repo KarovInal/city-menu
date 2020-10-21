@@ -41,7 +41,7 @@ export const PriceBlock = React.memo(({
     }, 550)
 
     onClick();
-  });
+  }, [onClick]);
 
   const classes = useStyles();
 

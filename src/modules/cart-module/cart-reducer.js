@@ -1,6 +1,5 @@
 import omit from 'lodash/omit';
 import { CART_CLEAR, CART_STORE_KEY, CART_UPDATE_COUNT } from './constants';
-import { EmptyOptionId } from "../../enums";
 
 /*
 * <dishId>: {
