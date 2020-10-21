@@ -66,7 +66,7 @@ export const MenuList = React.memo(({ data }) => {
 
     // TODO [NZ] 21.10.2020: Add button fake loader
     dispatch(cartUpdateCountAction(dishId, valueIds, count));
-  });
+  }, [countGetter, dispatch, optionsByDishIdGetter]);
 
   return (
     <PaddingWrapper>

@@ -65,7 +65,7 @@ export const Search = React.memo(({ onSearch }) => {
 
     setValue('');
     onSearch('');
-  }, [onSearch]);
+  }, [value, onSearch]);
 
   return (
     <PaddingWrapper>

@@ -15,6 +15,7 @@ import { OrderPage } from "./pages/order-page";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
 import { Search } from "./components/search";
 import { ProceedButton } from "./components/proceed-button";
+import "animate.css";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -35,7 +36,7 @@ function App() {
     }) => _.toLower(title).includes(_.toLower(inputValue)))(dishes);
 
     setDishes(filteredDishes);
-  }, [dishes]);
+  }, [dictionary.dishes, dishes]);
 
   return (
     <Provider store={store}>
@@ -49,8 +50,7 @@ function App() {
                 <Search onSearch={onSearch} />
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dishes} />
-                {/* TODO [NZ] 21.10.2020: Pass correct totalPrice */}
-                <ProceedButton totalPrice={0} />
+                <ProceedButton />
               </StickyContainer>
             </Route>
             <Route exact path='/cart'>

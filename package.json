@@ -8,10 +8,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "animate.css": "^4.1.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
-    "reselect": "^4.0.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
@@ -22,6 +22,7 @@
     "redux": "^4.0.5",
     "redux-devtools": "^3.7.0",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "swiper": "^6.3.1"
   },
   "scripts": {
