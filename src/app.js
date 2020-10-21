@@ -23,7 +23,13 @@ function App() {
   const { dictionary, recommendations } = store.getState();
   const [dishes, setDishes] = React.useState(dictionary.dishes);
 
-  const onSearch = React.useCallback((inputValue = '') => {
+  const onSearch = React.useCallback((inputValue) => {
+    if (!inputValue) {
+      setDishes(dictionary.dishes);
+
+      return;
+    }
+
     const filteredDishes = _.pickBy(({
       title = '',
     }) => _.toLower(title).includes(_.toLower(inputValue)))(dishes);
