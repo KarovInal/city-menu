@@ -59,6 +59,10 @@ export const Search = React.memo(({ onSearch }) => {
   }, [onSearch]);
 
   const clearInput = React.useCallback(() => {
+    if (!value) {
+      return;
+    }
+
     setValue('');
     onSearch('');
   }, [onSearch]);
