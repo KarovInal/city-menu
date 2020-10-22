@@ -2,6 +2,7 @@ import React from 'react';
 import map from 'lodash/map';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   wrap: {
@@ -11,7 +12,8 @@ const useStyles = makeStyles(theme => ({
   previewItem: {
     flexGrow: 1,
     flexShrink: 0,
-    width: '120px',
+    width: '100%',
+    maxWidth: '120px',
     height: '120px',
     overflow: 'hidden',
     marginRight: '10px',
@@ -37,13 +39,14 @@ const useStyles = makeStyles(theme => ({
 
 export const RecommendationsList = ({ recommendations }) => {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Grid container direction='row' wrap='nowrap' className={classes.wrap}>
       {
         map(recommendations, ({ previewTitle, preview }, index) => {
           return (
-            <Grid container alignItems='flex-end' key={index} className={classes.previewItem} style={{ backgroundImage: `url('${preview}')`, }}>
+            <Grid onClick={() => history.push(`/stories/${index}`)} container alignItems='flex-end' key={index} className={classes.previewItem} style={{ backgroundImage: `url('${preview}')`, }}>
               <span className={classes.previewTitle}>{ previewTitle }</span>
             </Grid>
           )

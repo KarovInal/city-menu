@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-scroll';
+import React, {useEffect, useState} from 'react';
+import { Link, scroller } from 'react-scroll';
+import { useParams } from "react-router-dom";
 import { Sticky } from 'react-sticky';
 import { CircleButton } from "../buttons";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -33,6 +34,7 @@ const useStyle = makeStyles(theme => ({
 
 export const Categories = ({ categories = {} }) => {
   const classes = useStyle();
+  const { anchor = '' } = useParams();
   const [activeCategory, setActiveCategory] = useState(null);
   const [controlledSwiper, setControlledSwiper] = useState(null);
 
@@ -40,6 +42,14 @@ export const Categories = ({ categories = {} }) => {
     setActiveCategory(activeCategory);
     controlledSwiper && controlledSwiper.slideTo(slideIndex, 0);
   }
+
+  useEffect(() => {
+    scroller.scrollTo(`${anchor}`, {
+      offset: -120,
+      smooth: true,
+      duration: 200,
+    });
+  }, [anchor]);
 
   return (
     <Sticky topOffset={-60}>

@@ -52,7 +52,7 @@ export const MenuList = React.memo(({ data }) => {
                 const isDishFullOpened = state[id];
 
                 return (
-                  <div key={index}>
+                  <Element key={index} name={`${id}`}>
                     <FlexColumn className={classes.m20_0}>
                       <FlexRow>
                         <Grid
@@ -82,7 +82,7 @@ export const MenuList = React.memo(({ data }) => {
                       <PriceBlock price={price} />
                     </FlexColumn>
                     <Divider />
-                  </div>
+                  </Element>
                 );
               }
             )}

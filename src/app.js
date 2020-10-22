@@ -1,16 +1,17 @@
 import React from 'react';
+import { store } from './redux-init';
+import { Provider } from 'react-redux';
+import { Header } from "./components/header";
+import { CartPage } from "./pages/cart-page";
+import { OrderPage } from "./pages/order-page";
+import { StickyContainer } from 'react-sticky';
+import { MenuList } from "./components/menu-list";
+import { StoriesPage } from "./pages/stories-page";
+import { createThemeConfig } from './constants/theme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Categories } from "./components/categories/categories";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { createThemeConfig } from './constants/theme';
-import { Header } from "./components/header";
-import { MenuList } from "./components/menu-list";
-import { Provider } from 'react-redux';
-import { store } from './redux-init';
-import { CartPage } from "./pages/cart-page";
-import { StickyContainer } from 'react-sticky';
-import { Categories } from "./components/categories/categories";
-import { OrderPage } from "./pages/order-page";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
 
 function App() {
@@ -24,19 +25,22 @@ function App() {
       <ThemeProvider theme={customTheme}>
         <Router>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/cart'>
+              <CartPage />
+            </Route>
+            <Route exact path='/order'>
+              <OrderPage />
+            </Route>
+            <Route exact path={['/stories/:activeSlide', '/stories']}>
+              <StoriesPage />
+            </Route>
+            <Route exact path={['/', '/:anchor']}>
               <Header />
               <RecommendationsList recommendations={recommendations} />
               <StickyContainer>
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dictionary.dishes} />
               </StickyContainer>
-            </Route>
-            <Route exact path='/cart'>
-              <CartPage />
-            </Route>
-            <Route exact path='/order'>
-              <OrderPage />
             </Route>
           </Switch>
         </Router>
