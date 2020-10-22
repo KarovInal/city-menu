@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import map from 'lodash/map';
 import join from 'lodash/join';
+import size from 'lodash/size';
 import random from 'lodash/random';
 import AppBar from "@material-ui/core/AppBar";
 import { ArrowBack } from "@material-ui/icons";
@@ -12,7 +13,7 @@ import { Title } from "../../components/typography/title";
 import Grid from "@material-ui/core/Grid";
 import { GhostButton, PrimaryButton } from "../../components/buttons";
 import { useSelector, useDispatch } from "react-redux";
-import { getCartSelector } from "../../modules/cart-module/cart-selectors";
+import { getCartSelector } from "../../modules/cart-module";
 import { Preview } from "../../components/position/preview";
 import { Divider } from "@material-ui/core";
 import { Subtitle } from "../../components/typography/subtitle";
@@ -131,13 +132,18 @@ export const CartPage = () => {
         })
       }
 
-      <Grid container direction='column' className={classes.discountWrap}>
-        <Grid container justify='space-between'>
-          <DiscountText>Скидка {DEFAULT_DISCOUNT}%</DiscountText>
-          <Body1>{`–${difPrice}\u00A0₽`}</Body1>
-        </Grid>
-        <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
-      </Grid>
+      {
+        size(cartDishes) > 0 && (
+          <Grid container direction='column' className={classes.discountWrap}>
+            <Grid container justify='space-between'>
+              <DiscountText>Скидка {DEFAULT_DISCOUNT}%</DiscountText>
+              <Body1>{`–${difPrice}\u00A0₽`}</Body1>
+            </Grid>
+            <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
+          </Grid>
+        )
+      }
+
       <Divider />
 
       <Grid container justify='center' className={classes.addMoreWrap}>

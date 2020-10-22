@@ -39,6 +39,7 @@ export const cartReducer = (store = defaultStore, action) => {
       return newState;
     }
     case CART_CLEAR:
+      localStorage.setItem(CART_STORE_KEY, JSON.stringify({}));
       return {};
     default: {
       return store;
