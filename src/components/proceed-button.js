@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 });
 
 export const ProceedButton = React.memo(() => {
-  const [totalPrice] = useSelector(getPriceSelector)(true);
+  const [_, totalPrice] = useSelector(getPriceSelector)(true);
 
   const [animateClass, setAnimateClass] = React.useState("");
 
