@@ -14,7 +14,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Body1 = React.memo(({ medium, children, className = '', ...rest }) => {
-  const classes = useStyles(rest);
+  const classes = useStyles({
+    ...rest,
+    medium,
+  });
 
   return <span className={`${classes.root} ${className}`} {...rest}>{children}</span>;
 });

@@ -18,9 +18,11 @@ export const EOptionType = {
   Radio: 'radio',
 };
 
+export const EmptyOptionId = '00';
+
 export const EDishOptions = {
-  '00': {
-    id: '00',
+  [EmptyOptionId]: {
+    id: EmptyOptionId,
     title: '',
     price: 0,
     available: true
@@ -59,6 +61,42 @@ export const EDishOptions = {
     id: '302',
     title: 'Для пары',
     price: 130,
+    available: true,
+  },
+  '310': {
+    id: '310',
+    title: 'Сироп',
+    price: 19,
+    available: true,
+  },
+  '311': {
+    id: '311',
+    title: 'Карамель',
+    price: 89,
+    available: true,
+  },
+  '312': {
+    id: '312',
+    title: 'Клубничка',
+    price: 55,
+    available: true,
+  },
+  '320': {
+    id: '320',
+    title: 'Влажные салфетки',
+    price: 2,
+    available: true,
+  },
+  '321': {
+    id: '321',
+    title: 'Доп. салфетки',
+    price: 10,
+    available: true,
+  },
+  '322': {
+    id: '322',
+    title: 'Доп. инструменты',
+    price: 0,
     available: true,
   },
   '700': {
