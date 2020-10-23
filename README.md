@@ -1,2 +1,1 @@
-# molvee
-molvee
+# Molvee - QR menu for restaurants
