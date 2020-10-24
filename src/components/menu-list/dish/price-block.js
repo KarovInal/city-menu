@@ -27,18 +27,20 @@ const EContentType = {
 }
 
 export const PriceBlock = React.memo(({
-  price, onClick
+  price, onClick, showLoader
 }) => {
   const [text, setText] = React.useState(EContentType.Text);
 
   const onClickHandler = React.useCallback(() => {
-    setText(EContentType.Loading);
+    if (showLoader) {
+      setText(EContentType.Loading);
 
-    setTimeout(() => {
-      setText(EContentType.Icon);
+      setTimeout(() => {
+        setText(EContentType.Icon);
 
-      setTimeout(() => setText(EContentType.Text), 650)
-    }, 550)
+        setTimeout(() => setText(EContentType.Text), 650)
+      }, 550)
+    }
 
     onClick();
   }, [onClick]);
