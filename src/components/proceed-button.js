@@ -33,6 +33,7 @@ const useStyles = makeStyles({
 });
 
 export const ProceedButton = React.memo(() => {
+  // eslint-disable-next-line no-unused-vars
   const [_, totalPrice] = useSelector(getPriceSelector)(true);
 
   const [animateClass, setAnimateClass] = React.useState("");

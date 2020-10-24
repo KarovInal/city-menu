@@ -1,0 +1,21 @@
+{
+    "appName": "citymenu",
+    "roleName": "pinpointLambdaRole44b2c378",
+    "cloudformationPolicyName": "cloudformationPolicy44b2c378",
+    "cloudWatchPolicyName": "cloudWatchPolicy44b2c378",
+    "pinpointPolicyName": "pinpointPolicy44b2c378",
+    "authPolicyName": "pinpoint_amplify_44b2c378",
+    "unauthPolicyName": "pinpoint_amplify_44b2c378",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
