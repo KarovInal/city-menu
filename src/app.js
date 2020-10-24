@@ -1,21 +1,22 @@
 import React from 'react';
+import _ from 'lodash/fp';
 import { store } from './redux-init';
 import { Provider } from 'react-redux';
-import _ from 'lodash/fp';
 import { Header } from "./components/header";
 import { CartPage } from "./pages/cart-page";
-import { OrderPage } from "./pages/order-page";
+import { Search } from "./components/search";
 import { StickyContainer } from 'react-sticky';
+import { OrderPage } from "./pages/order-page";
 import { MenuList } from "./components/menu-list";
 import { StoriesPage } from "./pages/stories-page";
 import { createThemeConfig } from './constants/theme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { PageView } from "./components/page-view/page-view";
+import { ProceedButton } from "./components/proceed-button";
 import { Categories } from "./components/categories/categories";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
-import { Search } from "./components/search";
-import { ProceedButton } from "./components/proceed-button";
 import "animate.css";
 
 function App() {
@@ -45,23 +46,31 @@ function App() {
         <Router>
           <Switch>
             <Route exact path='/cart'>
-              <CartPage />
+              <PageView pageName='CART'>
+                <CartPage />
+              </PageView>
             </Route>
             <Route exact path='/order'>
-              <OrderPage />
+              <PageView pageName='ORDER'>
+                <OrderPage />
+              </PageView>
             </Route>
             <Route exact path={['/stories/:activeSlide', '/stories']}>
-              <StoriesPage />
+              <PageView pageName='STORIES'>
+                <StoriesPage />
+              </PageView>
             </Route>
             <Route exact path={['/', '/:anchor']}>
-              <Header />
-              <RecommendationsList recommendations={recommendations} />
-              <StickyContainer>
-                <Search onSearch={onSearch} />
-                <Categories categories={dictionary.dishCategories} />
-                <MenuList data={dishes} />
-                <ProceedButton />
-              </StickyContainer>
+              <PageView pageName='INDEX'>
+                <Header />
+                <RecommendationsList recommendations={recommendations} />
+                <StickyContainer>
+                  <Search onSearch={onSearch} />
+                  <Categories categories={dictionary.dishCategories} />
+                  <MenuList data={dishes} />
+                  <ProceedButton />
+                </StickyContainer>
+              </PageView>
             </Route>
           </Switch>
         </Router>

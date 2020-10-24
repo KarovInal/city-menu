@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import map from 'lodash/map';
 import join from 'lodash/join';
 import size from 'lodash/size';
