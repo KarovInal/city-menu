@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash/fp';
 import { store } from './redux-init';
 import { Provider } from 'react-redux';
 import { Header } from "./components/header";
