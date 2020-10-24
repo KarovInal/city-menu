@@ -45,7 +45,7 @@ export const PriceBlock = React.memo(({
     }
 
     onClick();
-  }, [onClick]);
+  }, [onClick, showLoader]);
 
   let optionsPrice = _.compose(
     useSelector,

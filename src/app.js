@@ -60,7 +60,7 @@ function App() {
                 <Search onSearch={onSearch} />
                 <Categories categories={dictionary.dishCategories} />
                 <MenuList data={dishes} />
-                <ProceedButton />
+                <ProceedButton onSearch={onSearch} />
               </StickyContainer>
             </Route>
           </Switch>
