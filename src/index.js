@@ -1,8 +1,10 @@
+import App from './app';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Amplify, { Analytics } from 'aws-amplify';
+import { store } from "./redux-init";
 import awsconfig from './aws-exports';
-import App from './app';
+import { Provider } from "react-redux";
+import Amplify, { Analytics } from 'aws-amplify';
 import './index.css';
 
 Amplify.configure(awsconfig);
@@ -13,6 +15,8 @@ Analytics.autoTrack('session', {
 });
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );

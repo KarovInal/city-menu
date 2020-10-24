@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash/fp';
-import { store } from './redux-init';
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Header } from "./components/header";
 import { CartPage } from "./pages/cart-page";
 import { Search } from "./components/search";
@@ -14,16 +13,19 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { PageView } from "./components/page-view/page-view";
 import { ProceedButton } from "./components/proceed-button";
 import { Categories } from "./components/categories/categories";
+import { dictionarySelector } from "./modules/dictionary-module";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
+import { getRecommendationsSelector } from "./modules/recommendations-module/recommendations-selector";
 import "animate.css";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const mode = prefersDarkMode ? 'light' : 'dark';
   const customTheme = createMuiTheme(createThemeConfig(mode));
-  const { dictionary, recommendations } = store.getState();
+  const dictionary = useSelector(dictionarySelector);
+  const recommendations = useSelector(getRecommendationsSelector);
   const [dishes, setDishes] = React.useState(dictionary.dishes);
 
   const onSearch = React.useCallback((inputValue) => {
@@ -41,41 +43,33 @@ function App() {
   }, [dictionary.dishes]);
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={customTheme}>
-        <Router>
+    <ThemeProvider theme={customTheme}>
+      <Router>
+        <PageView>
           <Switch>
             <Route exact path='/cart'>
-              <PageView pageName='CART'>
-                <CartPage />
-              </PageView>
+              <CartPage />
             </Route>
             <Route exact path='/order'>
-              <PageView pageName='ORDER'>
-                <OrderPage />
-              </PageView>
+              <OrderPage />
             </Route>
             <Route exact path={['/stories/:activeSlide', '/stories']}>
-              <PageView pageName='STORIES'>
-                <StoriesPage />
-              </PageView>
+              <StoriesPage />
             </Route>
             <Route exact path={['/', '/:anchor']}>
-              <PageView pageName='INDEX'>
-                <Header />
-                <RecommendationsList recommendations={recommendations} />
-                <StickyContainer>
-                  <Search onSearch={onSearch} />
-                  <Categories categories={dictionary.dishCategories} />
-                  <MenuList data={dishes} />
-                  <ProceedButton onSearch={onSearch} />
-                </StickyContainer>
-              </PageView>
+              <Header />
+              <RecommendationsList recommendations={recommendations} />
+              <StickyContainer>
+                <Search onSearch={onSearch} />
+                <Categories categories={dictionary.dishCategories} />
+                <MenuList data={dishes} />
+                <ProceedButton onSearch={onSearch} />
+              </StickyContainer>
             </Route>
           </Switch>
-        </Router>
-      </ThemeProvider>
-    </Provider>
+        </PageView>
+      </Router>
+    </ThemeProvider>
   );
 }
 
