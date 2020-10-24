@@ -1,5 +1,7 @@
 import get from "lodash/get";
 
+export const dictionarySelector = state => get(state, 'dictionary', {});
+
 export const dishesSelector = state => get(state, 'dictionary.dishes', {});
 
 export const dishOptionsSelector = state => get(state, 'dictionary.dishOptions', {});

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import map from 'lodash/map';
 import join from 'lodash/join';
 import size from 'lodash/size';
@@ -27,6 +27,7 @@ import { Caption } from "../../components/typography/caption";
 import { useHistory } from "react-router-dom";
 import { addNewOrderAction } from "../../modules/order-module/actions";
 import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
+import {Analytics} from "aws-amplify";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -79,6 +80,14 @@ export const CartPage = () => {
   const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector)(true);
 
   const confirmOrder = () => {
+    Analytics.record({
+      name: 'click',
+      attributes: {
+        'click-type': "go_to_order",
+        'click-page-name': 'CART',
+      },
+    });
+
     //0. create uniq id for order and save dishes
     dispatch(addNewOrderAction({
       orderId: random(1000000, 9999999),
