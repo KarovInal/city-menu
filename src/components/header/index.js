@@ -7,6 +7,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getOrderSelector } from "../../modules/order-module/order-selector";
+import {Analytics} from "aws-amplify";
 
 const useStyles = makeStyles(theme => ({
   wrap: {
@@ -32,13 +33,24 @@ export const Header = () => {
   const history = useHistory();
   const orderData = useSelector(getOrderSelector);
 
+  const handleClick = () => {
+    Analytics.record({
+      name: 'click',
+      attributes: {
+        'click-page-name': 'INDEX',
+        'click-type': 'go_to_order',
+      },
+    });
+    history.push('/order');
+  }
+
   return (
     <div className={classes.wrap}>
       <Grid container direction='row' justify='space-between' alignItems='center' className={classes.root}>
         <img src={logo} alt='logo' className={classes.logo} />
         {
           (orderData.orderId && orderData.dishes) && (
-            <GhostButton startIcon={<ReceiptIcon />} onClick={() => history.push('/order')}>
+            <GhostButton onClick={handleClick} startIcon={<ReceiptIcon />}>
               ЗАКАЗ
             </GhostButton>
           )

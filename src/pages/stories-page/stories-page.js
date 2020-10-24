@@ -10,6 +10,7 @@ import { PrimaryButton } from "../../components/buttons";
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { getRecommendationsSelector } from "../../modules/recommendations-module/recommendations-selector";
 import { VideoComponent } from "./video-component";
+import { Analytics } from "aws-amplify";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -99,6 +100,19 @@ export const StoriesPage = () => {
         );
     };
 
+    const handleCtaClick = ({ resourceUrl, id }) => {
+        Analytics.record({
+            name: 'click',
+            attributes: {
+                'click-page-name': 'STORIES',
+                'click-type': 'CTA',
+                'click-storie': `${id}`,
+            },
+        });
+
+        history.push(resourceUrl);
+    }
+
     return (
       <Swiper loop initialSlide={toNumber(activeSlide) || 0} direction='vertical' setWrapperSize watchSlidesVisibility className={classes.root}>
           <Close className={classes.closeIcon} onClick={() => history.push('/')} />
@@ -106,6 +120,7 @@ export const StoriesPage = () => {
           {
               map(recommendations,
                 ({
+                     id,
                      type,
                      content,
                      preview,
@@ -136,7 +151,7 @@ export const StoriesPage = () => {
                                       { contentSubTitle && (
                                         <span className={classes.subTitle}>{ contentSubTitle }</span>
                                       )}
-                                      <PrimaryButton className={classes.actionButton} onClick={() => history.push(resourceUrl)}>
+                                      <PrimaryButton className={classes.actionButton} onClick={() => handleCtaClick({ resourceUrl, id })}>
                                           { buttonTitle }
                                       </PrimaryButton>
                                   </div>

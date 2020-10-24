@@ -15,6 +15,7 @@ import { cartCountByOptionsGetter, cartUpdateCountAction } from "../../modules/c
 import { useDispatch, useSelector } from "react-redux";
 import { createSelectedOptionsByDishIdGetter } from "../../modules/select-options-module";
 import { EmptyOptionId } from "../../enums";
+import { Analytics } from "aws-amplify";
 
 const useStyles = makeStyles({
   m20_0: {
@@ -31,6 +32,15 @@ export const MenuList = React.memo(({ data }) => {
 
   const [state, setState] = useState({});
   const handleOpenDishClick = (id) => () => {
+    Analytics.record({
+      name: 'click',
+      attributes: {
+        'click-dish': `${id}`,
+        'click-type': "open_dish",
+        'click-page-name': 'INDEX',
+      },
+    });
+
     setState((prevState) => ({
       ...prevState,
       [id]: !prevState[id],
@@ -64,6 +74,15 @@ export const MenuList = React.memo(({ data }) => {
     const count = countGetter([dishId, valueIds]);
 
     dispatch(cartUpdateCountAction(dishId, valueIds, count));
+    Analytics.record({
+      name: 'click',
+      attributes: {
+        'click-dish': `${dishId}`,
+        'click-page-name': 'INDEX',
+        'click-type': "add_to_cart",
+        'click-options': `${valueIds}`,
+      },
+    });
   }, [countGetter, dispatch, optionsByDishIdGetter]);
 
   return (

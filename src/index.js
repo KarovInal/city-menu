@@ -14,6 +14,13 @@ Analytics.autoTrack('session', {
   provider: 'AWSPinpoint'
 });
 
+Analytics.autoTrack('event', {
+  enable: true,
+  events: ['click'],
+  provider: 'AWSPinpoint',
+  selectorPrefix: 'data-click-',
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

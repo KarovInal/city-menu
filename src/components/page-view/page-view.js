@@ -38,6 +38,7 @@ export const PageView = ({ children, pageName }) => {
   useEffect(() => {
     pageViewRequest(history.location);
     history.listen(pageViewRequest);
+    // eslint-disable-next-line
   }, []);
 
   return children;
