@@ -118,6 +118,7 @@ export const MenuList = React.memo(({ data }) => {
                         options={options}
                       />
                       <PriceBlock
+                        addOptionsPrice={isDishFullOpened}
                         showLoader={_.isEmpty(options) || isDishFullOpened}
                         onClick={
                           (!_.isEmpty(options) && !isDishFullOpened)
@@ -125,6 +126,7 @@ export const MenuList = React.memo(({ data }) => {
                             : createAddToCartHandler(id)
                         }
                         price={price}
+                        dishId={id}
                       />
                     </FlexColumn>
                     <Divider />
