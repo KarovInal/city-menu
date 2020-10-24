@@ -42,32 +42,27 @@ export const MenuList = React.memo(({ data }) => {
 
   const dispatch = useDispatch();
 
-  const createAddToCartHandler = React.useCallback((dishId, isDishFullOpened) => () => {
-    let valueIds = EmptyOptionId;
-
-    if (isDishFullOpened) {
-      valueIds = _.compose(
-        _.cond([
-          [_.isUndefined, _.constant(EmptyOptionId)],
-          [_.stubTrue,    _.compose(
-            _.join("_"),
-            _.flatten,
-            _.values,
-            _.mapValues(
-              _.cond([
-                [_.isString, _.identity],
-                [_.isObject, _.compose(_.keys, _.pickBy(Boolean))],
-                [_.stubTrue, _.identity],
-              ])
-            ),
-          )],
-        ]),
-        optionsByDishIdGetter,
-      )(dishId);
-    }
+  const createAddToCartHandler = React.useCallback((dishId) => () => {
+    const valueIds = _.compose(
+      _.cond([
+        [_.isUndefined, _.constant(EmptyOptionId)],
+        [_.stubTrue,    _.compose(
+          _.join("_"),
+          _.flatten,
+          _.values,
+          _.mapValues(
+            _.cond([
+              [_.isString, _.identity],
+              [_.isObject, _.compose(_.keys, _.pickBy(Boolean))],
+              [_.stubTrue, _.identity],
+            ])
+          ),
+        )],
+      ]),
+      optionsByDishIdGetter,
+    )(dishId);
     const count = countGetter([dishId, valueIds]);
 
-    // TODO [NZ] 21.10.2020: Add button fake loader
     dispatch(cartUpdateCountAction(dishId, valueIds, count));
   }, [countGetter, dispatch, optionsByDishIdGetter]);
 
@@ -123,7 +118,12 @@ export const MenuList = React.memo(({ data }) => {
                         options={options}
                       />
                       <PriceBlock
-                        onClick={createAddToCartHandler(id, isDishFullOpened)}
+                        showLoader={_.isEmpty(options) || isDishFullOpened}
+                        onClick={
+                          (!_.isEmpty(options) && !isDishFullOpened)
+                            ? handleOpenDishClick(id)
+                            : createAddToCartHandler(id)
+                        }
                         price={price}
                       />
                     </FlexColumn>
