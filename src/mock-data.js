@@ -143,13 +143,13 @@ const recommendations = {
   0: {
     id: 0,
     type: 'video',
-    content: 'https://citymenu.s3.eu-north-1.amazonaws.com/IMG_1537.mp4',
-    contentTitle: 'Свежи фрукты',
-    contentSubTitle: 'Черника, клубника и многое другое!',
-    resourceUrl: '/1',
-    preview: 'https://images.unsplash.com/photo-1580691155297-c6dfa3ca61c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=10',
-    previewTitle: 'Скидка 10% на фрукты!',
-    buttonTitle: 'Перейти'
+    content: 'https://citymenu.s3.eu-north-1.amazonaws.com/122036396_810544103115758_8936971079802055256_n.mp4',
+    contentTitle: 'Суши с лососем',
+    contentSubTitle: '',
+    resourceUrl: '/salads',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/photo-1556906918-c3071bd11598.jpeg',
+    previewTitle: 'Новинка! Суши с лососем',
+    buttonTitle: 'Хочу!'
   },
   1: {
     id: 1,
@@ -187,13 +187,13 @@ const recommendations = {
   4: {
     id: 4,
     type: 'video',
-    content: 'https://citymenu.s3.eu-north-1.amazonaws.com/IMG_1537.mp4',
-    contentTitle: 'Суши с лососем',
-    contentSubTitle: '',
-    resourceUrl: '/salads',
-    preview: 'https://images.unsplash.com/photo-1562802378-063ec186a863?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=30',
-    previewTitle: 'Новинка! Суши с лососем',
-    buttonTitle: 'Хочу!'
+    content: 'https://citymenu.s3.eu-north-1.amazonaws.com/101035952_534787064069096_2721405740717801247_n.mp4',
+    contentTitle: 'Свежи фрукты',
+    contentSubTitle: 'Черника, клубника и многое другое!',
+    resourceUrl: '/1',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/photo-1592180385035-96dce8cd3c9f.jpeg',
+    previewTitle: 'Скидка 10% на фрукты!',
+    buttonTitle: 'Перейти'
   }
 };
 
