@@ -5,6 +5,7 @@ import { ReactComponent as SearchIcon } from "./assests/search.svg";
 import { PaddingWrapper } from "../padding-wrapper";
 import IconButton from "@material-ui/core/IconButton";
 import ClearIcon from '@material-ui/icons/Clear';
+import { Analytics } from "aws-amplify";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -58,6 +59,16 @@ export const Search = React.memo(({ onSearch }) => {
     onSearch(value);
   }, [onSearch]);
 
+  const handleInputClick = () => {
+    Analytics.record({
+      name: 'click',
+      attributes: {
+        'click-type': "search",
+        'click-page-name': 'INDEX',
+      },
+    });
+  }
+
   const clearInput = React.useCallback(() => {
     if (!value) {
       return;
@@ -78,6 +89,7 @@ export const Search = React.memo(({ onSearch }) => {
           classes={{ root: classes.inputRoot, input: classes.inputInput }}
           onInput={onInput}
           value={value}
+          onClick={handleInputClick}
         />
         <IconButton classes={{ root: classes.buttonRoot }} onClick={clearInput}>
           <ClearIcon fontSize="inherit" />

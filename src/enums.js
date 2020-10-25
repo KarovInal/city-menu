@@ -66,7 +66,7 @@ export const EDishOptions = {
   '310': {
     id: '310',
     title: 'Сироп',
-    price: 19,
+    price: 0,
     available: true,
   },
   '311': {
@@ -84,7 +84,7 @@ export const EDishOptions = {
   '320': {
     id: '320',
     title: 'Влажные салфетки',
-    price: 2,
+    price: 0,
     available: true,
   },
   '321': {

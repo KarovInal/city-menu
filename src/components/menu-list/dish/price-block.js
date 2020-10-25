@@ -6,6 +6,8 @@ import { FlexRow } from "../../flex-row";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { ReactComponent as PriceBlockMark } from "./assets/price-block-mark.svg";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {useSelector} from "react-redux";
+import {createGetSelectedOptionsPriceByDishId} from "../../../modules/select-options-module";
 
 const useStyles = makeStyles({
   bottomBlock: {
@@ -27,21 +29,32 @@ const EContentType = {
 }
 
 export const PriceBlock = React.memo(({
-  price, onClick
+  price, dishId, onClick, showLoader, addOptionsPrice
 }) => {
   const [text, setText] = React.useState(EContentType.Text);
 
   const onClickHandler = React.useCallback(() => {
-    setText(EContentType.Loading);
+    if (showLoader) {
+      setText(EContentType.Loading);
 
-    setTimeout(() => {
-      setText(EContentType.Icon);
+      setTimeout(() => {
+        setText(EContentType.Icon);
 
-      setTimeout(() => setText(EContentType.Text), 650)
-    }, 550)
+        setTimeout(() => setText(EContentType.Text), 650)
+      }, 550)
+    }
 
     onClick();
-  }, [onClick]);
+  }, [onClick, showLoader]);
+
+  let optionsPrice = _.compose(
+    useSelector,
+    createGetSelectedOptionsPriceByDishId,
+  )(dishId);
+
+  if (!addOptionsPrice) {
+    optionsPrice = 0;
+  }
 
   const classes = useStyles();
 
@@ -72,7 +85,7 @@ export const PriceBlock = React.memo(({
       className={classes.bottomBlock}
     >
       <div>
-        <Price price={price}/>
+        <Price price={price + optionsPrice} />
       </div>
       <div>
         <SecondaryButton

@@ -32,7 +32,10 @@ const useStyles = makeStyles({
   },
 });
 
-export const ProceedButton = React.memo(() => {
+export const ProceedButton = React.memo(({
+  onSearch,
+}) => {
+  // eslint-disable-next-line no-unused-vars
   const [_, totalPrice] = useSelector(getPriceSelector)(true);
 
   const [animateClass, setAnimateClass] = React.useState("");
@@ -53,7 +56,10 @@ export const ProceedButton = React.memo(() => {
 
   const classes = useStyles();
   const history = useHistory();
-  const goToCartPage = () => history.push("/cart");
+  const goToCartPage = () => {
+    onSearch('');
+    history.push("/cart");
+  }
 
   return (
     <Button

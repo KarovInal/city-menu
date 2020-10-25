@@ -143,7 +143,7 @@ const recommendations = {
   0: {
     id: 0,
     type: 'video',
-    content: 'https://storage.de.cloud.ovh.net/v1/AUTH_b2cffe8f45324c2bba39e8db1aedb58f/cloudconvert-files/ea034d45-1395-4dcf-b527-b368b7aae53d/IMG_1537.mp4?temp_url_sig=49dad0b1eef5fa9c7d4d11b9d5323135c21629b5&temp_url_expires=1603393541&inline',
+    content: 'https://citymenu.s3.eu-north-1.amazonaws.com/IMG_1537.mp4',
     contentTitle: 'Свежи фрукты',
     contentSubTitle: 'Черника, клубника и многое другое!',
     resourceUrl: '/1',
@@ -187,7 +187,7 @@ const recommendations = {
   4: {
     id: 4,
     type: 'video',
-    content: 'https://media5jvqbd.fmkorea.com/files/attach/new/20201023/3655109/1506383311/3160005530/15f3ab79b594d2a231b5401091343c5e.mp4?d',
+    content: 'https://citymenu.s3.eu-north-1.amazonaws.com/IMG_1537.mp4',
     contentTitle: 'Суши с лососем',
     contentSubTitle: '',
     resourceUrl: '/salads',

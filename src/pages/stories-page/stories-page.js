@@ -1,16 +1,16 @@
-import React, {useState, Fragment} from 'react';
+import React, { Fragment } from 'react';
 import map from 'lodash/map';
 import toNumber from 'lodash/toNumber';
 import { useSelector } from "react-redux";
 import { Close } from "@material-ui/icons";
-import ReactPlayer from "react-player/file";
 import { useHistory, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { PrimaryButton } from "../../components/buttons";
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { getRecommendationsSelector } from "../../modules/recommendations-module/recommendations-selector";
+import { VideoComponent } from "./video-component";
+import { Analytics } from "aws-amplify";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,20 +38,6 @@ const useStyles = makeStyles((theme) => ({
         height: '24px',
         marginLeft: '-12px',
         position: 'absolute',
-    },
-    playIcon: {
-        left: '50%',
-        top: '50%',
-        zIndex: 9999,
-        color: '#fff',
-        padding: '10px',
-        marginTop: '-32px',
-        marginLeft: '-32px',
-        position: 'absolute',
-        borderRadius: '100%',
-        width: '64px !important',
-        height: '64px !important',
-        backgroundColor: 'rgba(26, 26, 26, .4)',
     },
     slide: {
         display: 'flex',
@@ -101,13 +87,8 @@ const useStyles = makeStyles((theme) => ({
 export const StoriesPage = () => {
     const classes = useStyles();
     const history = useHistory();
-    const recommendations = useSelector(getRecommendationsSelector);
-    const [isPlayVideo, setIsPlayVideo] = useState(false);
     const { activeSlide = 0 } = useParams();
-
-    const onClickVideo = () => {
-        setIsPlayVideo(!isPlayVideo);
-    };
+    const recommendations = useSelector(getRecommendationsSelector);
 
     const renderImage = ({ content, index }) => {
         return (
@@ -119,47 +100,27 @@ export const StoriesPage = () => {
         );
     };
 
-    const renderVideo = ({ content, preview, index, isActive }) => {
-        return (
-          <Fragment>
-              {
-                  !isPlayVideo && (
-                    <PlayArrowIcon className={classes.playIcon} />
-                  )
-              }
-              <ReactPlayer
-                key={index}
-                width='100%'
-                height='100%'
-                muted={true}
-                url={content}
-                controls={false}
-                autoPlay={false}
-                playsinline={true}
-                playing={isActive && isPlayVideo}
-                config={{
-                    file: {
-                        attributes: {
-                            poster: preview
-                        }
-                    }
-                }}
-              />
-          </Fragment>
-        );
-    };
+    const handleCtaClick = ({ resourceUrl, id }) => {
+        Analytics.record({
+            name: 'click',
+            attributes: {
+                'click-page-name': 'STORIES',
+                'click-type': 'CTA',
+                'click-storie': `${id}`,
+            },
+        });
 
-    const handleSlideChange = () => {
-        setIsPlayVideo(false);
+        history.push(resourceUrl);
     }
 
     return (
-      <Swiper loop initialSlide={toNumber(activeSlide) || 0} onSlideChange={handleSlideChange} direction='vertical' setWrapperSize className={classes.root}>
+      <Swiper loop initialSlide={toNumber(activeSlide) || 0} direction='vertical' setWrapperSize watchSlidesVisibility className={classes.root}>
           <Close className={classes.closeIcon} onClick={() => history.push('/')} />
           <KeyboardArrowUpIcon className={classes.upIcon} />
           {
               map(recommendations,
                 ({
+                     id,
                      type,
                      content,
                      preview,
@@ -169,12 +130,20 @@ export const StoriesPage = () => {
                      contentSubTitle,
                 }, index) => {
                   return (
-                    <SwiperSlide onClick={onClickVideo} key={index} className={classes.slide}>
+                    <SwiperSlide key={index} className={classes.slide}>
                         {
-                            ({ isActive }) => (
+                            ({ isVisible, isActive }) => (
                               <Fragment>
-                                  { type === 'video' && renderVideo({ content, preview, index, isActive }) }
-                                  { type === 'image' && renderImage({ content, index }) }
+                                  {type === 'video' && (
+                                    <VideoComponent
+                                      index={index}
+                                      classes={classes}
+                                      content={content}
+                                      preview={preview}
+                                      isVisible={isVisible || isActive}
+                                    />
+                                  )}
+                                  {type === 'image' && renderImage({ content, index })}
                                   <div className={classes.contentWrap} onClick={e => e.stopPropagation()}>
                                       { contentTitle && (
                                         <span className={classes.title}>{ contentTitle }</span>
@@ -182,7 +151,7 @@ export const StoriesPage = () => {
                                       { contentSubTitle && (
                                         <span className={classes.subTitle}>{ contentSubTitle }</span>
                                       )}
-                                      <PrimaryButton className={classes.actionButton} onClick={() => history.push(resourceUrl)}>
+                                      <PrimaryButton className={classes.actionButton} onClick={() => handleCtaClick({ resourceUrl, id })}>
                                           { buttonTitle }
                                       </PrimaryButton>
                                   </div>
