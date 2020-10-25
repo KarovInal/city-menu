@@ -9,7 +9,7 @@ const menuList = {
     description: 'Лосось копченый, огурец, сыр сливочный, кунжут, рис, нори.',
     price: 249,
     weight: 220,
-    preview: './static/images/1.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/1.jpg',
   },
   2: {
     id: 2,
@@ -19,7 +19,7 @@ const menuList = {
     description: 'Лосось, сыр сливочный, огурец, рис, нори.',
     price: 319,
     weight: 200,
-    preview: './static/images/2.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/2.jpg',
   },
   3: {
     id: 3,
@@ -29,7 +29,7 @@ const menuList = {
     description: 'Лосось, сыр сливочный, рис, нори.',
     price: 718,
     weight: 230,
-    preview: './static/images/3.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/3.jpg',
     options: [
       {
         title: 'Тип порции',
@@ -59,7 +59,7 @@ const menuList = {
     description: 'Вкусный суп',
     price: 149,
     weight: 120,
-    preview: './static/images/7.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/7.jpg',
   },
   5: {
     id: 5,
@@ -69,7 +69,7 @@ const menuList = {
     description: 'Вкусный копченый лосось, рис, нори.',
     price: 349,
     weight: 320,
-    preview: './static/images/5.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/5.jpg',
   },
   6: {
     id: 6,
@@ -79,7 +79,7 @@ const menuList = {
     description: 'Сливочный сыр, лайт сяке',
     price: 309,
     weight: 200,
-    preview: './static/images/6.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/6.jpg',
   },
   7: {
     id: 7,
@@ -89,7 +89,7 @@ const menuList = {
     description: 'Вкусный суши - классика',
     price: 318,
     weight: 530,
-    preview: './static/images/4.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/4.jpg',
     options: [
       {
         title: 'Тип порции',
@@ -107,7 +107,7 @@ const menuList = {
     description: 'кокосовый суп с тигровыми креветками и грибами. Сервируется с паровым рисом кокосовый суп с тигровыми креветками и грибами. Сервируется с паровым рисом кокосовый суп с тигровыми креветками и грибами. Сервируется с паровым рисом кокосовый суп с тигровыми креветками и грибами. Сервируется с паровым рисом ',
     price: 437,
     weight: 250,
-    preview: './static/images/8.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/8.jpg',
   },
   9: {
     id: 9,
@@ -117,7 +117,7 @@ const menuList = {
     description: 'рисовый суп с мясом краба, яйцом и зеленым луком',
     price: 377,
     weight: 290,
-    preview: './static/images/9.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/9.jpg',
   },
   10: {
     id: 10,
@@ -127,7 +127,7 @@ const menuList = {
     description: 'с трюфельным маслом, авокадо и понзу-цитрусовым дрессингом. Сервируется с «бородинскими» чипсами',
     price: 499,
     weight: 196,
-    preview: './static/images/10.jpg',
+    preview: 'https://citymenu.s3.eu-north-1.amazonaws.com/10.jpg',
     options: [
       {
         title: 'Заправка',
