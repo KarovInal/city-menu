@@ -132,8 +132,8 @@ const menuList = {
       {
         title: 'Заправка',
         type: EOptionType.Radio,
-        optionId: 1,
-        values: ['01', '02', '03']
+        optionId: 100,
+        values: ['1001', '1002', '1003']
       }
     ]
   }

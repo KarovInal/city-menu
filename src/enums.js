@@ -27,20 +27,20 @@ export const EDishOptions = {
     price: 0,
     available: true
   },
-  '01': {
-    id: '01',
+  '1001': {
+    id: '1001',
     title: 'Оливковое масло',
-    price: 150,
+    price: 0,
     available: true
   },
-  '02': {
-    id: '02',
+  '1002': {
+    id: '1002',
     title: 'Авакадо',
     price: 100,
     available: true
   },
-  '03': {
-    id: '03',
+  '1003': {
+    id: '1003',
     title: 'Лайм+Авакадо',
     price: 150,
     available: true
