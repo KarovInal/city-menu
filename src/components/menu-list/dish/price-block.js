@@ -50,7 +50,7 @@ export const PriceBlock = React.memo(({
   let optionsPrice = _.compose(
     useSelector,
     createGetSelectedOptionsPriceByDishId,
-  )(dishId);
+  )(dishId) || 0;
 
   if (!addOptionsPrice) {
     optionsPrice = 0;
