@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getOrderSelector } from "../../modules/order-module/order-selector";
 import {Analytics} from "aws-amplify";
+import { isQrMenu } from "../../is-qr-menu";
 
 const useStyles = makeStyles(theme => ({
   wrap: {
@@ -49,7 +50,7 @@ export const Header = () => {
       <Grid container direction='row' justify='space-between' alignItems='center' className={classes.root}>
         <img src={logo} alt='logo' className={classes.logo} />
         {
-          (orderData.orderId && orderData.dishes) && (
+          (orderData.orderId && orderData.dishes && !isQrMenu) && (
             <GhostButton onClick={handleClick} startIcon={<ReceiptIcon />}>
               ЗАКАЗ
             </GhostButton>

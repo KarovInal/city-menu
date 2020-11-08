@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { noop } from "lodash";
 import cn from "classnames";
 import { Title } from "./typography/title";
 import { Body2 } from "./typography/body2";
@@ -8,6 +9,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Button from "@material-ui/core/Button";
 import { useSelector } from "react-redux";
 import { getPriceSelector } from "../selectors/dishes-selector";
+import { isQrMenu } from "../is-qr-menu";
 
 const useStyles = makeStyles({
   root: {
@@ -61,12 +63,26 @@ export const ProceedButton = React.memo(({
     history.push("/cart");
   }
 
+  const content = isQrMenu
+    ? (
+      <>
+        <Body2 className={classes.root}>Итого: </Body2>
+        <Title className={classes.root}>{totalPrice} ₽</Title>
+      </>
+    )
+    : (
+      <>
+        <Title className={classes.root}>{totalPrice} ₽</Title>
+        <Body2 className={classes.root}>ПЕРЕЙТИ В КОРЗИНУ</Body2>
+      </>
+    )
+
   return (
     <Button
       disableElevation
       color="secondary"
       variant="contained"
-      onClick={goToCartPage}
+      onClick={isQrMenu ? noop : goToCartPage}
       className={cn(classes.w90p, classes.sticky, animateClass, {
         [classes.disabled]: totalPrice <= 0,
       })}
@@ -76,8 +92,7 @@ export const ProceedButton = React.memo(({
         justifyContent="space-between"
         alignItems="center"
       >
-        <Title className={classes.root}>{totalPrice} ₽</Title>
-        <Body2 className={classes.root}>ПЕРЕЙТИ В КОРЗИНУ</Body2>
+        {content}
       </Flex>
     </Button>
   );
