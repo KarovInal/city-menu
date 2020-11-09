@@ -25,6 +25,7 @@ import { Caption } from "../../components/typography/caption";
 import { useHistory } from "react-router-dom";
 import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 import {Analytics} from "aws-amplify";
+import {isQrMenu} from "../../is-qr-menu";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -158,14 +159,30 @@ export const CartPage = () => {
       <AppBar position="fixed" className={classes.footerAppBar}>
         <Toolbar variant="dense" className={classes.footerToolBar}>
           <Grid container direction='row' justify='space-between'>
-            <Grid container direction='column' style={{ width: 'auto' }}>
-              <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
-              <Title>{finalPriceWithDiscount} ₽</Title>
+            <Grid container direction='column' justify='space-between' style={{ width: 'auto' }}>
+              {
+                isQrMenu
+                  ? <Fragment>
+                    <div />
+                    <Title>Сумма:</Title>
+                  </Fragment>
+                  : <Fragment>
+                    <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+                    <Title>{finalPriceWithDiscount} ₽</Title>
+                  </Fragment>
+              }
             </Grid>
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
-              <PrimaryButton onClick={confirmOrder} className={classes.confirmOrderButton}>
-                Оформить заказ
-              </PrimaryButton>
+              {
+                isQrMenu
+                  ? <Fragment>
+                    <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+                    <Title>{finalPriceWithDiscount} ₽</Title>
+                  </Fragment>
+                  : <PrimaryButton onClick={confirmOrder} className={classes.confirmOrderButton}>
+                    Оформить заказ
+                  </PrimaryButton>
+              }
             </Grid>
           </Grid>
         </Toolbar>
