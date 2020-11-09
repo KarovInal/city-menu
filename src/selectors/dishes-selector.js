@@ -3,9 +3,9 @@ import get from 'lodash/get';
 import round from 'lodash/round';
 import split from 'lodash/split';
 import { DEFAULT_DISCOUNT } from '../constants/discount';
-import { getCartSelector } from "../modules/cart-module/cart-selectors";
+import { getCartSelector } from "../modules/cart-module";
 import { getOrderDishesSelector } from "../modules/order-module/order-selector";
-import { dishesSelector, dishOptionsSelector, getDishByIdSelector } from "../modules/dictionary-module/dictionary-selectors";
+import { dishesSelector, dishOptionsSelector, getDishByIdSelector } from "../modules/dictionary-module";
 
 const parseOptionId = (optionId = '') => {
   return split(optionId, '_');

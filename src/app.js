@@ -9,8 +9,9 @@ import { OrderPage } from "./pages/order-page";
 import { MenuList } from "./components/menu-list";
 import { StoriesPage } from "./pages/stories-page";
 import { createThemeConfig } from './constants/theme';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { OrderFormPage } from "./pages/order-form-page";
 import { PageView } from "./components/page-view/page-view";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ProceedButton } from "./components/proceed-button";
 import { Categories } from "./components/categories/categories";
 import { dictionarySelector } from "./modules/dictionary-module";
@@ -52,6 +53,9 @@ function App() {
             </Route>
             <Route exact path='/order'>
               <OrderPage />
+            </Route>
+            <Route exact path='/order-form'>
+              <OrderFormPage />
             </Route>
             <Route exact path={['/stories/:activeSlide', '/stories']}>
               <StoriesPage />
