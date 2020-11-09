@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import get from 'lodash/get';
 import map from 'lodash/map';
 import join from "lodash/join";
@@ -69,6 +69,10 @@ export const OrderPage = () => {
   const orderDishes = useSelector(getDishesAsArraySelector)(false);
   const getDishDataFromOrder = useSelector(getOrderDishDataSelector);
   const [finalPrice, priceWithDiscount, difPrice] = useSelector(getPriceSelector)(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={classes.root}>

@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, useEffect} from 'react';
 import map from 'lodash/map';
 import join from 'lodash/join';
 import size from 'lodash/size';
-import random from 'lodash/random';
 import AppBar from "@material-ui/core/AppBar";
 import { ArrowBack } from "@material-ui/icons";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,7 +12,6 @@ import { Title } from "../../components/typography/title";
 import Grid from "@material-ui/core/Grid";
 import { GhostButton, PrimaryButton } from "../../components/buttons";
 import { useSelector, useDispatch } from "react-redux";
-import { getCartSelector } from "../../modules/cart-module";
 import { Preview } from "../../components/position/preview";
 import { Divider } from "@material-ui/core";
 import { Subtitle } from "../../components/typography/subtitle";
@@ -25,7 +23,6 @@ import { DiscountText } from "../../components/typography/discount-text";
 import { DEFAULT_DISCOUNT } from "../../constants/discount";
 import { Caption } from "../../components/typography/caption";
 import { useHistory } from "react-router-dom";
-import { addNewOrderAction } from "../../modules/order-module/actions";
 import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 import {Analytics} from "aws-amplify";
 
@@ -74,10 +71,13 @@ export const CartPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const cartData = useSelector(getCartSelector);
   const cartDishes = useSelector(getDishesAsArraySelector)(true);
   const getDishDataFromCart = useSelector(getOrderDishDataSelector);
   const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector)(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const confirmOrder = () => {
     Analytics.record({
@@ -88,22 +88,14 @@ export const CartPage = () => {
       },
     });
 
-    //0. create uniq id for order and save dishes
-    dispatch(addNewOrderAction({
-      orderId: random(1000000, 9999999),
-      dishes: cartData,
-    }));
-    //2. clear cart
-    dispatch(cartClearAction());
-    //3. redirect to order page
-    history.push('/order');
+    history.push('/order-form');
   }
 
   return (
     <div>
       <AppBar position="fixed">
         <Toolbar variant="dense" className={classes.header}>
-          <IconButton onClick={history.goBack} edge="start" color="inherit" aria-label="menu">
+          <IconButton onClick={() => history.push('/')} edge="start" color="inherit" aria-label="menu">
             <ArrowBack />
           </IconButton>
           <Title className={classes.headerTitle}>Корзина</Title>
@@ -172,7 +164,7 @@ export const CartPage = () => {
             </Grid>
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
               <PrimaryButton onClick={confirmOrder} className={classes.confirmOrderButton}>
-                Подтвердить заказ
+                Оформить заказ
               </PrimaryButton>
             </Grid>
           </Grid>
