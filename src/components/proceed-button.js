@@ -13,23 +13,21 @@ const useStyles = makeStyles({
   root: {
     color: "white",
   },
-  w90p: {
-    width: "90%",
-  },
   w100p: {
     width: "100%",
-  },
-  sticky: {
-    position: "fixed",
-    bottom: "10px",
-    width: "calc(100% - 24px)",
-    margin: "0px 12px",
-    boxSizing: "border-box",
   },
   disabled: {
     opacity: "0",
     zIndex: "-1",
   },
+  wrapper: {
+    bottom: "10px",
+    position: "fixed",
+    width: "100vw",
+    maxWidth: "600px",
+    padding: "0 12px",
+    boxSizing: "border-box",
+  }
 });
 
 export const ProceedButton = React.memo(({
@@ -62,23 +60,25 @@ export const ProceedButton = React.memo(({
   }
 
   return (
-    <Button
-      disableElevation
-      color="secondary"
-      variant="contained"
-      onClick={goToCartPage}
-      className={cn(classes.w90p, classes.sticky, animateClass, {
-        [classes.disabled]: totalPrice <= 0,
-      })}
-    >
-      <Flex
-        className={classes.w100p}
-        justifyContent="space-between"
-        alignItems="center"
+    <div className={classes.wrapper}>
+      <Button
+        disableElevation
+        color="secondary"
+        variant="contained"
+        onClick={goToCartPage}
+        className={cn(classes.w100p, animateClass, {
+          [classes.disabled]: totalPrice <= 0,
+        })}
       >
-        <Title className={classes.root}>{totalPrice} ₽</Title>
-        <Body2 className={classes.root}>ПЕРЕЙТИ В КОРЗИНУ</Body2>
-      </Flex>
-    </Button>
+        <Flex
+          className={classes.w100p}
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Title className={classes.root}>{totalPrice} ₽</Title>
+          <Body2 className={classes.root}>ПЕРЕЙТИ В КОРЗИНУ</Body2>
+        </Flex>
+      </Button>
+    </div>
   );
 });
