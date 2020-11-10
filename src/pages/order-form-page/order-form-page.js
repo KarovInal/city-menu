@@ -24,6 +24,16 @@ import {normalizeDeliveryMessage} from "./normalize-telegram-message";
 import IconButton from "@material-ui/core/IconButton";
 import {ArrowBack} from "@material-ui/icons";
 import Snackbar from "@material-ui/core/Snackbar";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -59,7 +69,10 @@ const useStyles = makeStyles((theme) => ({
   },
   fieldGap: {
     width: '20px',
-  }
+  },
+  m0: {
+    margin: "0px",
+  },
 }));
 
 const isNotFilledTel = v => v && v.indexOf("_") === -1 ? undefined : "Phone number is required.";
@@ -117,6 +130,26 @@ export const OrderFormPage = () => {
       setIsLoading(false);
     });
   }
+
+  const [state, setState] = React.useState({
+    offer1: false,
+    offer2: false,
+  });
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const [offer1, setOpenOffer1] = React.useState(false);
+  const [offer2, setOpenOffer2] = React.useState(false);
+
+  const createHandleClickOpen = (setOpenOffer) => () => {
+    setOpenOffer(true);
+  };
+
+  const createHandleClose = (setOpenOffer) => () => {
+    setOpenOffer(false);
+  };
 
   return (
     <div className="bgWhite">
@@ -256,6 +289,168 @@ export const OrderFormPage = () => {
               </Grid>
             )
           }
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={state.offer1}
+                  onChange={handleChange}
+                  icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                  checkedIcon={<CheckBoxIcon fontSize="small" />}
+                  name="offer1"
+                />
+              }
+              label={
+                <p className={classes.m0}>
+                  С
+                  <span>
+                    <Button
+                      variant="text"
+                      color="primary"
+                      size="small"
+                      onClick={createHandleClickOpen(setOpenOffer1)}
+                    >
+                      условиями доставки
+                    </Button>
+                    <Dialog
+                      open={offer1}
+                      onClose={createHandleClose(setOpenOffer1)}
+                      aria-labelledby="alert-dialog-title"
+                      aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">
+                        Условия доставки
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          <b>Прием заказов</b>: ежедневно с 10:00 до 04:45
+                          <br />
+                          <br />
+                          <b>Территория доставки</b>: Москва, Московская
+                          область. Зону доставки по области можно посмотреть на
+                          карте доставки или уточнить у оператора колл-центра.
+                          <br />
+                          <br />
+                          <b>Доставка</b>: бесплатно <br />
+                          <br />
+                          <b>Минимальная сумма заказа</b>: 990 руб. с учетом
+                          всех скидок. Минимальную сумму заказа по территории
+                          Московской области уточняйте у оператора <br />
+                          <br />
+                          <b>Время доставки</b>: по Москве (внутри МКАД) — 45
+                          минут, по остальной территории время доставки
+                          необходимо уточнять у оператора <br />
+                          <br />
+                          <b>Оплата</b>: наличными курьеру, банковской картой
+                          при получении заказа <br />
+                          <br />
+                        </DialogContentText>
+                      </DialogContent>
+                    </Dialog>
+                  </span>
+                  согласен *
+                </p>
+              }
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={state.offer2}
+                  onChange={handleChange}
+                  icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                  checkedIcon={<CheckBoxIcon fontSize="small" />}
+                  name="offer2"
+                />
+              }
+              label={
+                <p className={classes.m0}>
+                  Я согласен с
+                  <span>
+                    <Button
+                      variant="text"
+                      color="primary"
+                      size="small"
+                      onClick={createHandleClickOpen(setOpenOffer2)}
+                    >
+                      условиями доставки
+                    </Button>
+                    <Dialog
+                      open={offer2}
+                      onClose={createHandleClose(setOpenOffer2)}
+                      aria-labelledby="alert-dialog-title"
+                      aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">
+                        Пользовательское Соглашение
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          Настоящее Пользовательское Соглашение (Далее
+                          Соглашение) регулирует отношения между владельцем
+                          city-menu.ru (далее CityMenu или Администрация) с
+                          одной стороны и пользователем сайта с другой. Сайт
+                          CityMenu не является средством массовой информации.
+                          Используя сайт, Вы соглашаетесь с условиями данного
+                          соглашения.
+                          <br/>
+                          <br/>
+                          <b>
+                            Если Вы не согласны с условиями данного соглашения,
+                            не используйте сайт CityMenu!
+                          </b>
+                          <br/>
+                          <br/>
+                          <b>Права и обязанности сторон</b>
+                          <b>Пользователь имеет право:</b>- осуществлять поиск
+                          информации на сайте - получать информацию на сайте
+                          <br/>
+                          <br/>
+                          <b>Администрация имеет право:</b>- по своему
+                          усмотрению и необходимости создавать, изменять,
+                          отменять правила - ограничивать доступ к любой
+                          информации на сайте - создавать, изменять, удалять
+                          информацию
+                          <br/>
+                          <br/>
+                          <b>Пользователь обязуется:</b>- не нарушать
+                          работоспособность сайта - не использовать скрипты
+                          (программы) для автоматизированного сбора информации
+                          и/или взаимодействия с Сайтом и его Сервисами
+                          <br/>
+                          <br/>
+                          <b>Администрация обязуется:</b>- поддерживать
+                          работоспособность сайта за исключением случаев, когда
+                          это невозможно по независящим от Администрации
+                          причинам.
+                          <br/>
+                          <br/>
+                          <b>Ответственность сторон</b>- администрация не несет
+                          никакой ответственности за услуги, предоставляемые
+                          третьими лицами - в случае возникновения форс-мажорной
+                          ситуации (боевые действия, чрезвычайное положение,
+                          стихийное бедствие и т. д.) Администрация не
+                          гарантирует сохранность информации, размещённой
+                          Пользователем, а также бесперебойную работу
+                          информационного ресурса
+                          <br/>
+                          <br/>
+                          <b>Условия действия Соглашения</b>
+                          Данное Соглашение вступает в силу при любом
+                          использовании данного сайта. Соглашение перестает
+                          действовать при появлении его новой версии.
+                          Администрация оставляет за собой право в одностороннем
+                          порядке изменять данное соглашение по своему
+                          усмотрению. Администрация не оповещает пользователей
+                          об изменении в Соглашении.
+                        </DialogContentText>
+                      </DialogContent>
+                    </Dialog>
+                  </span>
+                  условиями использования персональных данных *
+                </p>
+              }
+            />
+          </FormGroup>
         </form>
       </Grid>
 
@@ -271,7 +466,7 @@ export const OrderFormPage = () => {
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
               <PrimaryButton
                 onClick={confirmOrder}
-                disabled={!formState.isValid || isLoading}
+                disabled={!formState.isValid || isLoading || !state.offer1 || !state.offer2}
                 className={classes.confirmOrderButton}
                 startIcon={isLoading && <CircularProgress size={20} />}
               >
