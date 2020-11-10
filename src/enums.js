@@ -1,15 +1,43 @@
 export const ECategories = {
-  sushi: {
-    title: 'Суши',
-    category: 'sushi',
+  breakfast: {
+    category: 'breakfast',
+    title: 'Завтраки'
+  },
+  forKids: {
+    category: 'forKids',
+    title: 'Детское меню'
+  },
+  pizza: {
+    category: 'pizza',
+    title: 'Пицца'
+  },
+  japaneseFood: {
+    category: 'japaneseFood',
+    title: 'Японская кухня'
+  },
+  salad: {
+    category: 'salad',
+    title: 'Салаты'
+  },
+  hotDishes: {
+    category: 'hotDishes',
+    title: 'Горячие блюда'
+  },
+  dessert: {
+    category: 'dessert',
+    title: 'Десерты'
+  },
+  burger: {
+    category: 'burger',
+    title: 'Бургеры'
+  },
+  pasta: {
+    category: 'pasta',
+    title: 'Паста'
   },
   soup: {
-    title: 'Супы',
     category: 'soup',
-  },
-  salads: {
-    title: 'Салаты',
-    category: 'salads',
+    title: 'Супы'
   },
 };
 

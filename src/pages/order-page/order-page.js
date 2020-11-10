@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   guideText: {
     marginTop: '20px',
     color: '#fff',
+    textAlign: 'center'
   },
   orderListWrap: {
     marginTop: '24px',
@@ -90,9 +91,9 @@ export const OrderPage = () => {
       <Toolbar />
       <Grid container justify='center'>
         <Body1 className={classes.guideText}>
-          1. Позовите официанта
-          <br/>2. Продиктуйте выбранные блюда 🍲
-          <br/>3. И скидка на 5% ваша 🎁
+          Ваш заказ успешно отправлен 👌
+          <br/>
+          В ближайшее время с вами свяжется оператор для подтверждения заказа ☎️
         </Body1>
       </Grid>
       <Grid container justify='center' className={classes.orderListWrap}>

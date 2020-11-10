@@ -9,7 +9,7 @@ export const colors = {
   secondaryBackgroundColor: '#231f20',
 };
 
-export const logo = 'https://firebasestorage.googleapis.com/v0/b/molvee-e32fd.appspot.com/o/Logo.png?alt=media&token=a4a6579b-80f6-48b0-bde3-40ea76793b46';
+export const logo = 'https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF+%D0%BA%D0%B5%D0%BA%D1%81.png';
 
 export const createThemeConfig = (mode) => {
   const theme = {
