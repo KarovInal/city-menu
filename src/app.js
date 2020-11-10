@@ -20,8 +20,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RecommendationsList } from "./components/recommendations-list/recommendations-list";
 import { getRecommendationsSelector } from "./modules/recommendations-module/recommendations-selector";
 import "animate.css";
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+const useStyles = makeStyles({
+  boxShadow: {
+    boxShadow: '0px 2px 18px rgb(189 189 189)',
+  },
+});
 
 function App() {
+  const styles = useStyles();
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const mode = prefersDarkMode ? 'light' : 'dark';
   const customTheme = createMuiTheme(createThemeConfig(mode));
@@ -62,13 +70,15 @@ function App() {
             </Route>
             <Route exact path={['/', '/:anchor']}>
               <Header />
-              <RecommendationsList recommendations={recommendations} />
-              <StickyContainer>
-                <Search onSearch={onSearch} />
-                <Categories categories={dictionary.dishCategories} />
-                <MenuList data={dishes} />
-                <ProceedButton onSearch={onSearch} />
-              </StickyContainer>
+              <div className={styles.boxShadow}>
+                <RecommendationsList recommendations={recommendations} />
+                <StickyContainer className={'bgWhite'}>
+                  <Search onSearch={onSearch} />
+                  <Categories categories={dictionary.dishCategories} />
+                  <MenuList data={dishes} />
+                  <ProceedButton onSearch={onSearch} />
+                </StickyContainer>
+              </div>
             </Route>
           </Switch>
         </PageView>

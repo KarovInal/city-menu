@@ -8,8 +8,23 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-html, body, #root {
+html {
   height: 100%;
+  background-color: #f5f4f5;
+}
+
+body {
+  height: 100%;
+}
+
+.bgWhite {
+  background: white !important;
+}
+
+#root {
+  height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .react-player__shadow {
