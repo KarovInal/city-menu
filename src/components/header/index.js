@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     zIndex: 999,
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
-    borderBottom: matches ? '1px solid rgb(219,219,219)' : 'none',
+    boxShadow: matches ? '0px 2px 4px rgba(0, 0, 0, 0.08)' : '',
   }),
   logo: {
     width: 'auto',

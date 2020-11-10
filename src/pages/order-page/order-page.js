@@ -60,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'line-through',
     color: theme.mode.primary.disabledTextColor,
   },
+  minH60: {
+    minHeight: '60px',
+    color: theme.mode.primary.disabledTextColor,
+  },
 }));
 
 export const OrderPage = () => {
@@ -75,6 +79,9 @@ export const OrderPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // TODO [NZ] 11.10.2020: Подумать над тем, чтобы делать всю страницу темной
+  //  Необходимо создать обертку нас всеми урлами
+  //  И добавить возможность управлять bgColor из redux
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -88,7 +95,7 @@ export const OrderPage = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      <Toolbar className={classes.minH60} />
       <Grid container justify='center'>
         <Body1 className={classes.guideText}>
           Ваш заказ успешно отправлен <span role="img" aria-label="">👌</span>

@@ -119,7 +119,7 @@ export const OrderFormPage = () => {
   }
 
   return (
-    <>
+    <div className="bgWhite">
       <AppBar position='fixed'>
         <Toolbar variant='dense' className={classes.header}>
           <IconButton onClick={() => history.push('/cart')} edge='start' color='inherit' aria-label='menu'>
@@ -281,6 +281,6 @@ export const OrderFormPage = () => {
           </Grid>
         </Toolbar>
       </AppBar>
-    </>
+    </div>
   );
 }

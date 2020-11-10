@@ -93,7 +93,7 @@ export const CartPage = () => {
   }
 
   return (
-    <div>
+    <div className="bgWhite">
       <AppBar position="fixed">
         <Toolbar variant="dense" className={classes.header}>
           <IconButton onClick={() => history.push('/')} edge="start" color="inherit" aria-label="menu">
