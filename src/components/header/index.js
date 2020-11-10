@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import { GhostButton } from "../buttons";
 import Grid from "@material-ui/core/Grid";
 import { logo } from "../../constants/theme";
@@ -9,20 +10,29 @@ import { useSelector } from "react-redux";
 import { getOrderSelector } from "../../modules/order-module/order-selector";
 import {Analytics} from "aws-amplify";
 import { isQrMenu } from "../../is-qr-menu";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
-  wrap: {
+  height: {
     height: '60px',
   },
-  root: {
+  wrapper: {
+    maxWidth: '568px;',
+    margin: '0 auto',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  root: ({matches}) => ({
     height: '60px',
-    padding: '0 16px',
+    padding: matches ? '0' : '0 16px',
     position: 'fixed',
     top: 0,
     left: 0,
     zIndex: 999,
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
-  },
+    borderBottom: matches ? '1px solid rgb(219,219,219)' : 'none',
+  }),
   logo: {
     width: 'auto',
     height: '50px',
@@ -30,7 +40,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const Header = () => {
-  const classes = useStyles();
+  const matches = useMediaQuery('(min-width:600px)');
+  const classes = useStyles({ matches });
   const history = useHistory();
   const orderData = useSelector(getOrderSelector);
 
@@ -46,16 +57,18 @@ export const Header = () => {
   }
 
   return (
-    <div className={classes.wrap}>
-      <Grid container direction='row' justify='space-between' alignItems='center' className={classes.root}>
-        <img src={logo} alt='logo' className={classes.logo} />
-        {
-          (orderData.orderId && orderData.dishes && !isQrMenu) && (
-            <GhostButton onClick={handleClick} startIcon={<ReceiptIcon />}>
-              ЗАКАЗ
-            </GhostButton>
-          )
-        }
+    <div className={classes.height}>
+      <Grid container direction='row' justify='space-between' alignItems='center' className={cn(classes.root, 'bgWhite')}>
+        <div className={classes.wrapper}>
+          <img src={logo} alt='logo' className={classes.logo}/>
+          {
+            (orderData.orderId && orderData.dishes && !isQrMenu) && (
+              <GhostButton onClick={handleClick} startIcon={<ReceiptIcon/>}>
+                ЗАКАЗ
+              </GhostButton>
+            )
+          }
+        </div>
       </Grid>
     </div>
   );

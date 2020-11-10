@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import map from 'lodash/map';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -42,7 +43,7 @@ export const RecommendationsList = ({ recommendations }) => {
   const history = useHistory();
 
   return (
-    <Grid container direction='row' wrap='nowrap' className={classes.wrap}>
+    <Grid container direction='row' wrap='nowrap' className={cn(classes.wrap, 'bgWhite')}>
       {
         map(recommendations, ({ previewTitle, preview }, index) => {
           return (
