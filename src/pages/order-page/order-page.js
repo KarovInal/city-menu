@@ -91,9 +91,9 @@ export const OrderPage = () => {
       <Toolbar />
       <Grid container justify='center'>
         <Body1 className={classes.guideText}>
-          Ваш заказ успешно отправлен 👌
+          Ваш заказ успешно отправлен <span role="img" aria-label="">👌</span>
           <br/>
-          В ближайшее время с вами свяжется оператор для подтверждения заказа ☎️
+          В ближайшее время с вами свяжется оператор для подтверждения заказа <span role="img" aria-label="">☎️</span>
         </Body1>
       </Grid>
       <Grid container justify='center' className={classes.orderListWrap}>
