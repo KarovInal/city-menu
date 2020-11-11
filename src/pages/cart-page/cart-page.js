@@ -22,10 +22,10 @@ import { cartUpdateCountAction, cartClearAction } from "../../modules/cart-modul
 import { DiscountText } from "../../components/typography/discount-text";
 import { DEFAULT_DISCOUNT } from "../../constants/discount";
 import { Caption } from "../../components/typography/caption";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 import {Analytics} from "aws-amplify";
-import {isQrMenu} from "../../is-qr-menu";
+import {isQrMenu} from "../../utils/is-qr-menu";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -89,14 +89,22 @@ export const CartPage = () => {
       },
     });
 
-    history.push('/order-form');
+    history.push('order-form');
+  }
+
+  const params = useParams();
+
+  const { cafe } = params;
+
+  const goHome = () => {
+    history.push(`/${cafe}`);
   }
 
   return (
-    <div>
+    <div className="bgWhite">
       <AppBar position="fixed">
         <Toolbar variant="dense" className={classes.header}>
-          <IconButton onClick={() => history.push('/')} edge="start" color="inherit" aria-label="menu">
+          <IconButton onClick={goHome} edge="start" color="inherit" aria-label="menu">
             <ArrowBack />
           </IconButton>
           <Title className={classes.headerTitle}>Корзина</Title>

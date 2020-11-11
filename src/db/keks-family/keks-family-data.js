@@ -1,4 +1,4 @@
-import { ECategories, EOptionType } from "./enums";
+import { EOptionType } from "../common-enums";
 
 const menuList = {
   "1": {
@@ -989,7 +989,50 @@ const recommendations = {
   }
 };
 
-export const mockData = {
+export const ECategories = {
+  breakfast: {
+    category: 'breakfast',
+    title: 'Завтраки'
+  },
+  forKids: {
+    category: 'forKids',
+    title: 'Детское меню'
+  },
+  pizza: {
+    category: 'pizza',
+    title: 'Пицца'
+  },
+  japaneseFood: {
+    category: 'japaneseFood',
+    title: 'Японская кухня'
+  },
+  salad: {
+    category: 'salad',
+    title: 'Салаты'
+  },
+  hotDishes: {
+    category: 'hotDishes',
+    title: 'Горячие блюда'
+  },
+  dessert: {
+    category: 'dessert',
+    title: 'Десерты'
+  },
+  burger: {
+    category: 'burger',
+    title: 'Бургеры'
+  },
+  pasta: {
+    category: 'pasta',
+    title: 'Паста'
+  },
+  soup: {
+    category: 'soup',
+    title: 'Супы'
+  },
+};
+
+export const keksFamilyData = {
   menuList,
   recommendations,
   dictionary: {

@@ -5,7 +5,7 @@ import join from "lodash/join";
 import { useSelector } from "react-redux";
 import { Close } from "@material-ui/icons";
 import AppBar from "@material-ui/core/AppBar";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Divider, Grid } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
@@ -60,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'line-through',
     color: theme.mode.primary.disabledTextColor,
   },
+  minH60: {
+    minHeight: '60px',
+    color: theme.mode.primary.disabledTextColor,
+  },
 }));
 
 export const OrderPage = () => {
@@ -75,11 +79,19 @@ export const OrderPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+
+  const params = useParams();
+
+  const { cafe } = params;
+
+  // TODO [NZ] 11.10.2020: Подумать над тем, чтобы делать всю страницу темной
+  //  Необходимо создать обертку нас всеми урлами
+  //  И добавить возможность управлять bgColor из redux
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar variant="dense" className={classes.header}>
-          <IconButton onClick={() => history.push('/')} edge="start" aria-label="menu">
+          <IconButton onClick={() => history.push(`/${cafe}`)} edge="start" aria-label="menu">
             <Close style={{ color: '#fff' }} />
           </IconButton>
           <Title className={classes.headerTitle}>Спасибо за заказ</Title>
@@ -88,7 +100,7 @@ export const OrderPage = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      <Toolbar className={classes.minH60} />
       <Grid container justify='center'>
         <Body1 className={classes.guideText}>
           Ваш заказ успешно отправлен <span role="img" aria-label="">👌</span>
