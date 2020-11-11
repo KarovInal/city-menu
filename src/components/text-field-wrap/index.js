@@ -21,7 +21,7 @@ export const TextFieldWrap = ({ touched = {}, errors = {}, name = '', ...otherPr
   )
 }
 
-export const TextFieldWithMaskWrap = ({ control, name, alwaysShowMask, mask, touched, errors, fullWidth, rules, type }) => {
+export const TextFieldWithMaskWrap = ({ control, name, alwaysShowMask, mask, touched, errors, fullWidth, rules, type, label = '' }) => {
   return (
     <Controller
       rules={rules}
@@ -39,7 +39,7 @@ export const TextFieldWithMaskWrap = ({ control, name, alwaysShowMask, mask, tou
             onChange={onChange}
             alwaysShowMask={alwaysShowMask}
           >
-            {() => <TextFieldWrap name={name} touched={touched} errors={errors} fullWidth={fullWidth} type={type} />}
+            {() => <TextFieldWrap label={label} name={name} touched={touched} errors={errors} fullWidth={fullWidth} type={type} />}
           </InputMask>
         )
       }}

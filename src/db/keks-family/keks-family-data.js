@@ -1038,5 +1038,8 @@ export const keksFamilyData = {
   dictionary: {
     dishOptions: EOptionType,
     dishCategories: ECategories,
+    pickupAddress: [
+      { title: 'Кирова, 1д, ТРК "Галерея", 4 этаж, Нальчик', value: 1 },
+    ]
   }
 }

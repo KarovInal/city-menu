@@ -40,3 +40,17 @@ export const normalizeDeliveryMessage = ({values, orderId, cartDishes, getDishDa
 Блюда:
 ${join(getDishes(cartDishes, getDishDataFromCart), '\n')}`;
 }
+
+export const normalizePickupMessage = ({values, orderId, cartDishes, getDishDataFromCart, finalPriceWithDiscount}) => {
+  return `Самовывоз: #${orderId}
+1. Имя - ${get(values, 'firstName', '-')}
+2. Номер телефона - ${get(values, 'phone', '-')}
+3. Адресс самовывоза - ${get(values, 'address', '-')}
+8. Комментарий - ${get(values, 'comment', '-')}
+9. Количество персон - ${get(values, 'countOfPersons', '0')}
+---------------------------
+*Сумма заказа*: ${finalPriceWithDiscount} руб.
+---------------------------
+Блюда:
+${join(getDishes(cartDishes, getDishDataFromCart), '\n')}`;
+}

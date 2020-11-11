@@ -1,6 +1,6 @@
 import random from "lodash/random";
 import axios from "axios";
-import React, {useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Selector } from "../../components/selector";
 import { Controller, useForm } from 'react-hook-form';
 import { Title } from "../../components/typography/title";
@@ -11,18 +11,18 @@ import {PrimaryButton} from "../../components/buttons";
 import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { addNewOrderAction } from "../../modules/order-module/actions";
 import { cartClearAction } from "../../modules/cart-module/actions";
 import { getCartSelector } from "../../modules/cart-module";
 import { useHistory, useParams } from "react-router-dom";
 import { TextFieldWrap, TextFieldWithMaskWrap } from "../../components/text-field-wrap";
-import {Counter} from "../../components/counter";
-import {RadioGroupWrap} from "../../components/radio-group-wrap";
-import {normalizeDeliveryMessage} from "./normalize-telegram-message";
+import { getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector } from "../../selectors/dishes-selector";
+import { Counter } from "../../components/counter";
+import { RadioGroupWrap } from "../../components/radio-group-wrap";
+import { normalizeDeliveryMessage, normalizePickupMessage } from "./normalize-telegram-message";
 import IconButton from "@material-ui/core/IconButton";
-import {ArrowBack} from "@material-ui/icons";
+import { ArrowBack } from "@material-ui/icons";
 import Snackbar from "@material-ui/core/Snackbar";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -37,6 +37,10 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import { SelectFieldWrap } from "../../components/select-field-wrap";
+import { pickupAddressSelector } from "../../modules/dictionary-module";
+import keyBy from "lodash/keyBy";
+import get from "lodash/get";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -65,6 +69,8 @@ const useStyles = makeStyles((theme) => ({
     height: '48px'
   },
   formWrap: {
+    flexGrow: 1,
+    overflow: 'hidden',
     margin: '10px 10px'
   },
   fieldWrap: {
@@ -110,6 +116,7 @@ const DialogTitle = withStyles(styles)((props) => {
 export const OrderFormPage = () => {
   const [formType, setFormType] = useState('delivery');
   const [isLoading, setIsLoading] = useState(false);
+  const pickupAddress = useSelector(pickupAddressSelector);
   const [showIssueMessage, setShowIssueMessage] = useState(false);
   const [finalPrice, finalPriceWithDiscount] = useSelector(getPriceSelector)(true);
   const classes = useStyles()
@@ -118,8 +125,37 @@ export const OrderFormPage = () => {
   const cartData = useSelector(getCartSelector);
   const cartDishes = useSelector(getDishesAsArraySelector)(true);
   const getDishDataFromCart = useSelector(getOrderDishDataSelector);
-  const { register, errors, formState, control, getValues } = useForm({
+  const {
+    register: mainRegister,
+    errors: mainErrors,
+    formState: mainFormState,
+    control: mainControl,
+    getValues: mainGetValues,
+  } = useForm({
     mode: 'all',
+    reValidateMode: 'onChange'
+  });
+
+  const {
+    register: deliveryRegister,
+    errors: deliveryErrors,
+    formState: deliveryFormState,
+    control: deliveryControl,
+    getValues: deliveryGetValues,
+  } = useForm({
+    mode: 'all',
+    shouldUnregister: false,
+    reValidateMode: 'onChange'
+  });
+
+  const {
+    errors: pickupErrors,
+    formState: pickupFormState,
+    control: pickupControl,
+    getValues: pickupGetValues,
+  } = useForm({
+    mode: 'all',
+    shouldUnregister: false,
     reValidateMode: 'onChange'
   });
 
@@ -128,19 +164,40 @@ export const OrderFormPage = () => {
   }, []);
 
   const confirmOrder = () => {
+    let message = '';
     const orderId = random(1000, 9999);
 
-    setIsLoading(true)
+    setIsLoading(true);
 
-    axios.post('https://2g8wfzqvg8.execute-api.us-east-2.amazonaws.com/prod/order',{
-      chatId: 123,
-      message: normalizeDeliveryMessage({
-        values: getValues(),
+    if(formType === 'delivery') {
+      message = normalizeDeliveryMessage({
+        values: {
+          ...mainGetValues(),
+          ...deliveryGetValues(),
+        },
         orderId,
         cartDishes,
         getDishDataFromCart,
         finalPriceWithDiscount
-      }),
+      });
+    } else {
+      const { placeForPickup = '' } = pickupGetValues();
+
+      message = normalizePickupMessage({
+        values: {
+          ...mainGetValues(),
+          address: get(keyBy(pickupAddress, 'value'), [placeForPickup, 'title'])
+        },
+        orderId,
+        cartDishes,
+        getDishDataFromCart,
+        finalPriceWithDiscount
+      });
+    }
+
+    axios.post('https://2g8wfzqvg8.execute-api.us-east-2.amazonaws.com/prod/order',{
+      chatId: 123,
+      message,
     }).then(({status}) => {
       setIsLoading(false);
 
@@ -160,6 +217,100 @@ export const OrderFormPage = () => {
       setIsLoading(false);
     });
   }
+
+  const isDisableForm = () => {
+    if(isLoading || !mainFormState.isValid || !state.offer1 || !state.offer2) return true;
+
+    if(formType === 'delivery') {
+      return !deliveryFormState.isValid;
+    } else {
+      return !pickupFormState.isValid;
+    }
+  }
+
+  const renderPickupForm = () => (
+    <Fragment>
+      <Grid className={classes.fieldWrap}>
+        <SelectFieldWrap
+          defaultValue={''}
+          variant='outlined'
+          name='placeForPickup'
+          errors={pickupErrors}
+          label='Выберите адрес:'
+          values={pickupAddress}
+          control={pickupControl}
+          rules={{ required: true }}
+          touched={pickupFormState.touched}
+        />
+      </Grid>
+    </Fragment>
+  );
+
+  const renderDeliveryForm = () => (
+    <Fragment>
+      <Grid className={classes.fieldWrap}>
+        <TextFieldWrap
+          fullWidth
+          label='Адрес доставки *'
+          errors={deliveryErrors}
+          name='address'
+          variant='outlined'
+          touched={deliveryFormState.touched}
+          inputRef={deliveryRegister({ required: true })}
+        />
+      </Grid>
+      <Grid className={classes.fieldWrap} container direction='row' wrap='nowrap'>
+        <TextFieldWrap
+          fullWidth
+          label='Кв./Офис *'
+          type='number'
+          errors={deliveryErrors}
+          name='apt'
+          variant='outlined'
+          touched={deliveryFormState.touched}
+          inputRef={deliveryRegister({ required: true })}
+        />
+        <div className={classes.fieldGap} />
+        <TextFieldWrap fullWidth variant='outlined' inputRef={deliveryRegister} label='Подъезд' placeholder='Подъезд' name='entrance' />
+      </Grid>
+      <Grid className={classes.fieldWrap} container direction='row' wrap='nowrap'>
+        <TextFieldWrap fullWidth variant='outlined' inputRef={deliveryRegister} label='Этаж' placeholder='Этаж' name='floor' />
+        <div className={classes.fieldGap} />
+        <TextFieldWrap fullWidth variant='outlined' inputRef={deliveryRegister} label='Домофон' placeholder='Домофон' name='intercom' />
+      </Grid>
+      <Grid className={classes.fieldWrap}>
+        <RadioGroupWrap
+          title='Способ оплаты *'
+          name='typeOfPayment'
+          errors={deliveryErrors}
+          control={deliveryControl}
+          defaultValue='cash'
+          rules={{ required: true }}
+          touched={deliveryFormState.touched}
+          options={[
+            { label: 'Наличными', value: 'cash' },
+            { label: 'Банковской картой при получении', value: 'cardAfterDelivery' }
+          ]}
+        />
+      </Grid>
+      {
+        (deliveryGetValues('typeOfPayment') === 'cash') && (
+          <Grid className={classes.fieldWrap}>
+            <TextFieldWrap
+              fullWidth
+              type='number'
+              label='Сдача с:'
+              variant='outlined'
+              name='changeFromCash'
+              errors={deliveryErrors}
+              touched={deliveryFormState.touched}
+              inputRef={deliveryRegister({ required: false })}
+            />
+          </Grid>
+        )
+      }
+    </Fragment>
+  );
 
   const [state, setState] = React.useState({
     offer1: false,
@@ -209,7 +360,7 @@ export const OrderFormPage = () => {
         message={`Упс... Что-то пошло не так. Попробуйте еще раз`}
       />
 
-      <Grid container alignItems='center' direction='column'>
+      <Grid container alignItems='center' direction='row'>
         <form className={classes.formWrap}>
           <Selector
             activeItem={formType}
@@ -221,11 +372,11 @@ export const OrderFormPage = () => {
             <TextFieldWrap
               fullWidth
               label='Имя *'
-              errors={errors}
               name='firstName'
               variant='outlined'
-              touched={formState.touched}
-              inputRef={register({ required: true })}
+              errors={mainErrors}
+              touched={mainFormState.touched}
+              inputRef={mainRegister({ required: true })}
             />
           </Grid>
           <Grid className={classes.fieldWrap}>
@@ -234,12 +385,11 @@ export const OrderFormPage = () => {
               type='tel'
               name='phone'
               alwaysShowMask
-              control={control}
-              errors={errors}
               variant='outlined'
-              label='Номер телефона *'
+              errors={mainErrors}
+              control={mainControl}
               mask="+7 (999) 999-99-99"
-              touched={formState.touched}
+              touched={mainFormState.touched}
               rules={{
                 required: true,
                 validate: {
@@ -248,44 +398,19 @@ export const OrderFormPage = () => {
               }}
             />
           </Grid>
+          {
+            formType === 'delivery'
+              ? renderDeliveryForm()
+              : renderPickupForm()
+          }
           <Grid className={classes.fieldWrap}>
-            <TextFieldWrap
-              fullWidth
-              label='Адрес доставки *'
-              errors={errors}
-              name='address'
-              variant='outlined'
-              touched={formState.touched}
-              inputRef={register({ required: true })}
-            />
-          </Grid>
-          <Grid className={classes.fieldWrap} container direction='row' wrap='nowrap'>
-            <TextFieldWrap
-              fullWidth
-              label='Кв./Офис *'
-              type='number'
-              errors={errors}
-              name='apt'
-              variant='outlined'
-              touched={formState.touched}
-              inputRef={register({ required: true })}
-            />
-            <div className={classes.fieldGap} />
-            <TextFieldWrap fullWidth variant='outlined' inputRef={register} placeholder='Подъезд' name='entrance' />
-          </Grid>
-          <Grid className={classes.fieldWrap} container direction='row' wrap='nowrap'>
-            <TextFieldWrap fullWidth variant='outlined' inputRef={register} placeholder='Этаж' name='floor' />
-            <div className={classes.fieldGap} />
-            <TextFieldWrap fullWidth variant='outlined' inputRef={register} placeholder='Домофон' name='intercom' />
-          </Grid>
-          <Grid className={classes.fieldWrap}>
-            <TextFieldWrap fullWidth variant='outlined' inputRef={register} placeholder='Комментарий' name='comment' />
+            <TextFieldWrap fullWidth variant='outlined' inputRef={mainRegister} label='Комментарий' placeholder='Комментарий' name='comment' />
           </Grid>
           <Grid className={classes.fieldWrap}>
             <Body1>Кол-во персон:</Body1>
             <Controller
               name='countOfPersons'
-              control={control}
+              control={mainControl}
               defaultValue={1}
               render={({ value, name, onChange, ...otherProps}) => {
                 return (
@@ -295,38 +420,6 @@ export const OrderFormPage = () => {
             />
           </Grid>
 
-          <Grid className={classes.fieldWrap}>
-            <RadioGroupWrap
-              title='Способ оплаты *'
-              name='typeOfPayment'
-              errors={errors}
-              control={control}
-              defaultValue='cash'
-              rules={{ required: true }}
-              touched={formState.touched}
-              options={[
-                { label: 'Наличными', value: 'cash' },
-                { label: 'Банковской картой при получении', value: 'cardAfterDelivery' }
-              ]}
-            />
-          </Grid>
-
-          {
-            (getValues('typeOfPayment') === 'cash') && (
-              <Grid className={classes.fieldWrap}>
-                <TextFieldWrap
-                  fullWidth
-                  type='number'
-                  label='Сдача с:'
-                  errors={errors}
-                  variant='outlined'
-                  name='changeFromCash'
-                  touched={formState.touched}
-                  inputRef={register({ required: false })}
-                />
-              </Grid>
-            )
-          }
           <FormGroup>
             <FormControlLabel
               control={
@@ -504,7 +597,7 @@ export const OrderFormPage = () => {
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
               <PrimaryButton
                 onClick={confirmOrder}
-                disabled={!formState.isValid || isLoading || !state.offer1 || !state.offer2}
+                disabled={isDisableForm()}
                 className={classes.confirmOrderButton}
                 startIcon={isLoading && <CircularProgress size={20} />}
               >
