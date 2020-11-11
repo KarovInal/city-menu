@@ -5,6 +5,7 @@ const defaultState = {
   dishOptions: EDishOptions,
   dishes: mockData.menuList,
   dishCategories: ECategories,
+  pickupAddress: mockData.dictionary.pickupAddress,
 };
 
 export const dictionaryReducer = (store = defaultState, actions) => {

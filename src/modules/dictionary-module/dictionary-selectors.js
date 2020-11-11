@@ -8,6 +8,8 @@ export const dishOptionsSelector = state => get(state, 'dictionary.dishOptions',
 
 export const dishCategoriesSelector = state => get(state, 'dictionary.dishCategories', {});
 
+export const pickupAddressSelector = state => get(state, 'dictionary.pickupAddress', []);
+
 export const getDishByIdSelector = state => dishId => {
   const dishes = dishesSelector(state);
 
