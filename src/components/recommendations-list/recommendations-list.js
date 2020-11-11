@@ -3,7 +3,7 @@ import cn from 'classnames';
 import map from 'lodash/map';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   wrap: {
@@ -42,12 +42,20 @@ export const RecommendationsList = ({ recommendations }) => {
   const classes = useStyles();
   const history = useHistory();
 
+  const params = useParams();
+
+  const { cafe } = params;
+
+  const goStory = (index) => {
+    history.push(`/${cafe}/stories/${index}`)
+  }
+
   return (
     <Grid container direction='row' wrap='nowrap' className={cn(classes.wrap, 'bgWhite')}>
       {
         map(recommendations, ({ previewTitle, preview }, index) => {
           return (
-            <Grid onClick={() => history.push(`/stories/${index}`)} container alignItems='flex-end' key={index} className={classes.previewItem} style={{ backgroundImage: `url('${preview}')`, }}>
+            <Grid onClick={() => goStory(index)} container alignItems='flex-end' key={index} className={classes.previewItem} style={{ backgroundImage: `url('${preview}')`, }}>
               <span className={classes.previewTitle}>{ previewTitle }</span>
             </Grid>
           )

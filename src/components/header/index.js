@@ -5,11 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import { logo } from "../../constants/theme";
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getOrderSelector } from "../../modules/order-module/order-selector";
 import {Analytics} from "aws-amplify";
-import { isQrMenu } from "../../is-qr-menu";
+import { isQrMenu } from "../../utils/is-qr-menu";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
@@ -45,6 +45,10 @@ export const Header = () => {
   const history = useHistory();
   const orderData = useSelector(getOrderSelector);
 
+  const params = useParams();
+
+  const { cafe } = params;
+
   const handleClick = () => {
     Analytics.record({
       name: 'click',
@@ -53,7 +57,8 @@ export const Header = () => {
         'click-type': 'go_to_order',
       },
     });
-    history.push('/order');
+
+    history.push(`${cafe}/order`);
   }
 
   return (

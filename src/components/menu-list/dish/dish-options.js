@@ -17,7 +17,7 @@ import {
   radioOptionsChange,
 } from "../../../modules/select-options-module";
 import { dishOptionsSelector } from "../../../modules/dictionary-module";
-import { EOptionType } from "../../../enums";
+import { EOptionType } from "../../../db/common-enums";
 
 const useStyles = makeStyles({
   negativeOrder: {

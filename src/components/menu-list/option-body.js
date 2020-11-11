@@ -11,9 +11,9 @@ import { Body2 } from "../typography/body2";
 import { Flex } from "../flex";
 import { useSelector } from "react-redux";
 import { dishOptionsSelector } from "../../modules/dictionary-module";
-import { EOptionType } from "../../enums";
 import FormGroup from "@material-ui/core/FormGroup";
 import Checkbox from "@material-ui/core/Checkbox";
+import { EOptionType } from "../../db/common-enums";
 
 const useStyles = makeStyles((theme) => ({
   root: {

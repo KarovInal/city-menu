@@ -1,9 +1,9 @@
-import { ECategories, EDishOptions } from "../../enums";
-import { mockData } from "../../mock-data";
+import { ECategories, keksFamilyData } from "../../db/keks-family/keks-family-data";
+import { EDishOptions } from "../../db/common-enums";
 
 const defaultState = {
   dishOptions: EDishOptions,
-  dishes: mockData.menuList,
+  dishes: keksFamilyData.menuList,
   dishCategories: ECategories,
 };
 
