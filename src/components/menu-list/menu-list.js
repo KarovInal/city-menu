@@ -14,8 +14,8 @@ import { PriceBlock, Description, DishOptions, Preview } from "./dish";
 import { cartCountByOptionsGetter, cartUpdateCountAction } from "../../modules/cart-module";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelectedOptionsByDishIdGetter } from "../../modules/select-options-module";
-import { EmptyOptionId } from "../../enums";
 import { Analytics } from "aws-amplify";
+import { EmptyOptionId } from "../../db/common-enums";
 
 const useStyles = makeStyles({
   m20_0: {

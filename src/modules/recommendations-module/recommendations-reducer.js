@@ -1,5 +1,5 @@
-import { mockData } from "../../mock-data";
+import { keksFamilyData } from "../../db/keks-family/keks-family-data";
 
-export const recommendationsReducer = (state = mockData.recommendations) => {
+export const recommendationsReducer = (state = keksFamilyData.recommendations) => {
   return state;
 };

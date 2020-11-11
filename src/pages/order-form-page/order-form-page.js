@@ -16,7 +16,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { addNewOrderAction } from "../../modules/order-module/actions";
 import { cartClearAction } from "../../modules/cart-module/actions";
 import { getCartSelector } from "../../modules/cart-module";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { TextFieldWrap, TextFieldWithMaskWrap } from "../../components/text-field-wrap";
 import {Counter} from "../../components/counter";
 import {RadioGroupWrap} from "../../components/radio-group-wrap";
@@ -154,7 +154,7 @@ export const OrderFormPage = () => {
         //2. clear cart
         dispatch(cartClearAction());
 
-        history.push('/order');
+        history.push('order');
       }
     }).catch(() => {
       setIsLoading(false);
@@ -181,11 +181,19 @@ export const OrderFormPage = () => {
     setOpenOffer(false);
   };
 
+  const params = useParams();
+
+  const { cafe } = params;
+
+  const goCart = () => {
+    history.push(`/${cafe}/cart`)
+  }
+
   return (
     <div className="bgWhite">
       <AppBar position='fixed'>
         <Toolbar variant='dense' className={classes.header}>
-          <IconButton onClick={() => history.push('/cart')} edge='start' color='inherit' aria-label='menu'>
+          <IconButton onClick={goCart} edge='start' color='inherit' aria-label='menu'>
             <ArrowBack />
           </IconButton>
           <Title className={classes.headerTitle}>Оформить заказ</Title>

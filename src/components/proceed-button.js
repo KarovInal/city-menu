@@ -1,5 +1,8 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom";
 import cn from "classnames";
 import { Title } from "./typography/title";
 import { Body2 } from "./typography/body2";
@@ -54,9 +57,15 @@ export const ProceedButton = React.memo(({
 
   const classes = useStyles();
   const history = useHistory();
+
+  const params = useParams();
+
+  const { cafe } = params;
+
   const goToCartPage = () => {
     onSearch('');
-    history.push("/cart");
+
+    history.push(`${cafe}/cart`);
   }
 
   return (

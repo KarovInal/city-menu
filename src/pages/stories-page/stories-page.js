@@ -113,9 +113,17 @@ export const StoriesPage = () => {
         history.push(resourceUrl);
     }
 
+    const params = useParams();
+
+    const { cafe } = params;
+
+    const goHome = () => {
+        history.push(`/${cafe}`);
+    }
+
     return (
       <Swiper loop initialSlide={toNumber(activeSlide) || 0} direction='vertical' setWrapperSize watchSlidesVisibility className={classes.root}>
-          <Close className={classes.closeIcon} onClick={() => history.push('/')} />
+          <Close className={classes.closeIcon} onClick={goHome} />
           <KeyboardArrowUpIcon className={classes.upIcon} />
           {
               map(recommendations,
@@ -151,7 +159,7 @@ export const StoriesPage = () => {
                                       { contentSubTitle && (
                                         <span className={classes.subTitle}>{ contentSubTitle }</span>
                                       )}
-                                      <PrimaryButton className={classes.actionButton} onClick={() => handleCtaClick({ resourceUrl, id })}>
+                                      <PrimaryButton className={classes.actionButton} onClick={() => handleCtaClick({ resourceUrl: `/${cafe}${resourceUrl}`, id })}>
                                           { buttonTitle }
                                       </PrimaryButton>
                                   </div>

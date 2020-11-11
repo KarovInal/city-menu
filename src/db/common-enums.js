@@ -1,60 +1,6 @@
-export const ECategories = {
-  breakfast: {
-    category: 'breakfast',
-    title: 'Завтраки'
-  },
-  forKids: {
-    category: 'forKids',
-    title: 'Детское меню'
-  },
-  pizza: {
-    category: 'pizza',
-    title: 'Пицца'
-  },
-  japaneseFood: {
-    category: 'japaneseFood',
-    title: 'Японская кухня'
-  },
-  salad: {
-    category: 'salad',
-    title: 'Салаты'
-  },
-  hotDishes: {
-    category: 'hotDishes',
-    title: 'Горячие блюда'
-  },
-  dessert: {
-    category: 'dessert',
-    title: 'Десерты'
-  },
-  burger: {
-    category: 'burger',
-    title: 'Бургеры'
-  },
-  pasta: {
-    category: 'pasta',
-    title: 'Паста'
-  },
-  soup: {
-    category: 'soup',
-    title: 'Супы'
-  },
-};
-
-export const EOptionType = {
-  CheckBox: 'checkBox',
-  Radio: 'radio',
-};
-
-export const EmptyOptionId = '00';
-
-export const EDishOptions = {
-  [EmptyOptionId]: {
-    id: EmptyOptionId,
-    title: '',
-    price: 0,
-    available: true
-  },
+// NOTE [NZ] 11.11.2020: Dish options below are not used, left only for example purposes
+// eslint-disable-next-line
+const EExampleDishOptions = {
   '1001': {
     id: '1001',
     title: 'Оливковое масло',
@@ -144,5 +90,20 @@ export const EDishOptions = {
     title: 'Для пары',
     price: 130,
     available: true,
+  },
+}
+
+export const EOptionType = {
+  CheckBox: 'checkBox',
+  Radio: 'radio',
+};
+export const EmptyOptionId = '00';
+
+export const EDishOptions = {
+  [EmptyOptionId]: {
+    id: EmptyOptionId,
+    title: '',
+    price: 0,
+    available: true
   },
 }
