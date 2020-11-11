@@ -7,14 +7,15 @@ import { fade } from "@material-ui/core";
 import vector from "./assets/Vector.png";
 
 const useStyles = makeStyles((theme) => ({
-  preview: {
-    height: "140px",
+  preview: ({ isDishFullOpened }) => ({
+    maxWidth: isDishFullOpened ? '' : "140px",
+    maxHeight: isDishFullOpened ? "180px" : "140px",
     border: "0.5px solid rgba(0, 0, 0, 0.08)",
     boxSizing: "border-box",
     borderRadius: "12px",
     objectFit: "cover",
     width: "100%",
-  },
+  }),
   openedPreview: {
     height: "180px",
   },
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 export const Preview = React.memo(({
   isDishFullOpened, onClick, preview
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({isDishFullOpened});
   const previewWidth = isDishFullOpened ? 12 : 4;
 
   return (
