@@ -65,7 +65,7 @@ export const ProceedButton = React.memo(({
   const goToCartPage = () => {
     onSearch('');
 
-    history.push(`${cafe}/cart`);
+    history.push(`/${cafe}/cart`);
   }
 
   return (

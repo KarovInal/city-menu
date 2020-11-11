@@ -58,7 +58,7 @@ export const Header = () => {
       },
     });
 
-    history.push(`${cafe}/order`);
+    history.push(`/${cafe}/order`);
   }
 
   return (
