@@ -8,7 +8,9 @@ export const dishOptionsSelector = state => get(state, 'dictionary.dishOptions',
 
 export const dishCategoriesSelector = state => get(state, 'dictionary.dishCategories', {});
 
-export const pickupAddressSelector = state => get(state, 'dictionary.pickupAddress', []);
+export const getDeliveryMinPriceSelector = state => get(state, 'dictionary.deliveryOptions.minPrice', 0);
+
+export const pickupAddressSelector = state => get(state, 'dictionary.pickupOptions.pickupAddress', []);
 
 export const getDishByIdSelector = state => dishId => {
   const dishes = dishesSelector(state);

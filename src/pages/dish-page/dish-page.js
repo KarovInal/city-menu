@@ -1,4 +1,5 @@
 import React from 'react';
+import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from "react-redux";
 import { Header } from "../../components/header";
@@ -41,6 +42,7 @@ export const DishPage = () => {
   return (
     <>
       <Header />
+      <Toolbar />
       <div className={styles.boxShadow}>
         <RecommendationsList recommendations={recommendations} />
           <StickyContainer className={'bgWhite'}>

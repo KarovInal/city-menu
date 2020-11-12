@@ -41,6 +41,8 @@ import { SelectFieldWrap } from "../../components/select-field-wrap";
 import { pickupAddressSelector } from "../../modules/dictionary-module";
 import keyBy from "lodash/keyBy";
 import get from "lodash/get";
+import {MinPriceDelivery} from "../../modules/min-price-delivery";
+import {ableToDeliverySelector} from "../../modules/min-price-delivery/min-price-delivery-selector";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -117,6 +119,7 @@ export const OrderFormPage = () => {
   const [formType, setFormType] = useState('delivery');
   const [isLoading, setIsLoading] = useState(false);
   const pickupAddress = useSelector(pickupAddressSelector);
+  const ableToDelivery = useSelector(ableToDeliverySelector);
   const [showIssueMessage, setShowIssueMessage] = useState(false);
   const [finalPrice, finalPriceWithDiscount] = useSelector(getPriceSelector)(true);
   const classes = useStyles()
@@ -219,7 +222,7 @@ export const OrderFormPage = () => {
   }
 
   const isDisableForm = () => {
-    if(isLoading || !mainFormState.isValid || !state.offer1 || !state.offer2) return true;
+    if(!ableToDelivery || isLoading || !mainFormState.isValid || !state.offer1 || !state.offer2) return true;
 
     if(formType === 'delivery') {
       return !deliveryFormState.isValid;
@@ -351,6 +354,8 @@ export const OrderFormPage = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />
+
+      <MinPriceDelivery />
 
       <Snackbar
         open={showIssueMessage}
