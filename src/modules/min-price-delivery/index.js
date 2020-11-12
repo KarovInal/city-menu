@@ -24,7 +24,7 @@ export const MinPriceDelivery = () => {
       <br />
       До оформления заказа осталось немного: {round((deliveryMinPrice - priceWithDiscountInCart), 1)} руб.
       <br />
-      <Link onClick={() => history.push(`/${cafe}`)} color="inherit">
+      <Link underline='always' onClick={() => history.push(`/${cafe}`)} color="inherit">
         <b>Вернуться к блюдам</b>
       </Link>
     </Alert>
