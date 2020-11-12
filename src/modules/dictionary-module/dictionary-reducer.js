@@ -5,7 +5,8 @@ const defaultState = {
   dishOptions: EDishOptions,
   dishes: keksFamilyData.menuList,
   dishCategories: ECategories,
-  pickupAddress: keksFamilyData.dictionary.pickupAddress,
+  pickupOptions: keksFamilyData.dictionary.pickupOptions,
+  deliveryOptions: keksFamilyData.dictionary.deliveryOptions,
 };
 
 export const dictionaryReducer = (store = defaultState, actions) => {

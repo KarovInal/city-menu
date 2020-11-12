@@ -26,8 +26,14 @@ import { useHistory, useParams } from "react-router-dom";
 import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
 import {Analytics} from "aws-amplify";
 import {isQrMenu} from "../../utils/is-qr-menu";
+import {MinPriceDelivery} from "../../modules/min-price-delivery";
+import {ableToDeliverySelector} from "../../modules/min-price-delivery/min-price-delivery-selector";
 
 const useStyles = makeStyles((theme) => ({
+  cartPageWrap: {
+    flex: '1 1 auto',
+    backgroundColor: 'white !important',
+  },
   header: {
     height: '60px',
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
@@ -72,6 +78,7 @@ export const CartPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const ableToDelivery = useSelector(ableToDeliverySelector);
   const cartDishes = useSelector(getDishesAsArraySelector)(true);
   const getDishDataFromCart = useSelector(getOrderDishDataSelector);
   const [finalPrice, finalPriceWithDiscount, difPrice] = useSelector(getPriceSelector)(true);
@@ -101,7 +108,7 @@ export const CartPage = () => {
   }
 
   return (
-    <div className="bgWhite">
+    <div className={classes.cartPageWrap}>
       <AppBar position="fixed">
         <Toolbar variant="dense" className={classes.header}>
           <IconButton onClick={goHome} edge="start" color="inherit" aria-label="menu">
@@ -114,6 +121,8 @@ export const CartPage = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />
+
+      <MinPriceDelivery />
 
       {
         map(cartDishes, ({ dishId, optionId, count }, index) => {
@@ -157,7 +166,7 @@ export const CartPage = () => {
       <Divider />
 
       <Grid container justify='center' className={classes.addMoreWrap}>
-          <GhostButton startIcon={<AddIcon />} onClick={() => history.push('/')}>
+          <GhostButton startIcon={<AddIcon />} onClick={goHome}>
             Добавить еще
           </GhostButton>
       </Grid>
@@ -187,7 +196,7 @@ export const CartPage = () => {
                     <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
                     <Title>{finalPriceWithDiscount} ₽</Title>
                   </Fragment>
-                  : <PrimaryButton onClick={confirmOrder} className={classes.confirmOrderButton}>
+                  : <PrimaryButton disabled={!ableToDelivery} onClick={confirmOrder} className={classes.confirmOrderButton}>
                     Оформить заказ
                   </PrimaryButton>
               }

@@ -1032,14 +1032,23 @@ export const ECategories = {
   },
 };
 
+const deliveryOptions = {
+  minPrice: 500
+};
+
+const pickupOptions = {
+  pickupAddress: [
+    { title: 'Кирова, 1д, ТРК "Галерея", 4 этаж, Нальчик', value: 1 },
+  ]
+};
+
 export const keksFamilyData = {
   menuList,
   recommendations,
   dictionary: {
     dishOptions: EOptionType,
     dishCategories: ECategories,
-    pickupAddress: [
-      { title: 'Кирова, 1д, ТРК "Галерея", 4 этаж, Нальчик', value: 1 },
-    ]
+    pickupOptions,
+    deliveryOptions,
   }
 }
