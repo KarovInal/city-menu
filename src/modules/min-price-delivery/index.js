@@ -5,6 +5,7 @@ import Alert from '@material-ui/lab/Alert';
 import { useParams, useHistory } from "react-router-dom";
 import { getPriceSelector } from "../../selectors/dishes-selector";
 import { getDeliveryMinPriceSelector } from "../dictionary-module";
+import round from "lodash/round";
 
 export const MinPriceDelivery = () => {
   const deliveryMinPrice = useSelector(getDeliveryMinPriceSelector);
@@ -21,7 +22,7 @@ export const MinPriceDelivery = () => {
     <Alert severity="warning">
       <b>Минимальная сумма заказа составляет {deliveryMinPrice} руб.</b>
       <br />
-      До оформления заказа осталось немного: {deliveryMinPrice - priceWithDiscountInCart} руб.
+      До оформления заказа осталось немного: {round((deliveryMinPrice - priceWithDiscountInCart), 1)} руб.
       <br />
       <Link onClick={() => history.push(`/${cafe}`)} color="inherit">
         <b>Вернуться к блюдам</b>
