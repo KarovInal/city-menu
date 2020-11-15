@@ -72,13 +72,13 @@ export const Header = () => {
           <img src={logo} alt='logo' className={classes.logo}/>
           <div>
             {
-              <IconButton color="secondary" onClick={() => setIsOpenContacts(true)}>
-                <InfoIcon />
+              <IconButton style={{ paddingRight: 0 }} color="secondary" onClick={() => setIsOpenContacts(true)}>
+                <InfoIcon style={{ width: '1.25em', height: '1.25em' }} />
               </IconButton>
             }
             {
               (orderData.orderId && orderData.dishes && !isQrMenu) && (
-                <GhostButton onClick={handleClick} startIcon={<ReceiptIcon/>}>
+                <GhostButton style={{ marginLeft: '12px' }} onClick={handleClick} startIcon={<ReceiptIcon/>}>
                   ЗАКАЗ
                 </GhostButton>
               )
