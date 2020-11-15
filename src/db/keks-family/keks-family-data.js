@@ -11,7 +11,7 @@ const menuList = {
     //   type: EWeightType.Milliliter,
     //   mass: 220,
     // },
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0ed16fbdf1.jpg",
+    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0ed16fbdf.jpg",
   },
   "2": {
     "id": "2",
