@@ -7,7 +7,11 @@ const menuList = {
     "title": "Каша рисовая с молоком",
     "category": "breakfast",
     "price": 85.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0ed16fbdf.jpg",
+    // weight: {
+    //   type: EWeightType.Milliliter,
+    //   mass: 220,
+    // },
+    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0ed16fbdf1.jpg",
   },
   "2": {
     "id": "2",
@@ -31,6 +35,10 @@ const menuList = {
     "title": "Глазунья ",
     "category": "breakfast",
     "price": 90.00,
+    // weight: {
+    //   type: EWeightType.Gram,
+    //   mass: 150,
+    // },
     "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0fcbe3bb4.jpg",
   },
   "5": {

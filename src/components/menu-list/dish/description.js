@@ -18,7 +18,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Description = React.memo(({
-  isDishFullOpened, title, description, weight,
+  isDishFullOpened,
+  title,
+  description,
+  weight,
 }) => {
   const classes = useStyles();
 
@@ -41,7 +44,7 @@ export const Description = React.memo(({
               : description}
           </Body2>
           <Body2 className={classes.description}>
-            {gramToText(weight)}
+            {gramToText(weight && weight.mass, weight && weight.type)}
           </Body2>
         </FlexColumn>
       </div>

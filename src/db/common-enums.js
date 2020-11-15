@@ -97,6 +97,12 @@ export const EOptionType = {
   CheckBox: 'checkBox',
   Radio: 'radio',
 };
+
+export const EWeightType = {
+  Gram: 'gram',
+  Milliliter: 'milliliter',
+};
+
 export const EmptyOptionId = '00';
 
 export const EDishOptions = {

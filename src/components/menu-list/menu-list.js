@@ -97,7 +97,7 @@ export const MenuList = React.memo(({ data }) => {
                   title,
                   preview,
                   description = '',
-                  weight = '',
+                  weight,
                   price,
                   category,
                   id,
