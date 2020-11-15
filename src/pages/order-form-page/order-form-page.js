@@ -118,6 +118,7 @@ const DialogTitle = withStyles(styles)((props) => {
 export const OrderFormPage = () => {
   const [formType, setFormType] = useState('delivery');
   const [isLoading, setIsLoading] = useState(false);
+  const [isDisabledForm, setIsDisabledForm] = useState(true);
   const pickupAddress = useSelector(pickupAddressSelector);
   const ableToDelivery = useSelector(ableToDeliverySelector);
   const [showIssueMessage, setShowIssueMessage] = useState(false);
@@ -135,8 +136,7 @@ export const OrderFormPage = () => {
     control: mainControl,
     getValues: mainGetValues,
   } = useForm({
-    mode: 'all',
-    reValidateMode: 'onChange'
+    mode: 'all'
   });
 
   const {
@@ -147,8 +147,6 @@ export const OrderFormPage = () => {
     getValues: deliveryGetValues,
   } = useForm({
     mode: 'all',
-    shouldUnregister: false,
-    reValidateMode: 'onChange'
   });
 
   const {
@@ -158,8 +156,6 @@ export const OrderFormPage = () => {
     getValues: pickupGetValues,
   } = useForm({
     mode: 'all',
-    shouldUnregister: false,
-    reValidateMode: 'onChange'
   });
 
   useEffect(() => {
@@ -221,28 +217,30 @@ export const OrderFormPage = () => {
     });
   }
 
-  const isDisableForm = () => {
-    if(!ableToDelivery || isLoading || !mainFormState.isValid || !state.offer1 || !state.offer2) return true;
+  useEffect(() => {
+    if(!ableToDelivery || isLoading || !mainFormState.isValid || !state.offer1 || !state.offer2) {
+      return setIsDisabledForm(true);
+    }
 
     if(formType === 'delivery') {
-      return !deliveryFormState.isValid;
+      setIsDisabledForm(!deliveryFormState.isValid);
     } else {
-      return !pickupFormState.isValid;
+      setIsDisabledForm(!pickupFormState.isValid);
     }
-  }
+  }, [formType, mainFormState, deliveryFormState.isValid, pickupFormState.isValid]);
 
   const renderPickupForm = () => (
     <Fragment>
       <Grid className={classes.fieldWrap}>
         <SelectFieldWrap
-          defaultValue={''}
+          defaultValue=''
           variant='outlined'
           name='placeForPickup'
           errors={pickupErrors}
-          label='Выберите адрес:'
           values={pickupAddress}
           control={pickupControl}
           rules={{ required: true }}
+          label='Адрес самовывоза: *'
           touched={pickupFormState.touched}
         />
       </Grid>
@@ -602,7 +600,7 @@ export const OrderFormPage = () => {
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
               <PrimaryButton
                 onClick={confirmOrder}
-                disabled={isDisableForm()}
+                disabled={isDisabledForm}
                 className={classes.confirmOrderButton}
                 startIcon={isLoading && <CircularProgress size={20} />}
               >

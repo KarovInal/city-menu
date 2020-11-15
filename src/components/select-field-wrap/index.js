@@ -8,8 +8,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 export const SelectFieldWrap = ({ label = '', name, touched, errors, control, rules, defaultValue = '', values = [], variant }) => {
-  const isError = get(touched, name, false);
-  const isTouched = get(errors, name, false);
+  const isError = get(errors, name, false);
+  const isTouched = get(touched, name, false);
   const isShowError = !!(isError && isTouched);
 
   return (
@@ -19,8 +19,8 @@ export const SelectFieldWrap = ({ label = '', name, touched, errors, control, ru
         name={name}
         rules={rules}
         control={control}
-        defaultValue={defaultValue}
         error={isShowError}
+        defaultValue={defaultValue}
         as={
           <Select color='secondary' labelId="select-label" fullWidth variant={variant}>
             {
