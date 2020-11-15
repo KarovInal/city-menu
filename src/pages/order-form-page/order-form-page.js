@@ -158,6 +158,11 @@ export const OrderFormPage = () => {
     mode: 'all',
   });
 
+  const [state, setState] = React.useState({
+    offer1: false,
+    offer2: false,
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -227,7 +232,7 @@ export const OrderFormPage = () => {
     } else {
       setIsDisabledForm(!pickupFormState.isValid);
     }
-  }, [formType, mainFormState, deliveryFormState.isValid, pickupFormState.isValid]);
+  }, [ableToDelivery, state.offer1, state.offer2, isLoading, formType, mainFormState, deliveryFormState.isValid, pickupFormState.isValid]);
 
   const renderPickupForm = () => (
     <Fragment>
@@ -312,11 +317,6 @@ export const OrderFormPage = () => {
       }
     </Fragment>
   );
-
-  const [state, setState] = React.useState({
-    offer1: false,
-    offer2: false,
-  });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });

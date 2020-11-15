@@ -1042,13 +1042,29 @@ const pickupOptions = {
   ]
 };
 
+const contacts = {
+  description:
+    '🕚 Режим работы: ПН-ВС 11:00-23:00\n' +
+    '📍 ТЦ"Галерея" 4 этаж\n' +
+    '🎳 Боулинг: 7(928)076-076-8\n' +
+    '☕️ Кофейня\n' +
+    '🌈 Детский городок',
+  phone: '+79287099111',
+  email: 'mailto:viktorya015@mail.ru',
+  whatsapp: 'https://wa.me/79287099111',
+  mapLink: 'https://yandex.ru/maps/-/CCUAJMgA9C',
+  instagram: 'https://www.instagram.com/kekc_family/',
+  addressName: 'Кирова, 1д, ТРК "Галерея", 4 этаж, Нальчик',
+}
+
 export const keksFamilyData = {
   menuList,
   recommendations,
   dictionary: {
-    dishOptions: EOptionType,
-    dishCategories: ECategories,
+    contacts,
     pickupOptions,
     deliveryOptions,
+    dishOptions: EOptionType,
+    dishCategories: ECategories,
   }
 }
