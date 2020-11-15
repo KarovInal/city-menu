@@ -1,12 +1,34 @@
-export const gramToText = (gramN) => {
+import { EWeightType } from "../db/common-enums";
+
+export const gramToText = (gramN, type) => {
   if (
-    [!gramN, typeof gramN !== "number", !Number.isFinite(gramN)].some(Boolean)
+    [!gramN, !type, typeof gramN !== "number", !Number.isFinite(gramN)].some(Boolean)
   ) {
     return "";
   }
 
-  const kg = Math.floor(gramN / 1000);
-  const gramLeft = gramN % 1000;
+  let bigName = '';
+  let smallName = '';
 
-  return [`${kg ? `${kg} кг. ` : ""}`, `${gramLeft} г.`].join("");
+  switch (type) {
+    case EWeightType.Milliliter: {
+      bigName = 'л.';
+      smallName = 'мл.';
+      break;
+    }
+    case EWeightType.Gram: {
+      bigName = 'кг.';
+      smallName = 'г.';
+      break;
+    }
+    default: break;
+  }
+
+  const oneMatter = Math.floor(gramN / 1000);
+  const matterLeft = gramN % 1000;
+
+  return [
+    `${oneMatter ? `${oneMatter} ${bigName} ` : ""}`,
+    `${matterLeft} ${smallName}`,
+  ].join("");
 };
