@@ -8,6 +8,8 @@ import vector from "./assets/Vector.png";
 
 const useStyles = makeStyles((theme) => ({
   preview: ({ isDishFullOpened }) => ({
+    minWidth: "140px",
+    minHeight: "140px",
     maxWidth: isDishFullOpened ? '' : "140px",
     maxHeight: isDishFullOpened ? "180px" : "140px",
     border: "0.5px solid rgba(0, 0, 0, 0.08)",
