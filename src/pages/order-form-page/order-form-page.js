@@ -506,7 +506,7 @@ export const OrderFormPage = () => {
                       size="small"
                       onClick={createHandleClickOpen(setOpenOffer2)}
                     >
-                      условиями доставки
+                      условиями использования
                     </Button>
                     <Dialog
                       open={offer2}
@@ -580,7 +580,7 @@ export const OrderFormPage = () => {
                       </DialogContent>
                     </Dialog>
                   </span>
-                  условиями использования персональных данных *
+                   персональных данных *
                 </p>
               }
             />
