@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "cover",
     width: "100%",
   }),
+  previewWrapper: ({ isDishFullOpened }) => ({
+    width: isDishFullOpened ? '' : "140px",
+    height: isDishFullOpened ? "180px" : "140px",
+  }),
   openedPreview: {
     height: "180px",
   },
@@ -62,7 +66,7 @@ export const Preview = React.memo(({
       xs={previewWidth}
       className={classes.transition}
     >
-      <div className={cn(classes.preview, classes.relative)}>
+      <div className={cn(classes.previewWrapper, classes.relative)}>
         <div
           className={cn({
             [classes.skipButton]: true,

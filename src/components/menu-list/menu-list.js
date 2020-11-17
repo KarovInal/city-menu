@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSelectedOptionsByDishIdGetter } from "../../modules/select-options-module";
 import { Analytics } from "aws-amplify";
 import { EmptyOptionId } from "../../db/common-enums";
+import { Title } from "../typography/title";
+import { Flex } from "../flex";
 
 const useStyles = makeStyles({
   m20_0: {
@@ -24,9 +26,12 @@ const useStyles = makeStyles({
   pb66: {
     paddingBottom: "66px",
   },
+  fw700: {
+    fontWeight: "700",
+  },
 });
 
-export const MenuList = React.memo(({ data }) => {
+export const MenuList = React.memo(({ data, categories }) => {
   const classes = useStyles();
   const groupedByCategory = groupBy(data, "category");
 
@@ -89,71 +94,74 @@ export const MenuList = React.memo(({ data }) => {
     <PaddingWrapper className={classes.pb66}>
       {map(groupedByCategory, (dishs, categoryKey) => {
         return (
-          <Element key={categoryKey} name={categoryKey}>
-            {map(
-              dishs,
-              (
-                {
-                  title,
-                  preview,
-                  description = '',
-                  weight,
-                  price,
-                  category,
-                  id,
-                  options,
-                },
-                index
-              ) => {
-                const isDishFullOpened = state[id];
+          <>
+            <Flex><Title className={classes.fw700}>{categories[categoryKey]?.title}</Title></Flex>
+            <Element key={categoryKey} name={categoryKey}>
+              {map(
+                dishs,
+                (
+                  {
+                    title,
+                    preview,
+                    description = '',
+                    weight,
+                    price,
+                    category,
+                    id,
+                    options,
+                  },
+                  index
+                ) => {
+                  const isDishFullOpened = state[id];
 
-                return (
-                  <Element key={index} name={`${id}`}>
-                    <FlexColumn className={classes.m20_0}>
-                      <FlexRow>
-                        <Grid
-                          container
-                          spacing={0}
+                  return (
+                    <Element key={index} name={`${id}`}>
+                      <FlexColumn className={classes.m20_0}>
+                        <FlexRow>
+                          <Grid
+                            container
+                            spacing={0}
+                            onClick={
+                              isDishFullOpened ? noop : handleOpenDishClick(id)
+                            }
+                          >
+                            <Preview
+                              preview={preview}
+                              onClick={() => handleOpenDishClick(id)}
+                              isDishFullOpened={isDishFullOpened}
+                            />
+                            <Description
+                              isDishFullOpened={isDishFullOpened}
+                              title={title}
+                              description={description}
+                              weight={weight}
+                            />
+                          </Grid>
+                        </FlexRow>
+                        <DishOptions
+                          dishId={id}
+                          isDishFullOpened={isDishFullOpened}
+                          options={options}
+                        />
+                        <PriceBlock
+                          addOptionsPrice={isDishFullOpened}
+                          showLoader={_.isEmpty(options) || isDishFullOpened}
                           onClick={
-                            isDishFullOpened ? noop : handleOpenDishClick(id)
+                            (!_.isEmpty(options) && !isDishFullOpened)
+                              ? handleOpenDishClick(id)
+                              : createAddToCartHandler(id)
                           }
-                        >
-                          <Preview
-                            preview={preview}
-                            onClick={() => handleOpenDishClick(id)}
-                            isDishFullOpened={isDishFullOpened}
-                          />
-                          <Description
-                            isDishFullOpened={isDishFullOpened}
-                            title={title}
-                            description={description}
-                            weight={weight}
-                          />
-                        </Grid>
-                      </FlexRow>
-                      <DishOptions
-                        dishId={id}
-                        isDishFullOpened={isDishFullOpened}
-                        options={options}
-                      />
-                      <PriceBlock
-                        addOptionsPrice={isDishFullOpened}
-                        showLoader={_.isEmpty(options) || isDishFullOpened}
-                        onClick={
-                          (!_.isEmpty(options) && !isDishFullOpened)
-                            ? handleOpenDishClick(id)
-                            : createAddToCartHandler(id)
-                        }
-                        price={price}
-                        dishId={id}
-                      />
-                    </FlexColumn>
-                    <Divider />
-                  </Element>
-                );
-              }
-            )}
-          </Element>
+                          price={price}
+                          dishId={id}
+                        />
+                      </FlexColumn>
+                      <Divider />
+                    </Element>
+                  );
+                }
+              )}
+            </Element>
+          </>
         );
       })}
     </PaddingWrapper>
