@@ -22,10 +22,13 @@ const useStyles = makeStyles((theme) => ({
     height: "180px",
   },
   transition: {
-    transition: "max-width .2s ease-in-out, flex-basis .2s ease-in-out",
+    transition: "max-width .1s ease-in-out, flex-basis .1s ease-in-out",
   },
   relative: {
     position: "relative",
+  },
+  rotate: {
+    transform: "rotate(180deg)",
   },
   skipButton: {
     transition: "opacity .05s ease-in-out",
@@ -40,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     right: "10px",
     top: "10px",
     borderRadius: "50%",
-    transform: "rotate(180deg)",
     backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.4),
     backgroundImage: `url(${vector})`,
     backgroundRepeat: "no-repeat",
@@ -60,10 +62,11 @@ export const Preview = React.memo(({
       xs={previewWidth}
       className={classes.transition}
     >
-      <div className={cn(classes.relative)}>
+      <div className={cn(classes.preview, classes.relative)}>
         <div
           className={cn({
-            [classes.skipButton]: isDishFullOpened,
+            [classes.skipButton]: true,
+            [classes.rotate]: isDishFullOpened,
           })}
           onClick={
             isDishFullOpened
