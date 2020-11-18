@@ -10,7 +10,19 @@ export const getContactsSelector = state => get(state, 'dictionary.contacts', {}
 
 export const dishCategoriesSelector = state => get(state, 'dictionary.dishCategories', {});
 
-export const getDeliveryMinPriceSelector = state => get(state, 'dictionary.deliveryOptions.minPrice', 0);
+export const getDeliveryOptionSelector = state => get(state, 'dictionary.deliveryOptions', {});
+
+export const getDeliveryMinPriceSelector = state => {
+  const deliveryOption = getDeliveryOptionSelector(state);
+
+  return get(deliveryOption, 'minPrice', 0);
+}
+
+export const getDeliveryPolicyPriceSelector = state => {
+  const deliveryOption = getDeliveryOptionSelector(state);
+
+  return get(deliveryOption, 'deliveryPolicy', '');
+}
 
 export const pickupAddressSelector = state => get(state, 'dictionary.pickupOptions.pickupAddress', []);
 
