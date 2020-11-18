@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     paddingBottom: "66px",
   },
   fw700: {
+    marginTop: '20px',
     fontWeight: "700",
   },
 });
