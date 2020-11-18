@@ -19,8 +19,11 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   }),
   previewWrapper: ({ isDishFullOpened }) => ({
-    width: isDishFullOpened ? '' : "140px",
-    height: isDishFullOpened ? "180px" : "140px",
+    minWidth: "96px",
+    minHeight: "96px",
+    maxWidth: isDishFullOpened ? '' : "140px",
+    maxHeight: isDishFullOpened ? "180px" : "140px",
+    width: "100%",
   }),
   openedPreview: {
     height: "180px",
