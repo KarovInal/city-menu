@@ -1041,7 +1041,15 @@ export const ECategories = {
 };
 
 const deliveryOptions = {
-  minPrice: 500
+  minPrice: 500,
+  deliveryPolicy: {
+    receivingOrders: 'ежедневно с 11:00 до 22:00',
+    orderArea: 'г. Нальчик. Доставку в пригород Нальчика, уточняйте у оператора',
+    price: 'бесплатно',
+    minPriceOrder: 'По городу 500 руб. с учетом всех скидок. Минимальную сумму заказа за пределы города, можно уточнить у оператора',
+    deliveryTime: 'от 40 минут',
+    payment: 'наличными курьеру или переводом на карту',
+  }
 };
 
 const pickupOptions = {

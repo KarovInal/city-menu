@@ -38,11 +38,14 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { SelectFieldWrap } from "../../components/select-field-wrap";
-import { pickupAddressSelector } from "../../modules/dictionary-module";
 import keyBy from "lodash/keyBy";
 import get from "lodash/get";
 import {MinPriceDelivery} from "../../modules/min-price-delivery";
 import {ableToDeliverySelector} from "../../modules/min-price-delivery/min-price-delivery-selector";
+import {
+  getDeliveryPolicyPriceSelector,
+  pickupAddressSelector
+} from "../../modules/dictionary-module";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -123,6 +126,7 @@ export const OrderFormPage = () => {
   const ableToDelivery = useSelector(ableToDeliverySelector);
   const [showIssueMessage, setShowIssueMessage] = useState(false);
   const [finalPrice, finalPriceWithDiscount] = useSelector(getPriceSelector)(true);
+  const deliveryPolicy = useSelector(getDeliveryPolicyPriceSelector);
   const classes = useStyles()
   const history = useHistory();
   const dispatch = useDispatch();
@@ -457,26 +461,23 @@ export const OrderFormPage = () => {
                       </DialogTitle>
                       <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                          <b>Прием заказов</b>: ежедневно с 10:00 до 04:45
+                          <b>Прием заказов</b>: {get(deliveryPolicy, 'receivingOrders', '')}
                           <br />
                           <br />
-                          <b>Территория доставки</b>: Москва, Московская
-                          область. Зону доставки по области можно посмотреть на
-                          карте доставки или уточнить у оператора колл-центра.
+                          <b>Территория доставки</b>: {get(deliveryPolicy, 'orderArea', '')}
                           <br />
                           <br />
-                          <b>Доставка</b>: бесплатно <br />
+                          <b>Доставка</b>: {get(deliveryPolicy, 'price', '')}
                           <br />
-                          <b>Минимальная сумма заказа</b>: 990 руб. с учетом
-                          всех скидок. Минимальную сумму заказа по территории
-                          Московской области уточняйте у оператора <br />
                           <br />
-                          <b>Время доставки</b>: по Москве (внутри МКАД) — 45
-                          минут, по остальной территории время доставки
-                          необходимо уточнять у оператора <br />
+                          <b>Минимальная сумма заказа</b>: {get(deliveryPolicy, 'minPriceOrder', '')}
                           <br />
-                          <b>Оплата</b>: наличными курьеру, банковской картой
-                          при получении заказа <br />
+                          <br />
+                          <b>Время доставки</b>: {get(deliveryPolicy, 'deliveryTime', '')}
+                          <br />
+                          <br />
+                          <b>Оплата</b>: {get(deliveryPolicy, 'payment', '')}
+                          <br />
                           <br />
                         </DialogContentText>
                       </DialogContent>
