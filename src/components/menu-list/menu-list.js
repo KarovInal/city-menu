@@ -94,10 +94,9 @@ export const MenuList = React.memo(({ data, categories }) => {
     <PaddingWrapper className={classes.pb66}>
       {map(groupedByCategory, (dishs, categoryKey) => {
         return (
-          <>
+          <Element key={categoryKey} name={categoryKey}>
             <Flex><Title className={classes.fw700}>{categories[categoryKey]?.title}</Title></Flex>
-            <Element key={categoryKey} name={categoryKey}>
-              {map(
+            {map(
                 dishs,
                 (
                   {
@@ -161,7 +160,6 @@ export const MenuList = React.memo(({ data, categories }) => {
                 }
               )}
             </Element>
-          </>
         );
       })}
     </PaddingWrapper>
