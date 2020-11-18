@@ -48,7 +48,7 @@ export const DishPage = () => {
           <StickyContainer className={'bgWhite'}>
           <Search onSearch={onSearch} />
           <Categories categories={dictionary.dishCategories} />
-          <MenuList data={dishes} />
+          <MenuList data={dishes} categories={dictionary.dishCategories} />
           <ProceedButton onSearch={onSearch} />
         </StickyContainer>
       </div>
