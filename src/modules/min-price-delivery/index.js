@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import Link from "@material-ui/core/Link";
 import Alert from '@material-ui/lab/Alert';
+import { isQrMenu } from "../../utils/is-qr-menu";
 import { useParams, useHistory } from "react-router-dom";
 import { getPriceSelector } from "../../selectors/dishes-selector";
 import { getDeliveryMinPriceSelector } from "../dictionary-module";
@@ -14,7 +15,7 @@ export const MinPriceDelivery = () => {
   const history = useHistory();
   const { cafe } = params;
 
-  if(priceWithDiscountInCart > deliveryMinPrice) {
+  if(priceWithDiscountInCart >= deliveryMinPrice || isQrMenu) {
     return null;
   }
 

@@ -20,7 +20,6 @@ import { Counter } from "../../components/counter";
 import AddIcon from '@material-ui/icons/Add';
 import { cartUpdateCountAction, cartClearAction } from "../../modules/cart-module/actions";
 import { DiscountText } from "../../components/typography/discount-text";
-import { DEFAULT_DISCOUNT } from "../../constants/discount";
 import { Caption } from "../../components/typography/caption";
 import { useHistory, useParams } from "react-router-dom";
 import {getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector} from "../../selectors/dishes-selector";
@@ -28,6 +27,7 @@ import {Analytics} from "aws-amplify";
 import {isQrMenu} from "../../utils/is-qr-menu";
 import {MinPriceDelivery} from "../../modules/min-price-delivery";
 import {ableToDeliverySelector} from "../../modules/min-price-delivery/min-price-delivery-selector";
+import {getDiscountSelector} from "../../modules/dictionary-module";
 
 const useStyles = makeStyles((theme) => ({
   cartPageWrap: {
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
     borderTop: "solid #E6E6E6 1px"
   },
+  sumPrice: {
+    color: theme.mode.primary.disabledTextColor,
+  },
   discountPrice: {
     textDecoration: 'line-through',
     color: theme.mode.primary.disabledTextColor,
@@ -78,6 +81,7 @@ export const CartPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const discount = useSelector(getDiscountSelector);
   const ableToDelivery = useSelector(ableToDeliverySelector);
   const cartDishes = useSelector(getDishesAsArraySelector)(true);
   const getDishDataFromCart = useSelector(getOrderDishDataSelector);
@@ -105,6 +109,39 @@ export const CartPage = () => {
 
   const goHome = () => {
     history.push(`/${cafe}`);
+  }
+
+  const renderPrice = () => {
+    if(isQrMenu) {
+      return (
+        <Grid container direction='column' justify='center' alignItems='flex-end' style={{ width: '100%' }}>
+          {
+            !!discount && (
+              <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+            )
+          }
+          <Title>Итого: {finalPriceWithDiscount} ₽</Title>
+        </Grid>
+      )
+    }
+
+    return (
+      <Grid container direction='row' justify='space-between'>
+        <Grid container direction='column' justify='space-between' style={{ width: 'auto' }}>
+          {
+            !!discount
+              ? <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+              : <Body1 className={classes.sumPrice}>Итого:</Body1>
+          }
+          <Title>{finalPriceWithDiscount} ₽</Title>
+        </Grid>
+        <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
+          <PrimaryButton disabled={!ableToDelivery} onClick={confirmOrder} className={classes.confirmOrderButton}>
+            Оформить заказ
+          </PrimaryButton>
+        </Grid>
+      </Grid>
+    );
   }
 
   return (
@@ -152,18 +189,21 @@ export const CartPage = () => {
       }
 
       {
-        size(cartDishes) > 0 && (
-          <Grid container direction='column' className={classes.discountWrap}>
-            <Grid container justify='space-between'>
-              <DiscountText>Скидка {DEFAULT_DISCOUNT}%</DiscountText>
-              <Body1>{`–${difPrice}\u00A0₽`}</Body1>
+        !!discount && size(cartDishes) > 0 && (
+          <Fragment>
+            <Grid container direction='column' className={classes.discountWrap}>
+              <Grid container justify='space-between'>
+                <DiscountText>Скидка {discount}%</DiscountText>
+                <Body1>{`–${difPrice}\u00A0₽`}</Body1>
+              </Grid>
+              <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
             </Grid>
-            <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
-          </Grid>
+
+          <Divider />
+          </Fragment>
         )
       }
 
-      <Divider />
 
       <Grid container justify='center' className={classes.addMoreWrap}>
           <GhostButton startIcon={<AddIcon />} onClick={goHome}>
@@ -175,33 +215,7 @@ export const CartPage = () => {
       <Toolbar />
       <AppBar position="fixed" className={classes.footerAppBar}>
         <Toolbar variant="dense" className={classes.footerToolBar}>
-          <Grid container direction='row' justify='space-between'>
-            <Grid container direction='column' justify='space-between' style={{ width: 'auto' }}>
-              {
-                isQrMenu
-                  ? <Fragment>
-                    <div />
-                    <Title>Сумма:</Title>
-                  </Fragment>
-                  : <Fragment>
-                    <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
-                    <Title>{finalPriceWithDiscount} ₽</Title>
-                  </Fragment>
-              }
-            </Grid>
-            <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
-              {
-                isQrMenu
-                  ? <Fragment>
-                    <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
-                    <Title>{finalPriceWithDiscount} ₽</Title>
-                  </Fragment>
-                  : <PrimaryButton disabled={!ableToDelivery} onClick={confirmOrder} className={classes.confirmOrderButton}>
-                    Оформить заказ
-                  </PrimaryButton>
-              }
-            </Grid>
-          </Grid>
+          { renderPrice() }
         </Toolbar>
       </AppBar>
     </div>

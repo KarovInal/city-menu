@@ -3,8 +3,9 @@ import { EDishOptions } from "../../db/common-enums";
 
 const defaultState = {
   dishOptions: EDishOptions,
-  dishes: keksFamilyData.menuList,
   dishCategories: ECategories,
+  prices: keksFamilyData.prices,
+  dishes: keksFamilyData.menuList,
   contacts: keksFamilyData.dictionary.contacts,
   pickupOptions: keksFamilyData.dictionary.pickupOptions,
   deliveryOptions: keksFamilyData.dictionary.deliveryOptions,
