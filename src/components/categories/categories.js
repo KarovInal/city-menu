@@ -35,7 +35,8 @@ const useStyle = makeStyles(theme => ({
 export const Categories = ({ categories = {} }) => {
   const classes = useStyle();
   const { anchor = '' } = useParams();
-  const [activeCategory, setActiveCategory] = useState(null);
+  const categoryKeys = Object.keys(categories);
+  const [activeCategory, setActiveCategory] = useState(categoryKeys[0]);
   const [controlledSwiper, setControlledSwiper] = useState(null);
 
   const onSetActive = (activeCategory, slideIndex) => {
@@ -45,9 +46,11 @@ export const Categories = ({ categories = {} }) => {
 
   useEffect(() => {
     if(anchor) {
-      scroller.scrollTo(`${anchor}`, {
-        offset: -120,
-      });
+      setTimeout(() => {
+        scroller.scrollTo(`${anchor}`, {
+          offset: -120,
+        });
+      }, 300);
     }
   }, [anchor]);
 
@@ -67,7 +70,7 @@ export const Categories = ({ categories = {} }) => {
           >
             <SwiperSlide className={classes.sliderGap} />
             {
-              Object.keys(categories).map((categoryKey, index, categoriesArray) => {
+              categoryKeys.map((categoryKey, index, categoriesArray) => {
                 const { category, title } = categories[categoryKey];
 
                 return (
@@ -77,7 +80,7 @@ export const Categories = ({ categories = {} }) => {
                       smooth={true}
                       to={category}
                       offset={-120}
-                      duration={300}
+                      duration={400}
                       onSetActive={activeCategory => onSetActive(activeCategory, index)}
                     >
                       <CircleButton
