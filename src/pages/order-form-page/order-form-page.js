@@ -299,7 +299,7 @@ export const OrderFormPage = () => {
           touched={deliveryFormState.touched}
           options={[
             { label: 'Наличными', value: 'cash' },
-            { label: 'Банковской картой при получении', value: 'cardAfterDelivery' }
+            // { label: 'Банковской картой при получении', value: 'cardAfterDelivery' }
           ]}
         />
       </Grid>
