@@ -227,12 +227,12 @@ export const OrderFormPage = () => {
   }
 
   useEffect(() => {
-    if(!ableToDelivery || isLoading || !mainFormState.isValid || !state.offer1 || !state.offer2) {
+    if(!ableToDelivery || isLoading || !mainFormState.isValid || !state.offer2) {
       return setIsDisabledForm(true);
     }
 
     if(formType === 'delivery') {
-      setIsDisabledForm(!deliveryFormState.isValid);
+      setIsDisabledForm(!deliveryFormState.isValid || !state.offer1);
     } else {
       setIsDisabledForm(!pickupFormState.isValid);
     }
@@ -299,7 +299,7 @@ export const OrderFormPage = () => {
           touched={deliveryFormState.touched}
           options={[
             { label: 'Наличными', value: 'cash' },
-            { label: 'Банковской картой при получении', value: 'cardAfterDelivery' }
+            // { label: 'Банковской картой при получении', value: 'cardAfterDelivery' }
           ]}
         />
       </Grid>
@@ -428,20 +428,22 @@ export const OrderFormPage = () => {
           </Grid>
 
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={state.offer1}
-                  onChange={handleChange}
-                  icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                  checkedIcon={<CheckBoxIcon fontSize="small" />}
-                  name="offer1"
-                />
-              }
-              label={
-                <p className={classes.m0}>
-                  С
-                  <span>
+            {
+              formType === 'delivery' && (
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={state.offer1}
+                      onChange={handleChange}
+                      icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                      checkedIcon={<CheckBoxIcon fontSize="small" />}
+                      name="offer1"
+                    />
+                  }
+                  label={
+                    <p className={classes.m0}>
+                      С
+                      <span>
                     <Button
                       variant="text"
                       color="primary"
@@ -483,10 +485,12 @@ export const OrderFormPage = () => {
                       </DialogContent>
                     </Dialog>
                   </span>
-                  согласен *
-                </p>
-              }
-            />
+                      согласен *
+                    </p>
+                  }
+                />
+              )
+            }
             <FormControlLabel
               control={
                 <Checkbox
