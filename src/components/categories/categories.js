@@ -47,8 +47,6 @@ export const Categories = ({ categories = {} }) => {
     if(anchor) {
       scroller.scrollTo(`${anchor}`, {
         offset: -120,
-        smooth: true,
-        duration: 200,
       });
     }
   }, [anchor]);
@@ -76,8 +74,10 @@ export const Categories = ({ categories = {} }) => {
                   <SwiperSlide className={classes.slide} key={index}>
                     <Link
                       spy={true}
+                      smooth={true}
                       to={category}
                       offset={-120}
+                      duration={300}
                       onSetActive={activeCategory => onSetActive(activeCategory, index)}
                     >
                       <CircleButton
