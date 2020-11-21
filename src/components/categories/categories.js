@@ -44,11 +44,13 @@ export const Categories = ({ categories = {} }) => {
   }
 
   useEffect(() => {
-    scroller.scrollTo(`${anchor}`, {
-      offset: -120,
-      smooth: true,
-      duration: 200,
-    });
+    if(anchor) {
+      scroller.scrollTo(`${anchor}`, {
+        offset: -120,
+        smooth: true,
+        duration: 200,
+      });
+    }
   }, [anchor]);
 
   return (
