@@ -2,10 +2,14 @@ import reduce from 'lodash/reduce';
 import get from 'lodash/get';
 import round from 'lodash/round';
 import split from 'lodash/split';
-import { DEFAULT_DISCOUNT } from '../constants/discount';
 import { getCartSelector } from "../modules/cart-module";
 import { getOrderDishesSelector } from "../modules/order-module/order-selector";
-import { dishesSelector, dishOptionsSelector, getDishByIdSelector } from "../modules/dictionary-module";
+import {
+  dishesSelector,
+  dishOptionsSelector,
+  getDiscountSelector,
+  getDishByIdSelector
+} from "../modules/dictionary-module";
 
 const parseOptionId = (optionId = '') => {
   return split(optionId, '_');
@@ -15,6 +19,7 @@ const parseOptionId = (optionId = '') => {
 export const getPriceSelector = state => (fromCart = false) => {
   const order = fromCart ? getCartSelector(state) : getOrderDishesSelector(state);
   const dishes = dishesSelector(state);
+  const discount = getDiscountSelector(state);
   const dishOptions = dishOptionsSelector(state);
 
   const finalPrice = reduce(order, (finalPriceAcc, options, dishId) => {
@@ -39,7 +44,7 @@ export const getPriceSelector = state => (fromCart = false) => {
     return finalPriceAcc;
   }, 0);
 
-  const priceWithDiscount = round(finalPrice - ((finalPrice * DEFAULT_DISCOUNT) / 100), 1);
+  const priceWithDiscount = round(finalPrice - ((finalPrice * discount) / 100), 1);
   const difPrice = round(finalPrice - priceWithDiscount);
 
   return [finalPrice, priceWithDiscount, difPrice];

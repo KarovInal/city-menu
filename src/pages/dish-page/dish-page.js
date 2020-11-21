@@ -1,16 +1,16 @@
 import React from 'react';
-import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from "react-redux";
-import { Header } from "../../components/header";
-import { RecommendationsList } from "../../components/recommendations-list/recommendations-list";
 import { StickyContainer } from "react-sticky";
+import Toolbar from "@material-ui/core/Toolbar";
+import { Header } from "../../components/header";
 import { Search } from "../../components/search";
-import { Categories } from "../../components/categories/categories";
+import { makeStyles } from '@material-ui/core/styles';
 import { MenuList } from "../../components/menu-list";
 import { ProceedButton } from "../../components/proceed-button";
-import { getRecommendationsSelector } from "../../modules/recommendations-module/recommendations-selector";
+import { Categories } from "../../components/categories/categories";
 import { dictionarySelector } from "../../modules/dictionary-module";
+import { RecommendationsList } from "../../components/recommendations-list/recommendations-list";
+import { getRecommendationsSelector } from "../../modules/recommendations-module/recommendations-selector";
 import _ from "lodash/fp";
 
 const useStyles = makeStyles({

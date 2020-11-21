@@ -13,9 +13,9 @@ import IconButton from "@material-ui/core/IconButton";
 import { Body1 } from "../../components/typography/body1";
 import { Body2 } from "../../components/typography/body2";
 import { Title } from "../../components/typography/title";
-import { DEFAULT_DISCOUNT } from "../../constants/discount";
 import { Caption } from "../../components/typography/caption";
 import { Subtitle } from "../../components/typography/subtitle";
+import {getDiscountSelector} from "../../modules/dictionary-module";
 import { DiscountText } from "../../components/typography/discount-text";
 import { getOrderSelector } from "../../modules/order-module/order-selector";
 import { getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector } from "../../selectors/dishes-selector";
@@ -71,6 +71,7 @@ export const OrderPage = () => {
   const history = useHistory();
   const orderData = useSelector(getOrderSelector);
   const orderId = get(orderData, 'orderId', null);
+  const discount = useSelector(getDiscountSelector);
   const orderDishes = useSelector(getDishesAsArraySelector)(false);
   const getDishDataFromOrder = useSelector(getOrderDishDataSelector);
   const [finalPrice, priceWithDiscount, difPrice] = useSelector(getPriceSelector)(false);
@@ -132,17 +133,25 @@ export const OrderPage = () => {
             })
           }
 
-          <Grid container direction='column' className={classes.dishWrap}>
-            <Grid container justify='space-between'>
-              <DiscountText>Скидка {DEFAULT_DISCOUNT}%</DiscountText>
-              <Body1>{`–${difPrice}\u00A0₽`}</Body1>
-            </Grid>
-            <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
-          </Grid>
-          <Divider />
+          {
+            !!discount && (
+              <Fragment>
+                <Grid container direction='column' className={classes.dishWrap}>
+                  <Grid container justify='space-between'>
+                    <DiscountText>Скидка {discount}%</DiscountText>
+                    <Body1>{`–${difPrice}\u00A0₽`}</Body1>
+                  </Grid>
+                  <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
+                </Grid>
+                <Divider />
+              </Fragment>
+            )
+          }
 
           <Grid container className={classes.dishWrap} direction='column' alignItems='flex-end'>
-            <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+            {
+              !!discount && <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+            }
             <Title>Итого: {priceWithDiscount} ₽</Title>
           </Grid>
         </Grid>

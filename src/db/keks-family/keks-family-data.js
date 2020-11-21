@@ -1073,7 +1073,13 @@ const contacts = {
   addressName: 'Кирова, 1д, ТРК "Галерея", 4 этаж, Нальчик',
 }
 
+const prices = {
+  discount: 0,
+  servicePercent: 12,
+}
+
 export const keksFamilyData = {
+  prices,
   menuList,
   recommendations,
   dictionary: {

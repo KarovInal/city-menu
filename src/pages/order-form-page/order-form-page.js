@@ -43,7 +43,7 @@ import get from "lodash/get";
 import {MinPriceDelivery} from "../../modules/min-price-delivery";
 import {ableToDeliverySelector} from "../../modules/min-price-delivery/min-price-delivery-selector";
 import {
-  getDeliveryPolicyPriceSelector,
+  getDeliveryPolicyPriceSelector, getDiscountSelector,
   pickupAddressSelector
 } from "../../modules/dictionary-module";
 
@@ -65,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
     height: '60px',
     backgroundColor: theme.mode.primary.primaryBackgroundColor,
     borderTop: "solid #E6E6E6 1px"
+  },
+  sumPrice: {
+    color: theme.mode.primary.disabledTextColor,
   },
   discountPrice: {
     textDecoration: 'line-through',
@@ -122,6 +125,7 @@ export const OrderFormPage = () => {
   const [formType, setFormType] = useState('delivery');
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabledForm, setIsDisabledForm] = useState(true);
+  const discount = useSelector(getDiscountSelector);
   const pickupAddress = useSelector(pickupAddressSelector);
   const ableToDelivery = useSelector(ableToDeliverySelector);
   const [showIssueMessage, setShowIssueMessage] = useState(false);
@@ -599,7 +603,11 @@ export const OrderFormPage = () => {
         <Toolbar variant="dense" className={classes.footerToolBar}>
           <Grid container direction='row' justify='space-between'>
             <Grid container direction='column' style={{ width: 'auto' }}>
-              <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+              {
+                !!discount
+                  ? <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+                  : <Body1 className={classes.sumPrice}>Итого:</Body1>
+              }
               <Title>{finalPriceWithDiscount} ₽</Title>
             </Grid>
             <Grid container direction='column' justify='center' style={{ width: 'auto' }}>
