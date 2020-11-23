@@ -18,6 +18,7 @@ import { Analytics } from "aws-amplify";
 import { EmptyOptionId } from "../../db/common-enums";
 import { Title } from "../typography/title";
 import { Flex } from "../flex";
+import { FixedSizeList as List } from 'react-window';
 
 const useStyles = makeStyles({
   m20_0: {
@@ -32,9 +33,9 @@ const useStyles = makeStyles({
   },
 });
 
-export const MenuList = React.memo(({ data, categories }) => {
+export const MenuList = React.memo(({ data = {}, categories }) => {
   const classes = useStyles();
-  const groupedByCategory = groupBy(data, "category");
+  const dataArray = Object.values(data);
 
   const [state, setState] = useState({});
   const handleOpenDishClick = (id) => () => {
@@ -91,78 +92,91 @@ export const MenuList = React.memo(({ data, categories }) => {
     });
   }, [countGetter, dispatch, optionsByDishIdGetter]);
 
+  const firstCategories = {
+
+  };
+
   return (
     <PaddingWrapper className={classes.pb66}>
-      {map(groupedByCategory, (dishs, categoryKey) => {
-        return (
-          <Element key={categoryKey} name={categoryKey}>
-            <Flex><Title className={classes.fw700}>{categories[categoryKey]?.title}</Title></Flex>
-            {map(
-                dishs,
-                (
-                  {
-                    title,
-                    preview,
-                    description = '',
-                    weight,
-                    price,
-                    category,
-                    id,
-                    options,
-                  },
-                  index
-                ) => {
-                  const isDishFullOpened = state[id];
+      <List
+        height={2000}
+        itemCount={dataArray.length}
+        itemSize={256}
+        width={"100%"}
+      >
+        {({ index, style }) => {
+          const dish = dataArray[index];
 
-                  return (
-                    <Element key={index} name={`${id}`}>
-                      <FlexColumn className={classes.m20_0}>
-                        <FlexRow>
-                          <Grid
-                            container
-                            spacing={0}
-                            onClick={
-                              isDishFullOpened ? noop : handleOpenDishClick(id)
-                            }
-                          >
-                            <Preview
-                              preview={preview}
-                              onClick={() => handleOpenDishClick(id)}
-                              isDishFullOpened={isDishFullOpened}
-                            />
-                            <Description
-                              isDishFullOpened={isDishFullOpened}
-                              title={title}
-                              description={description}
-                              weight={weight}
-                            />
-                          </Grid>
-                        </FlexRow>
-                        <DishOptions
-                          dishId={id}
-                          isDishFullOpened={isDishFullOpened}
-                          options={options}
-                        />
-                        <PriceBlock
-                          addOptionsPrice={isDishFullOpened}
-                          showLoader={_.isEmpty(options) || isDishFullOpened}
-                          onClick={
-                            (!_.isEmpty(options) && !isDishFullOpened)
-                              ? handleOpenDishClick(id)
-                              : createAddToCartHandler(id)
-                          }
-                          price={price}
-                          dishId={id}
-                        />
-                      </FlexColumn>
-                      <Divider />
-                    </Element>
-                  );
-                }
-              )}
+          let name;
+          let isCategory = false;
+          if (firstCategories[dish.category]) {
+            name = dish.id;
+          } else {
+            name = dish.category;
+            isCategory = true;
+            firstCategories[dish.category] = dish.category;
+          }
+
+          const {
+            title,
+            preview,
+            description = '',
+            weight,
+            price,
+            category,
+            id,
+            options,
+          } = dish;
+
+          const isDishFullOpened = state[id];
+
+          return (
+            <Element style={style} key={index} name={name}>
+              {isCategory && <Flex><Title className={classes.fw700}>{categories[name]?.title}</Title></Flex>}
+              <FlexColumn className={classes.m20_0}>
+                <FlexRow>
+                  <Grid
+                    container
+                    spacing={0}
+                    onClick={
+                      isDishFullOpened ? noop : handleOpenDishClick(id)
+                    }
+                  >
+                    <Preview
+                      preview={preview}
+                      onClick={() => handleOpenDishClick(id)}
+                      isDishFullOpened={isDishFullOpened}
+                    />
+                    <Description
+                      isDishFullOpened={isDishFullOpened}
+                      title={title}
+                      description={description}
+                      weight={weight}
+                    />
+                  </Grid>
+                </FlexRow>
+                <DishOptions
+                  dishId={id}
+                  isDishFullOpened={isDishFullOpened}
+                  options={options}
+                />
+                <PriceBlock
+                  addOptionsPrice={isDishFullOpened}
+                  showLoader={_.isEmpty(options) || isDishFullOpened}
+                  onClick={
+                    (!_.isEmpty(options) && !isDishFullOpened)
+                      ? handleOpenDishClick(id)
+                      : createAddToCartHandler(id)
+                  }
+                  price={price}
+                  dishId={id}
+                />
+              </FlexColumn>
+              <Divider />
             </Element>
-        );
-      })}
+          );
+        }}
+      </List>
     </PaddingWrapper>
   );
 });
