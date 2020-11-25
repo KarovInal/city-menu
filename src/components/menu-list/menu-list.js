@@ -4,6 +4,7 @@ import { Element } from "react-scroll";
 import Divider from "@material-ui/core/Divider";
 import { noop } from "lodash";
 import _ from "lodash/fp";
+import cn from "classnames";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -18,6 +19,8 @@ import { Analytics } from "aws-amplify";
 import { EmptyOptionId } from "../../db/common-enums";
 import { Title } from "../typography/title";
 import { Flex } from "../flex";
+import 'react-virtualized/styles.css';
+import {AutoSizer, List} from 'react-virtualized';
 
 const useStyles = makeStyles({
   m20_0: {
@@ -26,15 +29,18 @@ const useStyles = makeStyles({
   pb66: {
     paddingBottom: "66px",
   },
+  h400: {
+    height: "400px",
+  },
   fw700: {
     marginTop: '20px',
     fontWeight: "700",
   },
 });
 
-export const MenuList = React.memo(({ data, categories }) => {
+export const MenuList = React.memo(({ data = {}, categories }) => {
   const classes = useStyles();
-  const groupedByCategory = groupBy(data, "category");
+  const dataArray = Object.values(data);
 
   const [state, setState] = useState({});
   const handleOpenDishClick = (id) => () => {
@@ -91,78 +97,106 @@ export const MenuList = React.memo(({ data, categories }) => {
     });
   }, [countGetter, dispatch, optionsByDishIdGetter]);
 
-  return (
-    <PaddingWrapper className={classes.pb66}>
-      {map(groupedByCategory, (dishs, categoryKey) => {
-        return (
-          <Element key={categoryKey} name={categoryKey}>
-            <Flex><Title className={classes.fw700}>{categories[categoryKey]?.title}</Title></Flex>
-            {map(
-                dishs,
-                (
-                  {
-                    title,
-                    preview,
-                    description = '',
-                    weight,
-                    price,
-                    category,
-                    id,
-                    options,
-                  },
-                  index
-                ) => {
-                  const isDishFullOpened = state[id];
+  const firstCategories = {
 
-                  return (
-                    <Element key={index} name={`${id}`}>
-                      <FlexColumn className={classes.m20_0}>
-                        <FlexRow>
-                          <Grid
-                            container
-                            spacing={0}
-                            onClick={
-                              isDishFullOpened ? noop : handleOpenDishClick(id)
-                            }
-                          >
-                            <Preview
-                              preview={preview}
-                              onClick={() => handleOpenDishClick(id)}
-                              isDishFullOpened={isDishFullOpened}
-                            />
-                            <Description
-                              isDishFullOpened={isDishFullOpened}
-                              title={title}
-                              description={description}
-                              weight={weight}
-                            />
-                          </Grid>
-                        </FlexRow>
-                        <DishOptions
-                          dishId={id}
+  };
+  console.log('dataArray.length', dataArray.length, 99);
+  return (
+    <PaddingWrapper className={cn(classes.pb66, classes.h400)}>
+      <AutoSizer>
+        {({height, width}) => (
+          <List
+            width={width}
+            height={500}
+            // rowCount={list.length}
+            // rowHeight={20}
+            // rowRenderer={rowRenderer}
+            // width={"100%"}
+            // height={2000}
+            rowCount={dataArray.length}
+            rowHeight={256}
+            rowRenderer={({
+              key, // Unique key within array of rows
+              index, // Index of row within collection
+              isScrolling, // The List is currently being scrolled
+              isVisible, // This row is visible within the List (eg it is not an overscanned row)
+              style, // Style object to be applied to row (to position it)
+            }) => {
+              console.log('index', index, 114);
+              const dish = dataArray[index];
+
+              let name;
+              let isCategory = false;
+              if (firstCategories[dish.category]) {
+                name = dish.id;
+              } else {
+                name = dish.category;
+                isCategory = true;
+                firstCategories[dish.category] = dish.category;
+              }
+
+              const {
+                title,
+                preview,
+                description = '',
+                weight,
+                price,
+                category,
+                id,
+                options,
+              } = dish;
+
+              const isDishFullOpened = state[id];
+
+              return (
+                <Element style={style} key={key} name={name}>
+                  {isCategory && <Flex><Title className={classes.fw700}>{categories[name]?.title}</Title></Flex>}
+                  <FlexColumn className={classes.m20_0}>
+                    <FlexRow>
+                      <Grid
+                        container
+                        spacing={0}
+                        onClick={
+                          isDishFullOpened ? noop : handleOpenDishClick(id)
+                        }
+                      >
+                        <Preview
+                          preview={preview}
+                          onClick={() => handleOpenDishClick(id)}
                           isDishFullOpened={isDishFullOpened}
-                          options={options}
                         />
-                        <PriceBlock
-                          addOptionsPrice={isDishFullOpened}
-                          showLoader={_.isEmpty(options) || isDishFullOpened}
-                          onClick={
-                            (!_.isEmpty(options) && !isDishFullOpened)
-                              ? handleOpenDishClick(id)
-                              : createAddToCartHandler(id)
-                          }
-                          price={price}
-                          dishId={id}
+                        <Description
+                          isDishFullOpened={isDishFullOpened}
+                          title={title}
+                          description={description}
+                          weight={weight}
                         />
-                      </FlexColumn>
-                      <Divider />
-                    </Element>
-                  );
-                }
-              )}
-            </Element>
-        );
-      })}
+                      </Grid>
+                    </FlexRow>
+                    <DishOptions
+                      dishId={id}
+                      isDishFullOpened={isDishFullOpened}
+                      options={options}
+                    />
+                    <PriceBlock
+                      addOptionsPrice={isDishFullOpened}
+                      showLoader={_.isEmpty(options) || isDishFullOpened}
+                      onClick={
+                        (!_.isEmpty(options) && !isDishFullOpened)
+                          ? handleOpenDishClick(id)
+                          : createAddToCartHandler(id)
+                      }
+                      price={price}
+                      dishId={id}
+                    />
+                  </FlexColumn>
+                  <Divider />
+                </Element>
+              );
+            }}
+          />
+        )}
+      </AutoSizer>
     </PaddingWrapper>
   );
 });
