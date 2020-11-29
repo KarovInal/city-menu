@@ -11,7 +11,7 @@ const menuList = {
     //   type: EWeightType.Milliliter,
     //   mass: 220,
     // },
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0ed16fbdf.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0ed16fbdf.jpg",
   },
   "2": {
     "id": "2",
@@ -19,7 +19,7 @@ const menuList = {
     "title": "Каша овсяная ",
     "category": "breakfast",
     "price": 85.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0f043f7f5.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0f043f7f5.jpg",
   },
   "3": {
     "id": "3",
@@ -27,7 +27,7 @@ const menuList = {
     "title": "Каша пшеничная с сыром и зеленью",
     "category": "breakfast",
     "price": 85.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0f81ca972.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0f81ca972.jpg",
   },
   "4": {
     "id": "4",
@@ -39,7 +39,7 @@ const menuList = {
     //   type: EWeightType.Gram,
     //   mass: 150,
     // },
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c0fcbe3bb4.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0fcbe3bb4.jpg",
   },
   "5": {
     "id": "5",
@@ -47,7 +47,7 @@ const menuList = {
     "title": "Омлет на молоке",
     "category": "breakfast",
     "price": 100.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c10574176b.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c10574176b.jpg",
   },
   "6": {
     "id": "6",
@@ -55,7 +55,7 @@ const menuList = {
     "title": "Творожная запеканка",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c108622f36.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c108622f36.jpg",
   },
   "7": {
     "id": "7",
@@ -63,7 +63,7 @@ const menuList = {
     "title": "Дэлян с творогом и зеленью",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c10f03de01.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c10f03de01.jpg"
   },
   "8": {
     "id": "8",
@@ -71,7 +71,7 @@ const menuList = {
     "title": "Дэлян с картофелем и сыром",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c11408cd01.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c11408cd01.jpg"
   },
   "9": {
     "id": "9",
@@ -79,7 +79,7 @@ const menuList = {
     "title": "Дэлян с фасолью",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c116f895a2.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c116f895a2.jpg"
   },
   "10": {
     "id": "10",
@@ -87,7 +87,7 @@ const menuList = {
     "title": "Блины с творогом",
     "category": "breakfast",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c11f9e89b1.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c11f9e89b1.jpg"
   },
   "11": {
     "id": "11",
@@ -95,7 +95,7 @@ const menuList = {
     "title": "Блины с наполнителем",
     "category": "breakfast",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c125bc1177.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c125bc1177.jpg",
   },
   "12": {
     "id": "12",
@@ -103,7 +103,7 @@ const menuList = {
     "title": "Блины с мясом",
     "category": "breakfast",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c128a78971.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c128a78971.jpg"
   },
   "13": {
     "id": "13",
@@ -111,7 +111,7 @@ const menuList = {
     "title": "Пицца глазунья",
     "category": "breakfast",
     "price": 190.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1332c4057.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1332c4057.jpg"
   },
   "14": {
     "id": "14",
@@ -119,7 +119,7 @@ const menuList = {
     "title": "Блиный торт",
     "category": "breakfast",
     "price": 155.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5eaeb1c031165.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaeb1c031165.jpg"
   },
   "15": {
     "id": "15",
@@ -127,7 +127,7 @@ const menuList = {
     "title": "Суп-лапша куриная ",
     "category": "forKids",
     "price": 155.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c15150cf6d.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15150cf6d.jpg"
   },
   "16": {
     "id": "16",
@@ -135,7 +135,7 @@ const menuList = {
     "title": "Шашлычки из семги",
     "category": "forKids",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1540e6eaf.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1540e6eaf.jpg"
   },
   "17": {
     "id": "17",
@@ -143,7 +143,7 @@ const menuList = {
     "title": "Домашние сардельки ",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1564e3525.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1564e3525.jpg"
   },
   "18": {
     "id": "18",
@@ -151,7 +151,7 @@ const menuList = {
     "title": "Куриные шашлычки",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c15902599e.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15902599e.jpg"
   },
   "19": {
     "id": "19",
@@ -159,7 +159,7 @@ const menuList = {
     "title": "Салат домашний",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c15f63a790.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15f63a790.jpg",
   },
   "20": {
     "id": "20",
@@ -167,7 +167,7 @@ const menuList = {
     "title": "Наггетсы",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c164631349.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c164631349.jpg"
   },
   "21": {
     "id": "21",
@@ -175,7 +175,7 @@ const menuList = {
     "title": "Картофель фри",
     "category": "forKids",
     "price": 55.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c168118f98.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c168118f98.jpg"
   },
   "22": {
     "id": "22",
@@ -183,7 +183,7 @@ const menuList = {
     "title": "Картофельное пюре",
     "category": "forKids",
     "price": 45.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c16ac22d90.jpeg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16ac22d90.jpeg"
   },
   "23": {
     "id": "23",
@@ -191,7 +191,7 @@ const menuList = {
     "title": "Макароны",
     "category": "forKids",
     "price": 45.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c16ca897fc.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16ca897fc.jpg"
   },
   "24": {
     "id": "24",
@@ -199,7 +199,7 @@ const menuList = {
     "title": "Кетчуп",
     "category": "forKids",
     "price": 25.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c16f85acda.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16f85acda.jpg"
   },
   "25": {
     "id": "25",
@@ -207,7 +207,7 @@ const menuList = {
     "title": "Соус сырный",
     "category": "forKids",
     "price": 25.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c171686156.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c171686156.jpg"
   },
   "26": {
     "id": "26",
@@ -215,7 +215,7 @@ const menuList = {
     "title": "Соус барбекю",
     "category": "forKids",
     "price": 25.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1737b07d3.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1737b07d3.jpg"
   },
   "27": {
     "id": "27",
@@ -223,7 +223,7 @@ const menuList = {
     "title": "Молочные коктейли",
     "category": "forKids",
     "price": 140.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1777890e2.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1777890e2.jpg",
   },
   "28": {
     "id": "28",
@@ -231,7 +231,7 @@ const menuList = {
     "title": "Фокачча с сыром",
     "category": "pizza",
     "price": 90.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c189a5c6dc.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c189a5c6dc.jpg"
   },
   "29": {
     "id": "29",
@@ -239,7 +239,7 @@ const menuList = {
     "title": "Фокачча с семечками ",
     "category": "pizza",
     "price": 120.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c18cb6cb8d.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18cb6cb8d.jpg"
   },
   "30": {
     "id": "30",
@@ -247,7 +247,7 @@ const menuList = {
     "title": "Фокачча с песто",
     "category": "pizza",
     "price": 120.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c18f2b59ab.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18f2b59ab.jpg"
   },
   "31": {
     "id": "31",
@@ -255,7 +255,7 @@ const menuList = {
     "title": "Ассорти",
     "category": "pizza",
     "price": 280.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c193fa747e.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c193fa747e.jpg"
   },
   "32": {
     "id": "32",
@@ -263,7 +263,7 @@ const menuList = {
     "title": "Кекс",
     "category": "pizza",
     "price": 300.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c19b0d7eb6.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c19b0d7eb6.jpg",
   },
   "33": {
     "id": "33",
@@ -271,7 +271,7 @@ const menuList = {
     "title": "Глазунья ",
     "category": "pizza",
     "price": 190.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c19e36ba0f.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c19e36ba0f.jpg"
   },
   "34": {
     "id": "34",
@@ -279,7 +279,7 @@ const menuList = {
     "title": "Пицца \"Кекс\" мясная",
     "category": "pizza",
     "price": 320.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1a4036e51.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a4036e51.jpg",
   },
   "35": {
     "id": "35",
@@ -287,7 +287,7 @@ const menuList = {
     "title": "Пепперони",
     "category": "pizza",
     "price": 250.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1a6bd2155.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a6bd2155.jpg"
   },
   "36": {
     "id": "36",
@@ -295,7 +295,7 @@ const menuList = {
     "title": "Маргарита",
     "category": "pizza",
     "price": 210.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1abc326fe.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1abc326fe.jpg"
   },
   "37": {
     "id": "37",
@@ -303,7 +303,7 @@ const menuList = {
     "title": "C курицей и болгарским перцем",
     "category": "pizza",
     "price": 270.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1aefd92a2.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1aefd92a2.jpg"
   },
   "38": {
     "id": "38",
@@ -311,7 +311,7 @@ const menuList = {
     "title": "Пицца Цезарь ",
     "category": "pizza",
     "price": 295.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e563fd131b2d.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e563fd131b2d.jpg"
   },
   "39": {
     "id": "39",
@@ -319,7 +319,7 @@ const menuList = {
     "title": "Пицца Филадельфия ",
     "category": "pizza",
     "price": 345.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e56619a1e783.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e56619a1e783.jpg"
   },
   "40": {
     "id": "40",
@@ -327,7 +327,7 @@ const menuList = {
     "title": "Эби темпура",
     "category": "japaneseFood",
     "price": 270.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7dd7af610.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd7af610.jpg"
   },
   "41": {
     "id": "41",
@@ -335,7 +335,7 @@ const menuList = {
     "title": "Ясай",
     "category": "japaneseFood",
     "price": 150.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7dd7a6a5f.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd7a6a5f.jpg"
   },
   "42": {
     "id": "42",
@@ -343,7 +343,7 @@ const menuList = {
     "title": "Спайс Сяке",
     "category": "japaneseFood",
     "price": 225.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7dd79d78b.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd79d78b.jpg"
   },
   "43": {
     "id": "43",
@@ -351,7 +351,7 @@ const menuList = {
     "title": "Калифорния",
     "category": "japaneseFood",
     "price": 245.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7db713c5f.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db713c5f.jpg"
   },
   "44": {
     "id": "44",
@@ -359,7 +359,7 @@ const menuList = {
     "title": "Филадельфия",
     "category": "japaneseFood",
     "price": 345.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7db70ce4b.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db70ce4b.jpg"
   },
   "45": {
     "id": "45",
@@ -367,7 +367,7 @@ const menuList = {
     "title": "Дракон",
     "category": "japaneseFood",
     "price": 375.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7db706204.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db706204.jpg"
   },
   "46": {
     "id": "46",
@@ -375,7 +375,7 @@ const menuList = {
     "title": "Сяке унаги маки",
     "category": "japaneseFood",
     "price": 335.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7db6f2c8c.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db6f2c8c.jpg"
   },
   "47": {
     "id": "47",
@@ -383,7 +383,7 @@ const menuList = {
     "title": "Унаги",
     "category": "japaneseFood",
     "price": 215.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7db6e73fc.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db6e73fc.jpg"
   },
   "48": {
     "id": "48",
@@ -391,7 +391,7 @@ const menuList = {
     "title": "Сяке",
     "category": "japaneseFood",
     "price": 195.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7d7702f85.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d7702f85.jpg"
   },
   "49": {
     "id": "49",
@@ -399,7 +399,7 @@ const menuList = {
     "title": "Спайс Унаги",
     "category": "japaneseFood",
     "price": 265.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7d76f0f0e.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76f0f0e.jpg"
   },
   "50": {
     "id": "50",
@@ -407,7 +407,7 @@ const menuList = {
     "title": "Капамаки",
     "category": "japaneseFood",
     "price": 90.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7d76eaf44.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76eaf44.jpg"
   },
   "51": {
     "id": "51",
@@ -415,7 +415,7 @@ const menuList = {
     "title": "Кекс",
     "category": "japaneseFood",
     "price": 295.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7d76e3dfd.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76e3dfd.jpg"
   },
   "52": {
     "id": "52",
@@ -423,7 +423,7 @@ const menuList = {
     "title": "Нитатэ сяке",
     "category": "japaneseFood",
     "price": 265.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7d76dd53a.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76dd53a.jpg"
   },
   "53": {
     "id": "53",
@@ -431,7 +431,7 @@ const menuList = {
     "title": "Спайс кани",
     "category": "japaneseFood",
     "price": 215.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7d76d6b02.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76d6b02.jpg"
   },
   "54": {
     "id": "54",
@@ -439,7 +439,7 @@ const menuList = {
     "title": "Свежий",
     "category": "salad",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1da7476b9.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1da7476b9.jpg"
   },
   "55": {
     "id": "55",
@@ -447,7 +447,7 @@ const menuList = {
     "title": "Греческий",
     "category": "salad",
     "price": 225.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1dcc81933.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1dcc81933.jpg"
   },
   "56": {
     "id": "56",
@@ -455,7 +455,7 @@ const menuList = {
     "title": "Италия",
     "category": "salad",
     "price": 395.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1edc5c7f3.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1edc5c7f3.jpg"
   },
   "57": {
     "id": "57",
@@ -463,7 +463,7 @@ const menuList = {
     "title": "С Бураттой",
     "category": "salad",
     "price": 435.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1f0d46c26.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f0d46c26.jpg"
   },
   "58": {
     "id": "58",
@@ -471,7 +471,7 @@ const menuList = {
     "title": "Оливье овощной",
     "category": "salad",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1f31ce068.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f31ce068.jpg"
   },
   "59": {
     "id": "59",
@@ -479,7 +479,7 @@ const menuList = {
     "title": "Винегрет с опятами ",
     "category": "salad",
     "price": 225.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1f5e2a571.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f5e2a571.jpg"
   },
   "60": {
     "id": "60",
@@ -487,7 +487,7 @@ const menuList = {
     "title": "С артишоками",
     "category": "salad",
     "price": 375.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1f8234bfb.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f8234bfb.jpg"
   },
   "61": {
     "id": "61",
@@ -495,7 +495,7 @@ const menuList = {
     "title": "Цезарь с курицей ",
     "category": "salad",
     "price": 195.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1fe5040d8.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1fe5040d8.jpg"
   },
   "62": {
     "id": "62",
@@ -503,7 +503,7 @@ const menuList = {
     "title": "Цезарь с креветками",
     "category": "salad",
     "price": 335.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c201ccf261.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c201ccf261.jpg"
   },
   "63": {
     "id": "63",
@@ -511,7 +511,7 @@ const menuList = {
     "title": "Цезарь с семгой",
     "category": "salad",
     "price": 375.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c203cb32c1.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c203cb32c1.jpg"
   },
   "64": {
     "id": "64",
@@ -519,7 +519,7 @@ const menuList = {
     "title": "Микс с тигровыми креветками",
     "category": "salad",
     "price": 365.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c207c43190.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c207c43190.jpg"
   },
   "65": {
     "id": "65",
@@ -527,7 +527,7 @@ const menuList = {
     "title": "Салатный микс с куриной печенью",
     "category": "salad",
     "price": 245.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c20b093b33.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c20b093b33.jpg"
   },
   "66": {
     "id": "66",
@@ -535,7 +535,7 @@ const menuList = {
     "title": "Капрезе",
     "category": "salad",
     "price": 395.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c1ea1abfa6.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1ea1abfa6.jpg"
   },
   "67": {
     "id": "67",
@@ -543,7 +543,7 @@ const menuList = {
     "title": "Капрезе",
     "category": "salad",
     "price": 395.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5f8c7eff939fb.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7eff939fb.jpg"
   },
   "68": {
     "id": "68",
@@ -551,7 +551,7 @@ const menuList = {
     "title": "Джэдлибжэ",
     "category": "hotDishes",
     "price": 315.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c212fd38fc.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c212fd38fc.jpg"
   },
   "69": {
     "id": "69",
@@ -559,7 +559,7 @@ const menuList = {
     "title": "Рулет из телятины с сыром, под сливочным соусом",
     "category": "hotDishes",
     "price": 355.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2169cbdf6.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2169cbdf6.jpg"
   },
   "70": {
     "id": "70",
@@ -567,7 +567,7 @@ const menuList = {
     "title": "Куриная грудка с рисово-овощным гарниром и сливочным соусом",
     "category": "hotDishes",
     "price": 315.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c219b6c653.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c219b6c653.jpg"
   },
   "71": {
     "id": "71",
@@ -575,7 +575,7 @@ const menuList = {
     "title": "Куриная грудка по-восточному",
     "category": "hotDishes",
     "price": 315.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c21c08b710.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c21c08b710.jpg"
   },
   "72": {
     "id": "72",
@@ -583,7 +583,7 @@ const menuList = {
     "title": "Телятина с овощами и рисом",
     "category": "hotDishes",
     "price": 315.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c21eb0a9b4.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c21eb0a9b4.jpg"
   },
   "73": {
     "id": "73",
@@ -591,7 +591,7 @@ const menuList = {
     "title": "Медальоны из индейки",
     "category": "hotDishes",
     "price": 345.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c22273ae85.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22273ae85.jpg"
   },
   "74": {
     "id": "74",
@@ -599,7 +599,7 @@ const menuList = {
     "title": "Стейк из говядины по-французски",
     "category": "hotDishes",
     "price": 335.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c22770660b.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22770660b.jpg"
   },
   "75": {
     "id": "75",
@@ -607,7 +607,7 @@ const menuList = {
     "title": "Медальоны из телятины",
     "category": "hotDishes",
     "price": 425.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c22f60fd25.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22f60fd25.jpg"
   },
   "76": {
     "id": "76",
@@ -615,7 +615,7 @@ const menuList = {
     "title": "Жульен грибной в булочке",
     "category": "hotDishes",
     "price": 175.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2349bb8f2.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2349bb8f2.jpg"
   },
   "77": {
     "id": "77",
@@ -623,7 +623,7 @@ const menuList = {
     "title": "Семга с рисово-овощным  гарниром и сливочным соусом",
     "category": "hotDishes",
     "price": 475.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c237cd36be.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c237cd36be.jpg"
   },
   "78": {
     "id": "78",
@@ -631,7 +631,7 @@ const menuList = {
     "title": "Дорада на гриле с лаймовым соусом",
     "category": "hotDishes",
     "price": 455.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c23b244082.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23b244082.jpg"
   },
   "79": {
     "id": "79",
@@ -639,7 +639,7 @@ const menuList = {
     "title": "Изюмидай на ложе из овощей",
     "category": "hotDishes",
     "price": 415.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c23d6bf41d.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23d6bf41d.jpg"
   },
   "80": {
     "id": "80",
@@ -647,7 +647,7 @@ const menuList = {
     "title": "Форель речная жареная",
     "category": "hotDishes",
     "price": 275.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c23fef2d9a.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23fef2d9a.jpg"
   },
   "81": {
     "id": "81",
@@ -655,7 +655,7 @@ const menuList = {
     "title": "Креветки темпура",
     "category": "hotDishes",
     "price": 515.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c24631a275.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c24631a275.jpg",
   },
   "82": {
     "id": "82",
@@ -663,7 +663,7 @@ const menuList = {
     "title": "Бефстроганов из говядины в ржаной булке и картофельным пюре",
     "category": "hotDishes",
     "price": 355.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e566639b04a0.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e566639b04a0.jpg"
   },
   "83": {
     "id": "83",
@@ -671,7 +671,7 @@ const menuList = {
     "title": "Отбивная из телятины с гречкой и сливочным соусом ",
     "category": "hotDishes",
     "price": 355.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e5666c2ef2cd.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5666c2ef2cd.jpg"
   },
   "84": {
     "id": "84",
@@ -679,7 +679,7 @@ const menuList = {
     "title": "Куриные рулетики со шпинатом и диким рисом",
     "category": "hotDishes",
     "price": 345.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e5667a01217f.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5667a01217f.jpg"
   },
   "85": {
     "id": "85",
@@ -687,7 +687,7 @@ const menuList = {
     "title": "Котлета пожарская с картофельным пюре и грибным соусом",
     "category": "hotDishes",
     "price": 325.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e5668c7b0239.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5668c7b0239.jpg"
   },
   "86": {
     "id": "86",
@@ -695,7 +695,7 @@ const menuList = {
     "title": "Лосось на спарже",
     "category": "hotDishes",
     "price": 495.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e574c3620d61.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e574c3620d61.jpg"
   },
   "87": {
     "id": "87",
@@ -703,7 +703,7 @@ const menuList = {
     "title": "Плато средиземноморское",
     "category": "hotDishes",
     "price": 995.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e574c9594102.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e574c9594102.jpg"
   },
   "88": {
     "id": "88",
@@ -711,7 +711,7 @@ const menuList = {
     "title": "Куриное филе с овощным рататуем",
     "category": "hotDishes",
     "price": 355.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e6b626e923ca.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e6b626e923ca.jpg"
   },
   "89": {
     "id": "89",
@@ -719,7 +719,7 @@ const menuList = {
     "title": "Лягурлибжэ",
     "category": "hotDishes",
     "price": 335.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5eaeabf2280cf.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaeabf2280cf.jpg"
   },
   "90": {
     "id": "90",
@@ -727,7 +727,7 @@ const menuList = {
     "title": "Мороженое ",
     "category": "dessert",
     "price": 50.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c253c70713.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c253c70713.jpg",
   },
   "91": {
     "id": "91",
@@ -735,7 +735,7 @@ const menuList = {
     "title": "Штрудель яблочный",
     "category": "dessert",
     "price": 195.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c25c82c40c.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c25c82c40c.jpg"
   },
   "92": {
     "id": "92",
@@ -743,7 +743,7 @@ const menuList = {
     "title": "Штрудель вишневый",
     "category": "dessert",
     "price": 195.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c25f396ed6.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c25f396ed6.jpg"
   },
   "93": {
     "id": "93",
@@ -751,7 +751,7 @@ const menuList = {
     "title": "Панакота ванильная ",
     "category": "dessert",
     "price": 125.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c265624fb7.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c265624fb7.jpg"
   },
   "94": {
     "id": "94",
@@ -759,7 +759,7 @@ const menuList = {
     "title": "Яблоко с медом и орехами",
     "category": "dessert",
     "price": 220.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c26a8bfbb0.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26a8bfbb0.jpg"
   },
   "95": {
     "id": "95",
@@ -767,7 +767,7 @@ const menuList = {
     "title": "Мильфей ",
     "category": "dessert",
     "price": 265.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c26d8409c6.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26d8409c6.jpg"
   },
   "96": {
     "id": "96",
@@ -775,7 +775,7 @@ const menuList = {
     "title": "Тирамису",
     "category": "dessert",
     "price": 220.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c26fcc93e7.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26fcc93e7.jpg"
   },
   "97": {
     "id": "97",
@@ -783,7 +783,7 @@ const menuList = {
     "title": "Крем Брюле",
     "category": "dessert",
     "price": 135.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c272bbb238.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c272bbb238.jpg"
   },
   "98": {
     "id": "98",
@@ -791,7 +791,7 @@ const menuList = {
     "title": "Торт блинный",
     "category": "dessert",
     "price": 155.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c277755bf4.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c277755bf4.jpg"
   },
   "99": {
     "id": "99",
@@ -799,7 +799,7 @@ const menuList = {
     "title": "Торт меренговый ",
     "category": "dessert",
     "price": 165.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c27ab58630.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c27ab58630.jpg"
   },
   "100": {
     "id": "100",
@@ -807,7 +807,7 @@ const menuList = {
     "title": "Торт \"Кекс\"",
     "category": "dessert",
     "price": 155.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c27d5ef939.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c27d5ef939.jpg"
   },
   "101": {
     "id": "101",
@@ -815,7 +815,7 @@ const menuList = {
     "title": "Шоколадный фондан",
     "category": "dessert",
     "price": 260.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5eaecdd44f8fd.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaecdd44f8fd.jpg"
   },
   "102": {
     "id": "102",
@@ -823,7 +823,7 @@ const menuList = {
     "title": "Эклер",
     "category": "dessert",
     "price": 100.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5eaece40509d7.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaece40509d7.jpg"
   },
   "103": {
     "id": "103",
@@ -831,7 +831,7 @@ const menuList = {
     "title": "Эклер шоколадный",
     "category": "dessert",
     "price": 100.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5eaecf4bbd1c8.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaecf4bbd1c8.jpg"
   },
   "104": {
     "id": "104",
@@ -839,7 +839,7 @@ const menuList = {
     "title": "Эклер шоколадный",
     "category": "dessert",
     "price": 100.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5eafe01f0e533.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eafe01f0e533.jpg"
   },
   "105": {
     "id": "105",
@@ -847,7 +847,7 @@ const menuList = {
     "title": "Бургер NERO",
     "category": "burger",
     "price": 280.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2e3c97da4.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2e3c97da4.jpg"
   },
   "106": {
     "id": "106",
@@ -855,7 +855,7 @@ const menuList = {
     "title": "Бургер",
     "category": "burger",
     "price": 280.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2e753446e.jpg",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2e753446e.jpg",
   },
   "107": {
     "id": "107",
@@ -863,7 +863,7 @@ const menuList = {
     "title": "Феттучине с сыром",
     "category": "pasta",
     "price": 210.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2eaca85e7.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2eaca85e7.jpg"
   },
   "108": {
     "id": "108",
@@ -871,7 +871,7 @@ const menuList = {
     "title": "Феттучине с грибами",
     "category": "pasta",
     "price": 265.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2ed557f7a.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2ed557f7a.jpg"
   },
   "109": {
     "id": "109",
@@ -879,7 +879,7 @@ const menuList = {
     "title": "Феттучине с курицей и помидорами черри",
     "category": "pasta",
     "price": 295.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2f0183784.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f0183784.jpg"
   },
   "110": {
     "id": "110",
@@ -887,7 +887,7 @@ const menuList = {
     "title": "Феттучине с семгой и соусом песто",
     "category": "pasta",
     "price": 455.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2f63e59b9.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f63e59b9.jpg"
   },
   "111": {
     "id": "111",
@@ -895,7 +895,7 @@ const menuList = {
     "title": "Феттучине со страчателлой",
     "category": "pasta",
     "price": 335.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2f95e6d86.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f95e6d86.jpg"
   },
   "112": {
     "id": "112",
@@ -903,7 +903,7 @@ const menuList = {
     "title": "Спагетти НЕРО с морепродуктами",
     "category": "pasta",
     "price": 435.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c2fdcb52ef.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2fdcb52ef.jpg"
   },
   "113": {
     "id": "113",
@@ -911,7 +911,7 @@ const menuList = {
     "title": "Суп чечевичный",
     "category": "soup",
     "price": 190.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c305d68f68.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c305d68f68.jpg"
   },
   "114": {
     "id": "114",
@@ -919,7 +919,7 @@ const menuList = {
     "title": "Суп-лапша куриная",
     "category": "soup",
     "price": 155.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c308057cb5.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c308057cb5.jpg"
   },
   "115": {
     "id": "115",
@@ -927,7 +927,7 @@ const menuList = {
     "title": "Мясной суп в хлеб",
     "category": "soup",
     "price": 295.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c30b385ff8.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30b385ff8.jpg"
   },
   "116": {
     "id": "116",
@@ -935,7 +935,7 @@ const menuList = {
     "title": "Суп том-ям",
     "category": "soup",
     "price": 335.00,
-    "preview": "https://lyubimiigorod.ru/images/catalog/5e4c30d6bacba.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30d6bacba.jpg"
   }
 };
 
