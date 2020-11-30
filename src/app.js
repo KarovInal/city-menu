@@ -4,7 +4,6 @@ import { OrderPage } from "./pages/order-page";
 import { StoriesPage } from "./pages/stories-page";
 import { createThemeConfig } from './constants/theme';
 import { OrderFormPage } from "./pages/order-form-page";
-import { PageView } from "./components/page-view/page-view";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -24,15 +23,11 @@ function App() {
   return (
     <ThemeProvider theme={customTheme}>
       <Router>
-        <PageView>
-          <Switch>
-            <Route exact path={`/:cafe(${domainPrefixs})/cart`} component={CartPage} />
-            <Route exact path={`/:cafe(${domainPrefixs})/order`} component={OrderPage} />
-            <Route exact path={`/:cafe(${domainPrefixs})/order-form`} component={OrderFormPage} />
-            <Route exact path={`/:cafe(${domainPrefixs})/stories/:activeSlide?`} component={StoriesPage} />
-            <Route exact path={`/:cafe(${domainPrefixs})/:anchor?`} component={DishPage} />
-          </Switch>
-        </PageView>
+        <Route exact path={`/:cafe(${domainPrefixs})/cart`} component={CartPage} />
+        <Route exact path={`/:cafe(${domainPrefixs})/order`} component={OrderPage} />
+        <Route exact path={`/:cafe(${domainPrefixs})/order-form`} component={OrderFormPage} />
+        <Route exact path={`/:cafe(${domainPrefixs})/stories/:activeSlide?`} component={StoriesPage} />
+        <Route exact path={`/:cafe(${domainPrefixs})/:anchor?`} component={DishPage} />
       </Router>
     </ThemeProvider>
   );
