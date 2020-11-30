@@ -23,11 +23,13 @@ function App() {
   return (
     <ThemeProvider theme={customTheme}>
       <Router>
-        <Route exact path={`/:cafe(${domainPrefixs})/cart`} component={CartPage} />
-        <Route exact path={`/:cafe(${domainPrefixs})/order`} component={OrderPage} />
-        <Route exact path={`/:cafe(${domainPrefixs})/order-form`} component={OrderFormPage} />
-        <Route exact path={`/:cafe(${domainPrefixs})/stories/:activeSlide?`} component={StoriesPage} />
-        <Route exact path={`/:cafe(${domainPrefixs})/:anchor?`} component={DishPage} />
+        <Switch>
+          <Route exact path={`/:cafe(${domainPrefixs})/cart`} component={CartPage} />
+          <Route exact path={`/:cafe(${domainPrefixs})/order`} component={OrderPage} />
+          <Route exact path={`/:cafe(${domainPrefixs})/order-form`} component={OrderFormPage} />
+          <Route exact path={`/:cafe(${domainPrefixs})/stories/:activeSlide?`} component={StoriesPage} />
+          <Route exact path={`/:cafe(${domainPrefixs})/:anchor?`} component={DishPage} />
+        </Switch>
       </Router>
     </ThemeProvider>
   );
