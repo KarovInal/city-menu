@@ -1,48 +1,29 @@
 import React from 'react';
-import cn from "classnames";
-import { noop } from "lodash";
 import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { fade } from "@material-ui/core";
-import vector from "./assets/Vector.png";
+import vector from "./assets/Vector.svg";
+import {noop} from "../../../utils/noop";
 
-const useStyles = makeStyles((theme) => ({
-  preview: ({ isDishFullOpened }) => ({
-    minWidth: "96px",
-    minHeight: "96px",
-    maxWidth: isDishFullOpened ? '' : "140px",
-    maxHeight: isDishFullOpened ? "180px" : "140px",
-    border: "0.5px solid rgba(0, 0, 0, 0.08)",
-    boxSizing: "border-box",
-    borderRadius: "12px",
-    objectFit: "cover",
-    width: "100%",
+const useStyles = makeStyles({
+  root: ({ preview, isDishFullOpened }) => ({
+    flexShrink: 0,
+    transition: 'width .3s ease-in-out',
+    position: 'relative',
+    width: '140px',
+    height: '140px',
+    backgroundImage: `url(${preview})`,
+    backgroundSize: 'cover',
+    border: '0.5px solid rgba(0, 0, 0, 0.08)',
+    overflow: 'hidden',
+    borderRadius: '12px',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    '@media (max-width: 370px)': {
+      width: '110px',
+      height: '110px',
+    }
   }),
-  previewWrapper: ({ isDishFullOpened }) => ({
-    minWidth: "96px",
-    minHeight: "96px",
-    maxWidth: isDishFullOpened ? '' : "140px",
-    maxHeight: isDishFullOpened ? "180px" : "140px",
-    width: "100%",
-  }),
-  openedPreview: {
-    height: "180px",
-  },
-  transition: {
-    transition: "max-width .1s ease-in-out, flex-basis .1s ease-in-out",
-  },
-  relative: {
-    position: "relative",
-  },
-  rotate: {
-    transform: "rotate(180deg)",
-  },
-  skipButton: {
-    transition: "opacity .05s ease-in-out",
-    "&:active": {
-      cursor: "pointer",
-      backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.6),
-    },
+  skipButton: ({ isDishFullOpened }) => ({
     display: "block",
     height: "36px",
     width: "36px",
@@ -50,46 +31,35 @@ const useStyles = makeStyles((theme) => ({
     right: "10px",
     top: "10px",
     borderRadius: "50%",
-    backgroundColor: fade(theme.mode.primary.primaryTextColor, 0.4),
-    backgroundImage: `url(${vector})`,
+    backgroundSize: '14px',
+    backgroundPosition: "center center",
+    transform: isDishFullOpened ? "" : "rotate(180deg)",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-  },
-}));
+    backgroundImage: `url(${vector})`,
+    backgroundColor: 'rgba(26,26,26,.4)',
+    '@media (max-width: 370px)': {
+      width: "30px",
+      height: "30px",
+    }
+  }),
+});
 
 export const Preview = React.memo(({
   isDishFullOpened, onClick, preview
 }) => {
-  const classes = useStyles({isDishFullOpened});
-  const previewWidth = isDishFullOpened ? 12 : 4;
+  const classes = useStyles({ isDishFullOpened, preview });
 
   return (
     <Grid
       item
-      xs={previewWidth}
-      className={classes.transition}
+      container
+      className={classes.root}
+      style={isDishFullOpened ? { width: '100%', height: '180px' } : {}}
     >
-      <div className={cn(classes.previewWrapper, classes.relative)}>
-        <div
-          className={cn({
-            [classes.skipButton]: true,
-            [classes.rotate]: isDishFullOpened,
-          })}
-          onClick={
-            isDishFullOpened
-              ? onClick()
-              : noop
-          }
-        />
-        <img
-          className={cn(classes.preview, {
-            [classes.openedPreview]: isDishFullOpened,
-          })}
-          src={preview}
-          alt="dish-preview"
-          draggable="false"
-        />
-      </div>
+      <div
+        className={classes.skipButton}
+        onClick={isDishFullOpened ? onClick : noop}
+      />
     </Grid>
   );
 });

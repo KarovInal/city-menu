@@ -1,20 +1,37 @@
 import React from 'react';
-import cn from "classnames";
-import { FlexColumn } from "../../flex-column";
-import { Subtitle } from "../../typography/subtitle";
-import { Body2 } from "../../typography/body2";
-import { MAX_DESCRIPTION_CHAR_LENGTH } from "../menu-list-constants";
-import { gramToText } from "../../../utils";
 import Grid from "@material-ui/core/Grid";
+import { gramToText } from "../../../utils";
+import { Body2 } from "../../typography/body2";
+import { Subtitle } from "../../typography/subtitle";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
-  pl16: {
-    paddingLeft: "16px",
-  },
-  description: {
+  root: ({ isDishFullOpened }) => ({
+    height: isDishFullOpened ? 'auto' : '147px',
+    overflow: 'hidden',
+    width: isDishFullOpened ? '100%' : 'auto',
+    paddingLeft: isDishFullOpened ? '0px' : '16px',
+    marginTop: isDishFullOpened ? '8px' : '0',
+  }),
+  title: ({ isDishFullOpened }) => ({
+    display: '-webkit-box',
+    '-webkit-line-clamp': isDishFullOpened ? 'unset' : '3',
+    '-webkit-box-orient': 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    fontSize: '16px',
+    lineHeight: '27px',
+  }),
+  description: ({ isDishFullOpened }) => ({
+    display: '-webkit-box',
+    '-webkit-line-clamp': isDishFullOpened ? 'unset' : '2',
+    '-webkit-box-orient': 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    fontSize: '14px',
+    lineHeight: '24px',
     color: `${theme.mode.secondary.secondaryTextColor} !important`,
-  },
+  })
 }));
 
 export const Description = React.memo(({
@@ -23,31 +40,19 @@ export const Description = React.memo(({
   description,
   weight,
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ isDishFullOpened });
 
   return (
-    <Grid item xs>
-      <div
-        className={cn({
-          [classes.pl16]: !isDishFullOpened,
-        })}
-      >
-        <FlexColumn className={classes.text}>
-          <Subtitle>{title}</Subtitle>
-          <Body2 className={classes.description}>
-            {description.length >=
-            MAX_DESCRIPTION_CHAR_LENGTH
-              ? description.slice(
-              0,
-              MAX_DESCRIPTION_CHAR_LENGTH
-            ) + "..."
-              : description}
-          </Body2>
-          <Body2 className={classes.description}>
-            {gramToText(weight && weight.mass, weight && weight.type)}
-          </Body2>
-        </FlexColumn>
-      </div>
+    <Grid container className={classes.root}>
+      <Subtitle className={classes.title}>
+        {title}
+      </Subtitle>
+      <Body2 className={classes.description}>
+        {description}
+      </Body2>
+      <Body2 className={classes.description}>
+        {gramToText(weight && weight.mass, weight && weight.type)}
+      </Body2>
     </Grid>
   );
 });

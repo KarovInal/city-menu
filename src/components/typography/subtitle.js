@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Subtitle = React.memo(({ children }) => {
+export const Subtitle = React.memo(({ children, className }) => {
   const classes = useStyles();
 
-  return <span className={classes.root}>{children}</span>;
+  return <span className={`${classes.root} ${className}`}>{children}</span>;
 });

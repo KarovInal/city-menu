@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Element } from "react-scroll";
-import Divider from "@material-ui/core/Divider";
-import { noop } from "lodash";
 import _ from "lodash/fp";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
+import TrackVisibility from 'react-on-screen';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { FlexColumn } from "../flex-column";
-import { FlexRow } from "../flex-row";
 import { PaddingWrapper } from "../padding-wrapper";
 import { PriceBlock, Description, DishOptions, Preview } from "./dish";
 import { cartCountByOptionsGetter, cartUpdateCountAction } from "../../modules/cart-module";
@@ -18,6 +15,8 @@ import { Analytics } from "aws-amplify";
 import { EmptyOptionId } from "../../db/common-enums";
 import { Title } from "../typography/title";
 import { Flex } from "../flex";
+import {Divider} from "@material-ui/core";
+import {noop} from "../../utils/noop";
 
 const useStyles = makeStyles({
   m20_0: {
@@ -30,6 +29,13 @@ const useStyles = makeStyles({
     marginTop: '20px',
     fontWeight: "700",
   },
+  placeholderMenuItem: {
+    width: '100%',
+    height: '199px',
+    margin: '20px 0',
+    borderRadius: '12px',
+    backgroundColor: '#f7f7f7'
+  }
 });
 
 export const MenuList = React.memo(({ data, categories }) => {
@@ -116,45 +122,50 @@ export const MenuList = React.memo(({ data, categories }) => {
 
                   return (
                     <Element key={index} name={`${id}`}>
-                      <FlexColumn className={classes.m20_0}>
-                        <FlexRow>
-                          <Grid
-                            container
-                            spacing={0}
-                            onClick={
-                              isDishFullOpened ? noop : handleOpenDishClick(id)
-                            }
-                          >
-                            <Preview
-                              preview={preview}
-                              onClick={() => handleOpenDishClick(id)}
-                              isDishFullOpened={isDishFullOpened}
-                            />
-                            <Description
-                              isDishFullOpened={isDishFullOpened}
-                              title={title}
-                              description={description}
-                              weight={weight}
-                            />
-                          </Grid>
-                        </FlexRow>
-                        <DishOptions
-                          dishId={id}
-                          isDishFullOpened={isDishFullOpened}
-                          options={options}
-                        />
-                        <PriceBlock
-                          addOptionsPrice={isDishFullOpened}
-                          showLoader={_.isEmpty(options) || isDishFullOpened}
-                          onClick={
-                            (!_.isEmpty(options) && !isDishFullOpened)
-                              ? handleOpenDishClick(id)
-                              : createAddToCartHandler(id)
+                      <TrackVisibility partialVisibility offset={300}>
+                        {({ isVisible }) => {
+                          if(isVisible) {
+                            return (
+                              <div className={classes.m20_0}>
+                                <Grid
+                                  onClick={isDishFullOpened ? noop : handleOpenDishClick(id)}
+                                  container direction="row" wrap={isDishFullOpened ? 'wrap' : 'nowrap'}
+                                >
+                                  <Preview
+                                    preview={preview}
+                                    onClick={handleOpenDishClick(id)}
+                                    isDishFullOpened={isDishFullOpened}
+                                  />
+                                  <Description
+                                    title={title}
+                                    weight={weight}
+                                    description={description}
+                                    isDishFullOpened={isDishFullOpened}
+                                  />
+                                </Grid>
+                                <DishOptions
+                                  dishId={id}
+                                  isDishFullOpened={isDishFullOpened}
+                                  options={options}
+                                />
+                                <PriceBlock
+                                  addOptionsPrice={isDishFullOpened}
+                                  showLoader={_.isEmpty(options) || isDishFullOpened}
+                                  onClick={
+                                    (!_.isEmpty(options) && !isDishFullOpened)
+                                      ? handleOpenDishClick(id)
+                                      : createAddToCartHandler(id)
+                                  }
+                                  price={price}
+                                  dishId={id}
+                                />
+                              </div>
+                            );
                           }
-                          price={price}
-                          dishId={id}
-                        />
-                      </FlexColumn>
+
+                          return <div className={classes.placeholderMenuItem} />
+                        }}
+                      </TrackVisibility>
                       <Divider />
                     </Element>
                   );

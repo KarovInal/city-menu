@@ -77,7 +77,6 @@ export const Categories = ({ categories = {} }) => {
                   <SwiperSlide className={classes.slide} key={index}>
                     <Link
                       spy={true}
-                      smooth={true}
                       to={category}
                       offset={-120}
                       duration={400}
