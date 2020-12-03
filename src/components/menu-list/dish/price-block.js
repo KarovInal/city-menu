@@ -2,11 +2,11 @@ import React from 'react';
 import _ from 'lodash/fp';
 import { Price } from "../../position/price";
 import { SecondaryButton } from "../../buttons";
-import { FlexRow } from "../../flex-row";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { ReactComponent as PriceBlockMark } from "./assets/price-block-mark.svg";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {useSelector} from "react-redux";
+import {Grid} from "@material-ui/core";
 import {createGetSelectedOptionsPriceByDishId} from "../../../modules/select-options-module";
 
 const useStyles = makeStyles({
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     paddingTop: "16px",
   },
   addInCartButton: {
-    width: "115px",
+    width: "119px",
     height: "36px",
   },
   colorWhite: {
@@ -80,8 +80,10 @@ export const PriceBlock = React.memo(({
 
 
   return (
-    <FlexRow
-      justifyContent="space-between"
+    <Grid
+      container
+      alignItems='center'
+      justify='space-between'
       className={classes.bottomBlock}
     >
       <div>
@@ -95,6 +97,6 @@ export const PriceBlock = React.memo(({
           {content}
         </SecondaryButton>
       </div>
-    </FlexRow>
+    </Grid>
   );
 });
