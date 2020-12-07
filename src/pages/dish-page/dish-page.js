@@ -6,6 +6,7 @@ import { Header } from "../../components/header";
 import { Search } from "../../components/search";
 import { makeStyles } from '@material-ui/core/styles';
 import { MenuList } from "../../components/menu-list";
+import { BannerModule } from "../../modules/banner-module";
 import { ProceedButton } from "../../components/proceed-button";
 import { Categories } from "../../components/categories/categories";
 import { dictionarySelector } from "../../modules/dictionary-module";
@@ -41,6 +42,7 @@ export const DishPage = () => {
 
   return (
     <>
+      <BannerModule />
       <Header />
       <Toolbar />
       <div className={styles.boxShadow}>
