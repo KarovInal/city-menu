@@ -101,6 +101,7 @@ export const EOptionType = {
 export const EWeightType = {
   Gram: 'gram',
   Milliliter: 'milliliter',
+  Length: 'length',
 };
 
 export const EmptyOptionId = '00';

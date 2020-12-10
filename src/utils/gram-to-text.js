@@ -18,7 +18,12 @@ export const gramToText = (gramN, type) => {
     }
     case EWeightType.Gram: {
       bigName = 'кг.';
-      smallName = 'г.';
+      smallName = 'гр.';
+      break;
+    }
+    case EWeightType.Length: {
+      bigName = 'м.';
+      smallName = 'см.';
       break;
     }
     default: break;
