@@ -28,6 +28,8 @@ import {isQrMenu} from "../../utils/is-qr-menu";
 import {MinPriceDelivery} from "../../modules/min-price-delivery";
 import {ableToDeliverySelector} from "../../modules/min-price-delivery/min-price-delivery-selector";
 import {getDiscountSelector} from "../../modules/dictionary-module";
+import {SlideM} from "../../modules/slide/slideM";
+import {setLeftSlideDirection, setRightSlideDirection} from "../../modules/slide";
 
 const useStyles = makeStyles((theme) => ({
   cartPageWrap: {
@@ -100,6 +102,8 @@ export const CartPage = () => {
       },
     });
 
+    setLeftSlideDirection();
+
     history.push('order-form');
   }
 
@@ -108,6 +112,8 @@ export const CartPage = () => {
   const { cafe } = params;
 
   const goHome = () => {
+    setRightSlideDirection();
+
     history.push(`/${cafe}`);
   }
 
@@ -158,59 +164,57 @@ export const CartPage = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />
+      <SlideM>
+        <div>
+          <MinPriceDelivery />
+          {
+            map(cartDishes, ({ dishId, optionId, count }, index) => {
+              const { title = '', preview, priceWithOptions, optionsFromCart } = getDishDataFromCart(dishId, optionId, true);
 
-      <MinPriceDelivery />
-
-      {
-        map(cartDishes, ({ dishId, optionId, count }, index) => {
-          const { title = '', preview, priceWithOptions, optionsFromCart } = getDishDataFromCart(dishId, optionId, true);
-
-          return (
-            <Fragment key={index}>
-              <Grid className={classes.dishWrap} container wrap='nowrap'>
-                <Preview size='sm' preview={preview} />
-                <Grid container direction='column' style={{ margin: '0 16px' }}>
-                  <Subtitle>{ title }</Subtitle>
-                  <Body2 type='secondary'>
-                    {join(map(optionsFromCart, 'title'), ', ')}
-                  </Body2>
-                  <Counter
-                    count={count}
-                    style={{ marginTop: '16px' }}
-                    onUpdate={nextCount => dispatch(cartUpdateCountAction(dishId, optionId, nextCount))}
-                  />
+              return (
+                <Fragment key={index}>
+                  <Grid className={classes.dishWrap} container wrap='nowrap'>
+                    <Preview size='sm' preview={preview} />
+                    <Grid container direction='column' style={{ margin: '0 16px' }}>
+                      <Subtitle>{ title }</Subtitle>
+                      <Body2 type='secondary'>
+                        {join(map(optionsFromCart, 'title'), ', ')}
+                      </Body2>
+                      <Counter
+                        count={count}
+                        style={{ marginTop: '16px' }}
+                        onUpdate={nextCount => dispatch(cartUpdateCountAction(dishId, optionId, nextCount))}
+                      />
+                    </Grid>
+                    <Body1>{`${priceWithOptions}\u00A0₽`}</Body1>
+                  </Grid>
+                  <Divider />
+                </Fragment>
+              );
+            })
+          }
+          {
+            !!discount && size(cartDishes) > 0 && (
+              <Fragment>
+                <Grid container direction='column' className={classes.discountWrap}>
+                  <Grid container justify='space-between'>
+                    <DiscountText>Скидка {discount}%</DiscountText>
+                    <Body1>{`–${difPrice}\u00A0₽`}</Body1>
+                  </Grid>
+                  <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
                 </Grid>
-                <Body1>{`${priceWithOptions}\u00A0₽`}</Body1>
-              </Grid>
-              <Divider />
-            </Fragment>
-          );
-        })
-      }
 
-      {
-        !!discount && size(cartDishes) > 0 && (
-          <Fragment>
-            <Grid container direction='column' className={classes.discountWrap}>
-              <Grid container justify='space-between'>
-                <DiscountText>Скидка {discount}%</DiscountText>
-                <Body1>{`–${difPrice}\u00A0₽`}</Body1>
-              </Grid>
-              <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
-            </Grid>
-
-          <Divider />
-          </Fragment>
-        )
-      }
-
-
-      <Grid container justify='center' className={classes.addMoreWrap}>
-          <GhostButton startIcon={<AddIcon />} onClick={goHome}>
-            Добавить еще
-          </GhostButton>
-      </Grid>
-
+                <Divider />
+              </Fragment>
+            )
+          }
+          <Grid container justify='center' className={classes.addMoreWrap}>
+            <GhostButton startIcon={<AddIcon />} onClick={goHome}>
+              Добавить еще
+            </GhostButton>
+          </Grid>
+        </div>
+      </SlideM>
       <Toolbar />
       <Toolbar />
       <AppBar position="fixed" className={classes.footerAppBar}>

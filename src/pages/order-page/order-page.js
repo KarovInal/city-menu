@@ -19,6 +19,7 @@ import {getDiscountSelector} from "../../modules/dictionary-module";
 import { DiscountText } from "../../components/typography/discount-text";
 import { getOrderSelector } from "../../modules/order-module/order-selector";
 import { getDishesAsArraySelector, getOrderDishDataSelector, getPriceSelector } from "../../selectors/dishes-selector";
+import {SlideM} from "../../modules/slide/slideM";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,73 +90,75 @@ export const OrderPage = () => {
   //  Необходимо создать обертку нас всеми урлами
   //  И добавить возможность управлять bgColor из redux
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar variant="dense" className={classes.header}>
-          <IconButton onClick={() => history.push(`/${cafe}`)} edge="start" aria-label="menu">
-            <Close style={{ color: '#fff' }} />
-          </IconButton>
-          <Title className={classes.headerTitle}>Спасибо за заказ</Title>
-          <IconButton edge="end">
-            <div style={{ width: '1em' }} />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Toolbar className={classes.minH60} />
-      <Grid container justify='center'>
-        <Body1 className={classes.guideText}>
-          Ваш заказ успешно отправлен <span role="img" aria-label="">👌</span>
-          <br/>
-          В ближайшее время с вами свяжется оператор для подтверждения заказа <span role="img" aria-label="">☎️</span>
-        </Body1>
-      </Grid>
-      <Grid container justify='center' className={classes.orderListWrap}>
-        <Grid className={classes.orderListContainer} container direction='column'>
-          <Title>Заказ #{orderId}</Title>
-          {
-            map(orderDishes, ({ dishId, optionId }, index) => {
-              const { title = '', priceWithOptions, optionsFromCart, count } = getDishDataFromOrder(dishId, optionId, false);
+    <SlideM>
+      <div className={classes.root}>
+        <AppBar position="fixed">
+          <Toolbar variant="dense" className={classes.header}>
+            <IconButton onClick={() => history.push(`/${cafe}`)} edge="start" aria-label="menu">
+              <Close style={{ color: '#fff' }} />
+            </IconButton>
+            <Title className={classes.headerTitle}>Спасибо за заказ</Title>
+            <IconButton edge="end">
+              <div style={{ width: '1em' }} />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Toolbar className={classes.minH60} />
+        <Grid container justify='center'>
+          <Body1 className={classes.guideText}>
+            Ваш заказ успешно отправлен <span role="img" aria-label="">👌</span>
+            <br/>
+            В ближайшее время с вами свяжется оператор для подтверждения заказа <span role="img" aria-label="">☎️</span>
+          </Body1>
+        </Grid>
+        <Grid container justify='center' className={classes.orderListWrap}>
+          <Grid className={classes.orderListContainer} container direction='column'>
+            <Title>Заказ #{orderId}</Title>
+            {
+              map(orderDishes, ({ dishId, optionId }, index) => {
+                const { title = '', priceWithOptions, optionsFromCart, count } = getDishDataFromOrder(dishId, optionId, false);
 
-              return (
-                <Fragment key={index}>
-                  <Grid className={classes.dishWrap} container wrap='nowrap'>
-                    <Grid container direction='column'>
-                      <Subtitle>{ title }</Subtitle>
-                      <Body2 type='secondary'>
-                        {join(map(optionsFromCart, 'title'), ', ')}
-                      </Body2>
+                return (
+                  <Fragment key={index}>
+                    <Grid className={classes.dishWrap} container wrap='nowrap'>
+                      <Grid container direction='column'>
+                        <Subtitle>{ title }</Subtitle>
+                        <Body2 type='secondary'>
+                          {join(map(optionsFromCart, 'title'), ', ')}
+                        </Body2>
+                      </Grid>
+                      <Body1>{`${count}\u00A0x\u00A0${priceWithOptions}\u00A0₽`}</Body1>
                     </Grid>
-                    <Body1>{`${count}\u00A0x\u00A0${priceWithOptions}\u00A0₽`}</Body1>
+                    <Divider />
+                  </Fragment>
+                );
+              })
+            }
+
+            {
+              !!discount && (
+                <Fragment>
+                  <Grid container direction='column' className={classes.dishWrap}>
+                    <Grid container justify='space-between'>
+                      <DiscountText>Скидка {discount}%</DiscountText>
+                      <Body1>{`–${difPrice}\u00A0₽`}</Body1>
+                    </Grid>
+                    <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
                   </Grid>
                   <Divider />
                 </Fragment>
-              );
-            })
-          }
-
-          {
-            !!discount && (
-              <Fragment>
-                <Grid container direction='column' className={classes.dishWrap}>
-                  <Grid container justify='space-between'>
-                    <DiscountText>Скидка {discount}%</DiscountText>
-                    <Body1>{`–${difPrice}\u00A0₽`}</Body1>
-                  </Grid>
-                  <Caption type='secondary'>Заказывая через сервис QR Menu вы получаете скидку</Caption>
-                </Grid>
-                <Divider />
-              </Fragment>
-            )
-          }
-
-          <Grid container className={classes.dishWrap} direction='column' alignItems='flex-end'>
-            {
-              !!discount && <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+              )
             }
-            <Title>Итого: {priceWithDiscount} ₽</Title>
+
+            <Grid container className={classes.dishWrap} direction='column' alignItems='flex-end'>
+              {
+                !!discount && <Body1 className={classes.discountPrice}>{finalPrice} ₽</Body1>
+              }
+              <Title>Итого: {priceWithDiscount} ₽</Title>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+    </SlideM>
   )
 };

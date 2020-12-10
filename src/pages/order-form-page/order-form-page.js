@@ -46,6 +46,8 @@ import {
   getDeliveryPolicyPriceSelector, getDiscountSelector,
   pickupAddressSelector
 } from "../../modules/dictionary-module";
+import {SlideM} from "../../modules/slide/slideM";
+import {setRightSlideDirection} from "../../modules/slide";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -346,6 +348,8 @@ export const OrderFormPage = () => {
   const { cafe } = params;
 
   const goCart = () => {
+    setRightSlideDirection();
+
     history.push(`/${cafe}/cart`)
   }
 
@@ -360,94 +364,91 @@ export const OrderFormPage = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />
-
-      <MinPriceDelivery />
-
-      <Snackbar
-        open={showIssueMessage}
-        autoHideDuration={2000}
-        onClose={() => setShowIssueMessage(false)}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        message={`Упс... Что-то пошло не так. Попробуйте еще раз`}
-      />
-
-      <Grid container alignItems='center' direction='row'>
-        <form className={classes.formWrap}>
-          <Selector
-            activeItem={formType}
-            onChange={setFormType}
-            items={[{title: 'Доставка', key: 'delivery'}, {title: 'Самовывоз', key: 'pickup'}]}
+      <SlideM>
+        <div>
+          <MinPriceDelivery />
+          <Snackbar
+            open={showIssueMessage}
+            autoHideDuration={2000}
+            onClose={() => setShowIssueMessage(false)}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            message={`Упс... Что-то пошло не так. Попробуйте еще раз`}
           />
-
-          <Grid className={classes.fieldWrap}>
-            <TextFieldWrap
-              fullWidth
-              label='Имя *'
-              name='firstName'
-              variant='outlined'
-              errors={mainErrors}
-              touched={mainFormState.touched}
-              inputRef={mainRegister({ required: true })}
-            />
-          </Grid>
-          <Grid className={classes.fieldWrap}>
-            <TextFieldWithMaskWrap
-              fullWidth
-              type='tel'
-              name='phone'
-              alwaysShowMask
-              variant='outlined'
-              errors={mainErrors}
-              control={mainControl}
-              mask="+7 (999) 999-99-99"
-              touched={mainFormState.touched}
-              rules={{
-                required: true,
-                validate: {
-                  inputTelRequired: isNotFilledTel
-                }
-              }}
-            />
-          </Grid>
-          {
-            formType === 'delivery'
-              ? renderDeliveryForm()
-              : renderPickupForm()
-          }
-          <Grid className={classes.fieldWrap}>
-            <TextFieldWrap fullWidth variant='outlined' inputRef={mainRegister} label='Комментарий' placeholder='Комментарий' name='comment' />
-          </Grid>
-          <Grid className={classes.fieldWrap}>
-            <Body1>Кол-во персон:</Body1>
-            <Controller
-              name='countOfPersons'
-              control={mainControl}
-              defaultValue={1}
-              render={({ value, name, onChange, ...otherProps}) => {
-                return (
-                  <Counter count={value} onUpdate={onChange} />
-                );
-              }}
-            />
-          </Grid>
-
-          <FormGroup>
-            {
-              formType === 'delivery' && (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={state.offer1}
-                      onChange={handleChange}
-                      icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                      checkedIcon={<CheckBoxIcon fontSize="small" />}
-                      name="offer1"
-                    />
-                  }
-                  label={
-                    <p className={classes.m0}>
-                      С
-                      <span>
+          <Grid container alignItems='center' direction='row'>
+            <form className={classes.formWrap}>
+              <Selector
+                activeItem={formType}
+                onChange={setFormType}
+                items={[{title: 'Доставка', key: 'delivery'}, {title: 'Самовывоз', key: 'pickup'}]}
+              />
+              <Grid className={classes.fieldWrap}>
+                <TextFieldWrap
+                  fullWidth
+                  label='Имя *'
+                  name='firstName'
+                  variant='outlined'
+                  errors={mainErrors}
+                  touched={mainFormState.touched}
+                  inputRef={mainRegister({ required: true })}
+                />
+              </Grid>
+              <Grid className={classes.fieldWrap}>
+                <TextFieldWithMaskWrap
+                  fullWidth
+                  type='tel'
+                  name='phone'
+                  alwaysShowMask
+                  variant='outlined'
+                  errors={mainErrors}
+                  control={mainControl}
+                  mask="+7 (999) 999-99-99"
+                  touched={mainFormState.touched}
+                  rules={{
+                    required: true,
+                    validate: {
+                      inputTelRequired: isNotFilledTel
+                    }
+                  }}
+                />
+              </Grid>
+              {
+                formType === 'delivery'
+                  ? renderDeliveryForm()
+                  : renderPickupForm()
+              }
+              <Grid className={classes.fieldWrap}>
+                <TextFieldWrap fullWidth variant='outlined' inputRef={mainRegister} label='Комментарий' placeholder='Комментарий' name='comment' />
+              </Grid>
+              <Grid className={classes.fieldWrap}>
+                <Body1>Кол-во персон:</Body1>
+                <Controller
+                  name='countOfPersons'
+                  control={mainControl}
+                  defaultValue={1}
+                  render={({ value, name, onChange, ...otherProps}) => {
+                    return (
+                      <Counter count={value} onUpdate={onChange} />
+                    );
+                  }}
+                />
+              </Grid>
+              <FormGroup>
+                {
+                  formType === 'delivery' && (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={state.offer1}
+                          onChange={handleChange}
+                          icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                          checkedIcon={<CheckBoxIcon fontSize="small" />}
+                          name="offer1"
+                        />
+                      }
+                      label={
+                        <p className={classes.m0}>
+                          С
+                          <span>
                     <Button
                       variant="text"
                       color="primary"
@@ -489,26 +490,26 @@ export const OrderFormPage = () => {
                       </DialogContent>
                     </Dialog>
                   </span>
-                      согласен *
-                    </p>
+                          согласен *
+                        </p>
+                      }
+                    />
+                  )
+                }
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={state.offer2}
+                      onChange={handleChange}
+                      icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                      checkedIcon={<CheckBoxIcon fontSize="small" />}
+                      name="offer2"
+                    />
                   }
-                />
-              )
-            }
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={state.offer2}
-                  onChange={handleChange}
-                  icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                  checkedIcon={<CheckBoxIcon fontSize="small" />}
-                  name="offer2"
-                />
-              }
-              label={
-                <p className={classes.m0}>
-                  Я согласен с
-                  <span>
+                  label={
+                    <p className={classes.m0}>
+                      Я согласен с
+                      <span>
                     <Button
                       variant="text"
                       color="primary"
@@ -589,14 +590,15 @@ export const OrderFormPage = () => {
                       </DialogContent>
                     </Dialog>
                   </span>
-                   персональных данных *
-                </p>
-              }
-            />
-          </FormGroup>
-        </form>
-      </Grid>
-
+                      персональных данных *
+                    </p>
+                  }
+                />
+              </FormGroup>
+            </form>
+          </Grid>
+        </div>
+      </SlideM>
       <Toolbar />
       <Toolbar />
       <AppBar position="fixed" className={classes.footerAppBar}>
