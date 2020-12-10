@@ -7,19 +7,17 @@ const menuList = {
     "title": "Каша рисовая с молоком",
     "category": "breakfast",
     "price": 85.00,
-    // weight: {
-    //   type: EWeightType.Milliliter,
-    //   mass: 220,
-    // },
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0ed16fbdf.jpg",
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0ed16fbdf.jpg"
   },
   "2": {
     "id": "2",
     "availability": true,
-    "title": "Каша овсяная ",
+    "title": "Каша овсяная",
     "category": "breakfast",
     "price": 85.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0f043f7f5.jpg",
+    "description": "Молоко, овсянка",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0f043f7f5.jpg"
   },
   "3": {
     "id": "3",
@@ -27,915 +25,953 @@ const menuList = {
     "title": "Каша пшеничная с сыром и зеленью",
     "category": "breakfast",
     "price": 85.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0f81ca972.jpg",
+    "description": "Каша пшеничная, молоко, сыр и зелень",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0f81ca972.jpg"
   },
   "4": {
     "id": "4",
     "availability": true,
-    "title": "Глазунья ",
+    "title": "Омлет на молоке",
     "category": "breakfast",
-    "price": 90.00,
-    // weight: {
-    //   type: EWeightType.Gram,
-    //   mass: 150,
-    // },
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c0fcbe3bb4.jpg",
+    "price": 100.00,
+    "description": "Два яйца, молок, соль и специи",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c10574176b.jpg"
   },
   "5": {
     "id": "5",
     "availability": true,
-    "title": "Омлет на молоке",
+    "title": "Творожная запеканка",
     "category": "breakfast",
-    "price": 100.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c10574176b.jpg",
+    "price": 200.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c108622f36.jpg"
   },
   "6": {
     "id": "6",
     "availability": true,
-    "title": "Творожная запеканка",
+    "title": "Дэлян с творогом и зеленью",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c108622f36.jpg",
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c10f03de01.jpg"
   },
   "7": {
     "id": "7",
     "availability": true,
-    "title": "Дэлян с творогом и зеленью",
+    "title": "Дэлян с картофелем и сыром",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c10f03de01.jpg"
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c11408cd01.jpg"
   },
   "8": {
     "id": "8",
     "availability": true,
-    "title": "Дэлян с картофелем и сыром",
+    "title": "Дэлян с фасолью",
     "category": "breakfast",
     "price": 200.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c11408cd01.jpg"
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c116f895a2.jpg"
   },
   "9": {
     "id": "9",
     "availability": true,
-    "title": "Дэлян с фасолью",
+    "title": "Блины с творогом",
     "category": "breakfast",
-    "price": 200.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c116f895a2.jpg"
+    "price": 175.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c11f9e89b1.jpg"
   },
   "10": {
     "id": "10",
     "availability": true,
-    "title": "Блины с творогом",
+    "title": "Блины с наполнителем",
     "category": "breakfast",
     "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c11f9e89b1.jpg"
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c125bc1177.jpg"
   },
   "11": {
     "id": "11",
     "availability": true,
-    "title": "Блины с наполнителем",
+    "title": "Блины с мясом",
     "category": "breakfast",
     "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c125bc1177.jpg",
+    "description": "Говяжий фарш",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c128a78971.jpg"
   },
   "12": {
     "id": "12",
     "availability": true,
-    "title": "Блины с мясом",
+    "title": "Пицца глазунья",
     "category": "breakfast",
-    "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c128a78971.jpg"
+    "price": 190.00,
+    "description": "Два яйца, колбаса (халяль), сыр",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1332c4057.jpg"
   },
   "13": {
     "id": "13",
     "availability": true,
-    "title": "Пицца глазунья",
+    "title": "Блиный торт",
     "category": "breakfast",
-    "price": 190.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1332c4057.jpg"
+    "price": 155.00,
+    "description": "Блины, сливочно-творожныйкрем, малина",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaeb1c031165.jpg"
   },
   "14": {
     "id": "14",
     "availability": true,
-    "title": "Блиный торт",
-    "category": "breakfast",
+    "title": "Суп лапша куриная",
+    "category": "forKids",
     "price": 155.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaeb1c031165.jpg"
+    "description": "Куриный бульон, белое мясо, лапша, зелень",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15150cf6d.jpg"
   },
   "15": {
     "id": "15",
     "availability": true,
-    "title": "Суп-лапша куриная ",
+    "title": "Шашлычки из семги",
     "category": "forKids",
-    "price": 155.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15150cf6d.jpg"
+    "price": 175.00,
+    "description": "Два шашлычка, сливочный соус",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1540e6eaf.jpg"
   },
   "16": {
     "id": "16",
     "availability": true,
-    "title": "Шашлычки из семги",
+    "title": "Домашние сардельки",
     "category": "forKids",
-    "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1540e6eaf.jpg"
+    "price": 125.00,
+    "description": "Три сардельки, мясо халяль",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1564e3525.jpg"
   },
   "17": {
     "id": "17",
     "availability": true,
-    "title": "Домашние сардельки ",
+    "title": "Куриные шашлычки",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1564e3525.jpg"
+    "description": "Два шашлычка, помидоры черри",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15902599e.jpg"
   },
   "18": {
     "id": "18",
     "availability": true,
-    "title": "Куриные шашлычки",
+    "title": "Салат домашний",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15902599e.jpg"
+    "description": "Помидоры, огурцы, болгарский перец, лист салата",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15f63a790.jpg"
   },
   "19": {
     "id": "19",
     "availability": true,
-    "title": "Салат домашний",
+    "title": "Наггетсы",
     "category": "forKids",
     "price": 125.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c15f63a790.jpg",
+    "description": "7 штук в порции",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c164631349.jpg"
   },
   "20": {
     "id": "20",
     "availability": true,
-    "title": "Наггетсы",
+    "title": "Картофель фри",
     "category": "forKids",
-    "price": 125.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c164631349.jpg"
+    "price": 55.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c168118f98.jpg"
   },
   "21": {
     "id": "21",
     "availability": true,
-    "title": "Картофель фри",
+    "title": "Картофельное пюре",
     "category": "forKids",
-    "price": 55.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c168118f98.jpg"
+    "price": 45.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16ac22d90.jpeg"
   },
   "22": {
     "id": "22",
     "availability": true,
-    "title": "Картофельное пюре",
+    "title": "Макароны",
     "category": "forKids",
     "price": 45.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16ac22d90.jpeg"
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16ca897fc.jpg"
   },
   "23": {
     "id": "23",
     "availability": true,
-    "title": "Макароны",
+    "title": "Кетчуп",
     "category": "forKids",
-    "price": 45.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16ca897fc.jpg"
+    "price": 25.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16f85acda.jpg"
   },
   "24": {
     "id": "24",
     "availability": true,
-    "title": "Кетчуп",
+    "title": "Соус сырный",
     "category": "forKids",
     "price": 25.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c16f85acda.jpg"
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c171686156.jpg"
   },
   "25": {
     "id": "25",
     "availability": true,
-    "title": "Соус сырный",
+    "title": "Молочные коктейли",
     "category": "forKids",
-    "price": 25.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c171686156.jpg"
+    "price": 140.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1777890e2.jpg"
   },
   "26": {
     "id": "26",
     "availability": true,
-    "title": "Соус барбекю",
-    "category": "forKids",
-    "price": 25.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1737b07d3.jpg"
+    "title": "Фокачча с сыром",
+    "category": "pizza",
+    "price": 90.00,
+    "description": "С сыром Пармезан",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c189a5c6dc.jpg"
   },
   "27": {
     "id": "27",
     "availability": true,
-    "title": "Молочные коктейли",
-    "category": "forKids",
-    "price": 140.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1777890e2.jpg",
+    "title": "Фокачча с семечками",
+    "category": "pizza",
+    "price": 120.00,
+    "description": "Сыр Пармезан, тыквенные семечки, подсолнечные семечки",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18cb6cb8d.jpg"
   },
   "28": {
     "id": "28",
     "availability": true,
-    "title": "Фокачча с сыром",
+    "title": "Фокачча с песто",
     "category": "pizza",
-    "price": 90.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c189a5c6dc.jpg"
+    "price": 120.00,
+    "description": "Соус песто",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18f2b59ab.jpg"
   },
   "29": {
     "id": "29",
     "availability": true,
-    "title": "Фокачча с семечками ",
+    "title": "Ассорти",
     "category": "pizza",
-    "price": 120.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18cb6cb8d.jpg"
+    "price": 280.00,
+    "description": "Сыр Моцарелла,колбаса копченая халяль,грибы шампиньоны,соус томатный,специи,болгарский перец, маслины,зелень",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c193fa747e.jpg"
   },
   "30": {
     "id": "30",
     "availability": true,
-    "title": "Фокачча с песто",
+    "title": "Кекс",
     "category": "pizza",
-    "price": 120.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18f2b59ab.jpg"
+    "price": 300.00,
+    "description": "Закрытая пицца с сыром моцарелла и филадельфия",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c19b0d7eb6.jpg"
   },
   "31": {
     "id": "31",
     "availability": true,
-    "title": "Ассорти",
+    "title": "Пицца \"Кекс\" мясная",
     "category": "pizza",
-    "price": 280.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c193fa747e.jpg"
+    "price": 320.00,
+    "description": "Закрытая пицца с разными видами сыров и рубленной телятиной",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a4036e51.jpg"
   },
   "32": {
     "id": "32",
     "availability": true,
-    "title": "Кекс",
+    "title": "Пепперони",
     "category": "pizza",
-    "price": 300.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c19b0d7eb6.jpg",
+    "price": 250.00,
+    "description": "Сырмоцарелла, томатный соус\"Мутти\", колбаса копченая халяль, острый перец",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a6bd2155.jpg"
   },
   "33": {
     "id": "33",
     "availability": true,
-    "title": "Глазунья ",
+    "title": "Маргарита",
     "category": "pizza",
-    "price": 190.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c19e36ba0f.jpg"
+    "price": 210.00,
+    "description": "Сыр моцарелла, томатный соус \"Мутти\"",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1abc326fe.jpg"
   },
   "34": {
     "id": "34",
     "availability": true,
-    "title": "Пицца \"Кекс\" мясная",
+    "title": "C курицей и болгарским перцем",
     "category": "pizza",
-    "price": 320.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a4036e51.jpg",
+    "price": 270.00,
+    "description": "Сыр моцарелла, курица, томатный соус \"Мутти\", болгарский перец",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1aefd92a2.jpg"
   },
   "35": {
     "id": "35",
     "availability": true,
-    "title": "Пепперони",
+    "title": "Пицца Цезарь",
     "category": "pizza",
-    "price": 250.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a6bd2155.jpg"
+    "price": 295.00,
+    "description": "Соус цезарь, курица,сыр пармезан,перепиленное яйцо, помидоры черри,пекинская капуста",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e563fd131b2d.jpg"
   },
   "36": {
     "id": "36",
     "availability": true,
-    "title": "Маргарита",
-    "category": "pizza",
-    "price": 210.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1abc326fe.jpg"
+    "title": "Эби темпура",
+    "category": "japaneseFood",
+    "price": 270.00,
+    "description": "Креветки тигровые, авокадо, огурец",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd7af610.jpg"
   },
   "37": {
     "id": "37",
     "availability": true,
-    "title": "C курицей и болгарским перцем",
-    "category": "pizza",
-    "price": 270.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1aefd92a2.jpg"
+    "title": "Ясай",
+    "category": "japaneseFood",
+    "price": 150.00,
+    "description": "Огурец, авокадо, болгарский перец",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd7a6a5f.jpg"
   },
   "38": {
     "id": "38",
     "availability": true,
-    "title": "Пицца Цезарь ",
-    "category": "pizza",
-    "price": 295.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e563fd131b2d.jpg"
+    "title": "Спайс Сяке",
+    "category": "japaneseFood",
+    "price": 225.00,
+    "description": "Лосось, авокадо, \"Спайс\" соус",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd79d78b.jpg"
   },
   "39": {
     "id": "39",
     "availability": true,
-    "title": "Пицца Филадельфия ",
-    "category": "pizza",
-    "price": 345.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e56619a1e783.jpg"
+    "title": "Калифорния",
+    "category": "japaneseFood",
+    "price": 245.00,
+    "description": "Снежный краб, авокадо, огурец",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db713c5f.jpg"
   },
   "40": {
     "id": "40",
     "availability": true,
-    "title": "Эби темпура",
+    "title": "Филадельфия",
     "category": "japaneseFood",
-    "price": 270.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd7af610.jpg"
+    "price": 345.00,
+    "description": "Лосось, сыр \"Филадельфия\"",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db70ce4b.jpg"
   },
   "41": {
     "id": "41",
     "availability": true,
-    "title": "Ясай",
+    "title": "Дракон",
     "category": "japaneseFood",
-    "price": 150.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd7a6a5f.jpg"
+    "price": 375.00,
+    "description": "Угорь, сыр \"Филадельфия\"",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db706204.jpg"
   },
   "42": {
     "id": "42",
     "availability": true,
-    "title": "Спайс Сяке",
+    "title": "Сяке унаги маки",
     "category": "japaneseFood",
-    "price": 225.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7dd79d78b.jpg"
+    "price": 335.00,
+    "description": "Лосось, угорь, авокадо",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db6f2c8c.jpg"
   },
   "43": {
     "id": "43",
     "availability": true,
-    "title": "Калифорния",
+    "title": "Унаги",
     "category": "japaneseFood",
-    "price": 245.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db713c5f.jpg"
+    "price": 215.00,
+    "description": "Угорь, соус \"Унаги\"",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db6e73fc.jpg"
   },
   "44": {
     "id": "44",
     "availability": true,
-    "title": "Филадельфия",
+    "title": "Сяке",
     "category": "japaneseFood",
-    "price": 345.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db70ce4b.jpg"
+    "price": 195.00,
+    "description": "Лосось",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d7702f85.jpg"
   },
   "45": {
     "id": "45",
     "availability": true,
-    "title": "Дракон",
+    "title": "Спайс Унаги",
     "category": "japaneseFood",
-    "price": 375.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db706204.jpg"
+    "price": 265.00,
+    "description": "Угорь, \"Спайс\" соус",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76f0f0e.jpg"
   },
   "46": {
     "id": "46",
     "availability": true,
-    "title": "Сяке унаги маки",
+    "title": "Капамаки",
     "category": "japaneseFood",
-    "price": 335.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db6f2c8c.jpg"
+    "price": 90.00,
+    "description": "Огурец",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76eaf44.jpg"
   },
   "47": {
     "id": "47",
     "availability": true,
-    "title": "Унаги",
+    "title": "Кекс",
     "category": "japaneseFood",
-    "price": 215.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db6e73fc.jpg"
+    "price": 295.00,
+    "description": "Угорь, сыр \"Филадельфия\", авокадо",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76e3dfd.jpg"
   },
   "48": {
     "id": "48",
     "availability": true,
-    "title": "Сяке",
+    "title": "Нитатэ сяке",
     "category": "japaneseFood",
-    "price": 195.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d7702f85.jpg"
+    "price": 265.00,
+    "description": "Лосось, сыр \"Филадельфия\", \"Спайс\" соус",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76dd53a.jpg"
   },
   "49": {
     "id": "49",
     "availability": true,
-    "title": "Спайс Унаги",
+    "title": "Спайс кани",
     "category": "japaneseFood",
-    "price": 265.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76f0f0e.jpg"
+    "price": 215.00,
+    "description": "Снежный краб, авокадо, \"Спайс\" соус",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76d6b02.jpg"
   },
   "50": {
     "id": "50",
     "availability": true,
-    "title": "Капамаки",
-    "category": "japaneseFood",
-    "price": 90.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76eaf44.jpg"
+    "title": "Свежий",
+    "category": "salad",
+    "price": 175.00,
+    "description": "Томаты, огурцы, болгарский перец, лист салата",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1da7476b9.jpg"
   },
   "51": {
     "id": "51",
     "availability": true,
-    "title": "Кекс",
-    "category": "japaneseFood",
-    "price": 295.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76e3dfd.jpg"
+    "title": "Греческий",
+    "category": "salad",
+    "price": 225.00,
+    "description": "Сыр фета, огурцы,помидоры,оливки, маслины,лист салата, болгарский перец, специальная заправка",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1dcc81933.jpg"
   },
   "52": {
     "id": "52",
     "availability": true,
-    "title": "Нитатэ сяке",
-    "category": "japaneseFood",
-    "price": 265.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76dd53a.jpg"
+    "title": "С Бураттой и вяленными томатами",
+    "category": "salad",
+    "price": 435.00,
+    "description": "Сыр \"Буррата\",вяленные томаты,помидоры,заправка соус песто,руккола",
+    "preview": ""
   },
   "53": {
     "id": "53",
     "availability": true,
-    "title": "Спайс кани",
-    "category": "japaneseFood",
-    "price": 215.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7d76d6b02.jpg"
+    "title": "С Бураттой и свеклой",
+    "category": "salad",
+    "price": 435.00,
+    "description": "Сыр \"Буррата\", помидоры черри, свёкла запеченная, кешью, фасоль стручковая",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f0d46c26.jpg"
   },
   "54": {
     "id": "54",
     "availability": true,
-    "title": "Свежий",
+    "title": "Оливье овощной",
     "category": "salad",
     "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1da7476b9.jpg"
+    "description": "Огурец, морковь, яйцо, картофель, зеленый горошек, майонез",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f31ce068.jpg"
   },
   "55": {
     "id": "55",
     "availability": true,
-    "title": "Греческий",
+    "title": "Винегрет с опятами",
     "category": "salad",
     "price": 225.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1dcc81933.jpg"
+    "description": "Картофель, свёкла, огурец соленый, опята, фасоль, масло, лук зеленый",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f5e2a571.jpg"
   },
   "56": {
     "id": "56",
     "availability": true,
-    "title": "Италия",
+    "title": "С артишоками",
     "category": "salad",
-    "price": 395.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1edc5c7f3.jpg"
+    "price": 375.00,
+    "description": "Микс салата, артишок, каперс, запеченная свёкла, сыр \"Фетакса\", гигант маслина, оливковое масло, кедровые орешки",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f8234bfb.jpg"
   },
   "57": {
     "id": "57",
     "availability": true,
-    "title": "С Бураттой",
+    "title": "Цезарь с курицей",
     "category": "salad",
-    "price": 435.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f0d46c26.jpg"
+    "price": 195.00,
+    "description": "Соус цезарь,обжаренная куриная грудка, пекинская капуста, помидоры черри, сухари, перепиленное яйцо",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1fe5040d8.jpg"
   },
   "58": {
     "id": "58",
     "availability": true,
-    "title": "Оливье овощной",
+    "title": "Цезарь с креветками",
     "category": "salad",
-    "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f31ce068.jpg"
+    "price": 335.00,
+    "description": "Обжаренные креветки, соус цезарь, пекинская капуста, перепиленное яйцо, помидоры черри, сухари",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c201ccf261.jpg"
   },
   "59": {
     "id": "59",
     "availability": true,
-    "title": "Винегрет с опятами ",
+    "title": "Цезарь с семгой",
     "category": "salad",
-    "price": 225.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f5e2a571.jpg"
+    "price": 375.00,
+    "description": "Семга, пекинская капуста, соус цезарь, перепиленное яйцо, помидоры черри, сухари",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c203cb32c1.jpg"
   },
   "60": {
     "id": "60",
     "availability": true,
-    "title": "С артишоками",
+    "title": "Микс с тигровыми креветками",
     "category": "salad",
-    "price": 375.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1f8234bfb.jpg"
+    "price": 365.00,
+    "description": "Тигровые креветки, микс салатов, сыр пармезан, кедровые орешки, оливковое масло",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c207c43190.jpg"
   },
   "61": {
     "id": "61",
     "availability": true,
-    "title": "Цезарь с курицей ",
+    "title": "Салатный микс с куриной печенью",
     "category": "salad",
-    "price": 195.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1fe5040d8.jpg"
+    "price": 245.00,
+    "description": "Микс салатов, обжаренная куриная печень, обжаренные шампиньоны, помидоры черри, зернистая горчица с медом, кунжут",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c20b093b33.jpg"
   },
   "62": {
     "id": "62",
     "availability": true,
-    "title": "Цезарь с креветками",
+    "title": "Капрезе",
     "category": "salad",
-    "price": 335.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c201ccf261.jpg"
+    "price": 395.00,
+    "description": "Помидоры, сыр моцарелла Буфала, соус песто, кедровые орешки, базилик",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1ea1abfa6.jpg"
   },
   "63": {
     "id": "63",
     "availability": true,
-    "title": "Цезарь с семгой",
+    "title": "Ясный",
     "category": "salad",
-    "price": 375.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c203cb32c1.jpg"
+    "price": 295.00,
+    "description": "Помидор, обжаренный баклажан, лук красный, каперсы, заправлен нерафинированным маслом, пекинская капуста",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1ea1abfa6.jpg"
   },
   "64": {
     "id": "64",
     "availability": true,
-    "title": "Микс с тигровыми креветками",
-    "category": "salad",
-    "price": 365.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c207c43190.jpg"
+    "title": "Джэдлибжэ",
+    "category": "hotDishes",
+    "price": 315.00,
+    "description": "Кукурузная паста, куриная грудка, соус из домашней сметаны",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c212fd38fc.jpg"
   },
   "65": {
     "id": "65",
     "availability": true,
-    "title": "Салатный микс с куриной печенью",
-    "category": "salad",
-    "price": 245.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c20b093b33.jpg"
+    "title": "Рулет из телятины с сыром, под сливочным соусом",
+    "category": "hotDishes",
+    "price": 355.00,
+    "description": "Сыр фета, филе телятины в сливочном соусе с картофелем по-деревенски",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2169cbdf6.jpg"
   },
   "66": {
     "id": "66",
     "availability": true,
-    "title": "Капрезе",
-    "category": "salad",
-    "price": 395.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1ea1abfa6.jpg"
+    "title": "Куриная грудка с рисово-овощным гарниром и сливочным соусом",
+    "category": "hotDishes",
+    "price": 315.00,
+    "description": "Куриная грудка маринованная в горчице, с рисово-овощным гарниром и сливочный соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c219b6c653.jpg"
   },
   "67": {
     "id": "67",
     "availability": true,
-    "title": "Капрезе",
-    "category": "salad",
-    "price": 395.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7eff939fb.jpg"
+    "title": "Куриная грудка по-восточному",
+    "category": "hotDishes",
+    "price": 315.00,
+    "description": "Жареная куриная грудка панированная в сухарях \"Панко\", с запеченными овощами (цукини, томаты, грибы). Подается на тортильи с соусом цацики",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c21c08b710.jpg"
   },
   "68": {
     "id": "68",
     "availability": true,
-    "title": "Джэдлибжэ",
+    "title": "Медальоны из индейки",
     "category": "hotDishes",
-    "price": 315.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c212fd38fc.jpg"
+    "price": 345.00,
+    "description": "Медальоны из филе индейки, тушенные овощи, мини морковь, стручковая фасоль и брокколи. Подается со сливочным соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22273ae85.jpg"
   },
   "69": {
     "id": "69",
     "availability": true,
-    "title": "Рулет из телятины с сыром, под сливочным соусом",
+    "title": "Стейк из говядины по-французски",
     "category": "hotDishes",
-    "price": 355.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2169cbdf6.jpg"
+    "price": 335.00,
+    "description": "Отбивная из филе говядины со слайсами из томата под сырной шапкой и с картофелем по-деревенски.",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22770660b.jpg"
   },
   "70": {
     "id": "70",
     "availability": true,
-    "title": "Куриная грудка с рисово-овощным гарниром и сливочным соусом",
+    "title": "Медальоны из телятины",
     "category": "hotDishes",
-    "price": 315.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c219b6c653.jpg"
+    "price": 425.00,
+    "description": "Медальоны из филе телятины с овощами гриль (баклажаны, цукини, болгарский перец). Подается со сливочно грибным соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22f60fd25.jpg"
   },
   "71": {
     "id": "71",
     "availability": true,
-    "title": "Куриная грудка по-восточному",
+    "title": "Жульен грибной в булочке",
     "category": "hotDishes",
-    "price": 315.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c21c08b710.jpg"
+    "price": 175.00,
+    "description": "Шампиньоныв сливочном соусе, в злаковой булочке под сырной корочкой",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2349bb8f2.jpg"
   },
   "72": {
     "id": "72",
     "availability": true,
-    "title": "Телятина с овощами и рисом",
+    "title": "Семга с рисово-овощным гарниром и сливочным соусом",
     "category": "hotDishes",
-    "price": 315.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c21eb0a9b4.jpg"
+    "price": 475.00,
+    "description": "Стейк из филе семги с рисово-овощным гарниром и сливочным соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c237cd36be.jpg"
   },
   "73": {
     "id": "73",
     "availability": true,
-    "title": "Медальоны из индейки",
+    "title": "Дорада на гриле с лаймовым соусом",
     "category": "hotDishes",
-    "price": 345.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22273ae85.jpg"
+    "price": 455.00,
+    "description": "Дорада маринованная в специях, обжаренная на гриле. Подается с лаймовым соусом Наршараб (гранатовый соус)",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23b244082.jpg"
   },
   "74": {
     "id": "74",
     "availability": true,
-    "title": "Стейк из говядины по-французски",
+    "title": "Филе семги на ложе из овощей",
     "category": "hotDishes",
-    "price": 335.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22770660b.jpg"
+    "price": 555.00,
+    "description": "Филе семги, овощи обожранные на оливковом масле (мини морковь, спаржа, томаты черри), запекается в пергаменте.",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23d6bf41d.jpg"
   },
   "75": {
     "id": "75",
     "availability": true,
-    "title": "Медальоны из телятины",
+    "title": "Форель жареная с овощами",
     "category": "hotDishes",
-    "price": 425.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c22f60fd25.jpg"
+    "price": 275.00,
+    "description": "Форель жареная с овощами (стручковая фасоль, мини морковь)",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23fef2d9a.jpg"
   },
   "76": {
     "id": "76",
     "availability": true,
-    "title": "Жульен грибной в булочке",
+    "title": "Креветки темпура",
     "category": "hotDishes",
-    "price": 175.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2349bb8f2.jpg"
+    "price": 515.00,
+    "description": "Тигровые креветки панированные в сухарях Панко, подается со \"Спайс\" соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c24631a275.jpg"
   },
   "77": {
     "id": "77",
     "availability": true,
-    "title": "Семга с рисово-овощным  гарниром и сливочным соусом",
+    "title": "Бефстроганов из говядины в ржаной булке и картофельным пюре",
     "category": "hotDishes",
-    "price": 475.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c237cd36be.jpg"
+    "price": 355.00,
+    "description": "Бефстроганов из филе говядины с грибами в сливочном соусе. Подается в ржаной булке с картофельным пюре и маринованными корнишонами",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e566639b04a0.jpg"
   },
   "78": {
     "id": "78",
     "availability": true,
-    "title": "Дорада на гриле с лаймовым соусом",
+    "title": "Куриные рулетики со шпинатом и диким рисом",
     "category": "hotDishes",
-    "price": 455.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23b244082.jpg"
+    "price": 345.00,
+    "description": "Рулетики из филе курицы, фаршированные шпинатом и сыром моцарелла. Подаются с диким рисом и сливочно-шпинатным соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5667a01217f.jpg"
   },
   "79": {
     "id": "79",
     "availability": true,
-    "title": "Изюмидай на ложе из овощей",
+    "title": "Котлета пожарская с картофельным пюре и грибным соусом",
     "category": "hotDishes",
-    "price": 415.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23d6bf41d.jpg"
+    "price": 325.00,
+    "description": "Котлета из филе курицы, панированная в рубленых сухарях. Подается с картофельным пюре и сливочно-грибным соусом и маринованными корнишонами",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5668c7b0239.jpg"
   },
   "80": {
     "id": "80",
     "availability": true,
-    "title": "Форель речная жареная",
+    "title": "Плато средиземноморское",
     "category": "hotDishes",
-    "price": 275.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23fef2d9a.jpg"
+    "price": 995.00,
+    "description": "Запеченные мидии киви фаршированные \"Спайс\" соусом и икрой\"Тобико\", тигровые креветки обжаренные на ароматном оливковом масле с соусом \"Наршараб\"",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e574c9594102.jpg"
   },
   "81": {
     "id": "81",
     "availability": true,
-    "title": "Креветки темпура",
+    "title": "Лягурлибжэ",
     "category": "hotDishes",
-    "price": 515.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c24631a275.jpg",
+    "price": 335.00,
+    "description": "Национальное блюдо из вяленой телятины в сметанном соусе. Подается с кукурузной пастой",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaeabf2280cf.jpg"
   },
   "82": {
     "id": "82",
     "availability": true,
-    "title": "Бефстроганов из говядины в ржаной булке и картофельным пюре",
-    "category": "hotDishes",
-    "price": 355.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e566639b04a0.jpg"
+    "title": "Мороженое",
+    "category": "dessert",
+    "price": 50.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c253c70713.jpg"
   },
   "83": {
     "id": "83",
     "availability": true,
-    "title": "Отбивная из телятины с гречкой и сливочным соусом ",
-    "category": "hotDishes",
-    "price": 355.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5666c2ef2cd.jpg"
+    "title": "Штрудель яблочный",
+    "category": "dessert",
+    "price": 195.00,
+    "description": "Подается с шариком ванильного мороженного",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c25c82c40c.jpg"
   },
   "84": {
     "id": "84",
     "availability": true,
-    "title": "Куриные рулетики со шпинатом и диким рисом",
-    "category": "hotDishes",
-    "price": 345.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5667a01217f.jpg"
+    "title": "Штрудель вишневый",
+    "category": "dessert",
+    "price": 195.00,
+    "description": "Подается с шариком ванильного мороженного",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c25f396ed6.jpg"
   },
   "85": {
     "id": "85",
     "availability": true,
-    "title": "Котлета пожарская с картофельным пюре и грибным соусом",
-    "category": "hotDishes",
-    "price": 325.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e5668c7b0239.jpg"
+    "title": "Панакота ванильная",
+    "category": "dessert",
+    "price": 125.00,
+    "description": "",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c265624fb7.jpg"
   },
   "86": {
     "id": "86",
     "availability": true,
-    "title": "Лосось на спарже",
-    "category": "hotDishes",
-    "price": 495.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e574c3620d61.jpg"
+    "title": "Яблоко с медом и орехами",
+    "category": "dessert",
+    "price": 220.00,
+    "description": "Запеченное яблоко, фаршированное сухофруктами, медом и орехами. Подается с палочкой корицы",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26a8bfbb0.jpg"
   },
   "87": {
     "id": "87",
     "availability": true,
-    "title": "Плато средиземноморское",
-    "category": "hotDishes",
-    "price": 995.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e574c9594102.jpg"
+    "title": "Мильфей",
+    "category": "dessert",
+    "price": 265.00,
+    "description": "Десерт из слоеного теста, фирменного крема с ягодами и манговым соусом",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26d8409c6.jpg"
   },
   "88": {
     "id": "88",
     "availability": true,
-    "title": "Куриное филе с овощным рататуем",
-    "category": "hotDishes",
-    "price": 355.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e6b626e923ca.jpg"
+    "title": "Тирамису",
+    "category": "dessert",
+    "price": 220.00,
+    "description": "Традиционный итальянский десерт. Бисквитные палочки савоярди и кремом на основе сыра маскарпоне",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26fcc93e7.jpg"
   },
   "89": {
     "id": "89",
     "availability": true,
-    "title": "Лягурлибжэ",
-    "category": "hotDishes",
-    "price": 335.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaeabf2280cf.jpg"
+    "title": "Крем Брюле",
+    "category": "dessert",
+    "price": 135.00,
+    "description": "Подается с фламбированным тростниковымсахаром",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c272bbb238.jpg"
   },
   "90": {
     "id": "90",
     "availability": true,
-    "title": "Мороженое ",
+    "title": "Торт блинный",
     "category": "dessert",
-    "price": 50.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c253c70713.jpg",
+    "price": 155.00,
+    "description": "Торт блинный с творожно сливочным кремом и ягодами",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c277755bf4.jpg"
   },
   "91": {
     "id": "91",
     "availability": true,
-    "title": "Штрудель яблочный",
+    "title": "Торт \"Кекс\"",
     "category": "dessert",
-    "price": 195.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c25c82c40c.jpg"
+    "price": 155.00,
+    "description": "Шоколадный бисквит, меренга, шоколадный крем и орехи. Покрыт шоколадной глазурью",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c27d5ef939.jpg"
   },
   "92": {
     "id": "92",
     "availability": true,
-    "title": "Штрудель вишневый",
+    "title": "Шоколадный фондан",
     "category": "dessert",
-    "price": 195.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c25f396ed6.jpg"
+    "price": 260.00,
+    "description": "Мафин с жидкой начинкой из темного бельгийского шоколада. Подается с шариком ванильного мороженного",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaecdd44f8fd.jpg"
   },
   "93": {
     "id": "93",
     "availability": true,
-    "title": "Панакота ванильная ",
-    "category": "dessert",
-    "price": 125.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c265624fb7.jpg"
+    "title": "Бургер NERO",
+    "category": "burger",
+    "price": 280.00,
+    "description": "Черные булки, говяжья котлета, свежий помидор, огурец соленый, лист салата, соус, сыр, кетчуп. Подается в комплекте с картофелем фри.",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2e3c97da4.jpg"
   },
   "94": {
     "id": "94",
     "availability": true,
-    "title": "Яблоко с медом и орехами",
-    "category": "dessert",
-    "price": 220.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26a8bfbb0.jpg"
+    "title": "Бургер",
+    "category": "burger",
+    "price": 280.00,
+    "description": "Белые булки, говяжья котлета, свежий помидор, огурец соленый, лист салата, сыр, кетчуп. Подается в комплекте с картофелем фри.",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2e753446e.jpg"
   },
   "95": {
     "id": "95",
     "availability": true,
-    "title": "Мильфей ",
-    "category": "dessert",
-    "price": 265.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26d8409c6.jpg"
+    "title": "Феттучине с сыром",
+    "category": "pasta",
+    "price": 210.00,
+    "description": "Лапша фетучини, сливочный соус, сыр пармезан",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2eaca85e7.jpg"
   },
   "96": {
     "id": "96",
     "availability": true,
-    "title": "Тирамису",
-    "category": "dessert",
-    "price": 220.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c26fcc93e7.jpg"
+    "title": "Феттучине с грибами",
+    "category": "pasta",
+    "price": 265.00,
+    "description": "Лапша фетучини, сливочный соус, сыр пармезан, грибы шампиньоны",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2ed557f7a.jpg"
   },
   "97": {
     "id": "97",
     "availability": true,
-    "title": "Крем Брюле",
-    "category": "dessert",
-    "price": 135.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c272bbb238.jpg"
+    "title": "Феттучине с курицей и помидорами черри",
+    "category": "pasta",
+    "price": 295.00,
+    "description": "Лапша фетучини, куриное филе, сливочный соус, сыр пармезан, помидоры черри, соус песто",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f0183784.jpg"
   },
   "98": {
     "id": "98",
     "availability": true,
-    "title": "Торт блинный",
-    "category": "dessert",
-    "price": 155.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c277755bf4.jpg"
+    "title": "Феттучине с семгой и соусом песто",
+    "category": "pasta",
+    "price": 455.00,
+    "description": "Лапша фетучини, кусочки семги, сыр пармезан, соус песто",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f63e59b9.jpg"
   },
   "99": {
     "id": "99",
     "availability": true,
-    "title": "Торт меренговый ",
-    "category": "dessert",
-    "price": 165.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c27ab58630.jpg"
+    "title": "Спагетти НЕРО с морепродуктами",
+    "category": "pasta",
+    "price": 435.00,
+    "description": "Креветки тигровые, мидии в ракушках, соус красный томатный",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2fdcb52ef.jpg"
   },
   "100": {
     "id": "100",
     "availability": true,
-    "title": "Торт \"Кекс\"",
-    "category": "dessert",
-    "price": 155.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c27d5ef939.jpg"
+    "title": "Суп-пюре чечевичный",
+    "category": "soup",
+    "price": 190.00,
+    "description": "Чечевица, картофель, морковь, подается с двумя тостами",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c305d68f68.jpg"
   },
   "101": {
     "id": "101",
     "availability": true,
-    "title": "Шоколадный фондан",
-    "category": "dessert",
-    "price": 260.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaecdd44f8fd.jpg"
+    "title": "Суп-лапша куриная",
+    "category": "soup",
+    "price": 155.00,
+    "description": "Куриный бульон, белое мясо, лапша, зелень",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c308057cb5.jpg"
   },
   "102": {
     "id": "102",
     "availability": true,
-    "title": "Эклер",
-    "category": "dessert",
-    "price": 100.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaece40509d7.jpg"
+    "title": "Мясной суп в хлебе по чещски",
+    "category": "soup",
+    "price": 295.00,
+    "description": "Крем суп, грибы шампиньоны, говядина, сливки. Подаются в хлебной запеченной булке",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30b385ff8.jpg"
   },
   "103": {
     "id": "103",
     "availability": true,
-    "title": "Эклер шоколадный",
-    "category": "dessert",
-    "price": 100.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eaecf4bbd1c8.jpg"
+    "title": "Суп том-ям",
+    "category": "soup",
+    "price": 335.00,
+    "description": "Традиционный тайский суп, готовится на основе кокосового молока, с добавлением соуса \"Том-ям\", креветки, грибы. Подается с рисом и лимоном.",
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30d6bacba.jpg"
   },
   "104": {
     "id": "104",
     "availability": true,
-    "title": "Эклер шоколадный",
-    "category": "dessert",
-    "price": 100.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5eafe01f0e533.jpg"
+    "title": "Картофель фри",
+    "category": "garnish",
+    "price": 80.00,
+    "description": "",
+    "preview": ""
   },
   "105": {
     "id": "105",
     "availability": true,
-    "title": "Бургер NERO",
-    "category": "burger",
-    "price": 280.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2e3c97da4.jpg"
+    "title": "Картофельное пюре",
+    "category": "garnish",
+    "price": 70.00,
+    "description": "",
+    "preview": ""
   },
   "106": {
     "id": "106",
     "availability": true,
-    "title": "Бургер",
-    "category": "burger",
-    "price": 280.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2e753446e.jpg",
+    "title": "Рис с овощами",
+    "category": "garnish",
+    "price": 90.00,
+    "description": "Рис, болгарский перец, зеленый горошек",
+    "preview": ""
   },
   "107": {
     "id": "107",
     "availability": true,
-    "title": "Феттучине с сыром",
-    "category": "pasta",
-    "price": 210.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2eaca85e7.jpg"
+    "title": "Овощи на гриле",
+    "category": "garnish",
+    "price": 120.00,
+    "description": "Баклажаны, цукини, помидор",
+    "preview": ""
   },
   "108": {
     "id": "108",
     "availability": true,
-    "title": "Феттучине с грибами",
-    "category": "pasta",
-    "price": 265.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2ed557f7a.jpg"
-  },
-  "109": {
-    "id": "109",
-    "availability": true,
-    "title": "Феттучине с курицей и помидорами черри",
-    "category": "pasta",
-    "price": 295.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f0183784.jpg"
-  },
-  "110": {
-    "id": "110",
-    "availability": true,
-    "title": "Феттучине с семгой и соусом песто",
-    "category": "pasta",
-    "price": 455.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f63e59b9.jpg"
-  },
-  "111": {
-    "id": "111",
-    "availability": true,
-    "title": "Феттучине со страчателлой",
-    "category": "pasta",
-    "price": 335.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2f95e6d86.jpg"
-  },
-  "112": {
-    "id": "112",
-    "availability": true,
-    "title": "Спагетти НЕРО с морепродуктами",
-    "category": "pasta",
-    "price": 435.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2fdcb52ef.jpg"
-  },
-  "113": {
-    "id": "113",
-    "availability": true,
-    "title": "Суп чечевичный",
-    "category": "soup",
-    "price": 190.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c305d68f68.jpg"
-  },
-  "114": {
-    "id": "114",
-    "availability": true,
-    "title": "Суп-лапша куриная",
-    "category": "soup",
-    "price": 155.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c308057cb5.jpg"
-  },
-  "115": {
-    "id": "115",
-    "availability": true,
-    "title": "Мясной суп в хлеб",
-    "category": "soup",
-    "price": 295.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30b385ff8.jpg"
-  },
-  "116": {
-    "id": "116",
-    "availability": true,
-    "title": "Суп том-ям",
-    "category": "soup",
-    "price": 335.00,
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30d6bacba.jpg"
+    "title": "Картофель по деревенски",
+    "category": "garnish",
+    "price": 90.00,
+    "description": "",
+    "preview": ""
   }
 };
 
@@ -1037,6 +1073,10 @@ export const ECategories = {
   soup: {
     category: 'soup',
     title: 'Супы'
+  },
+  garnish: {
+    category: 'garnish',
+    title: 'Гарниры'
   },
 };
 
