@@ -1,4 +1,13 @@
-import { EOptionType } from "../common-enums";
+import {
+  EOptionType,
+  EWeightType,
+} from "../common-enums";
+
+// Pizza
+// weight: {
+//   type: EWeightType.Length,
+//   mass: 45,
+// },
 
 const menuList = {
   "1": {
