@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: 'ellipsis',
     fontSize: '16px',
     lineHeight: '27px',
+    width: '100%'
   }),
   description: ({ isDishFullOpened }) => ({
     display: '-webkit-box',
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: 'ellipsis',
     fontSize: '14px',
     lineHeight: '24px',
+    width: '100%',
     color: `${theme.mode.secondary.secondaryTextColor} !important`,
   })
 }));
@@ -43,7 +45,7 @@ export const Description = React.memo(({
   const classes = useStyles({ isDishFullOpened });
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container direction='column' className={classes.root}>
       <Subtitle className={classes.title}>
         {title}
       </Subtitle>
