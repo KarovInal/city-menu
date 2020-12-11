@@ -11,6 +11,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { getRecommendationsSelector } from "../../modules/recommendations-module/recommendations-selector";
 import { VideoComponent } from "./video-component";
 import { Analytics } from "aws-amplify";
+import {setDownSlideDirection, setUpSlideDirection, SlideM} from "../../modules/slide";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -118,58 +119,65 @@ export const StoriesPage = () => {
     const { cafe } = params;
 
     const goHome = () => {
+        // setUpSlideDirection();
+        setDownSlideDirection();
+
         history.push(`/${cafe}`);
     }
 
     return (
-      <Swiper loop initialSlide={toNumber(activeSlide) || 0} direction='vertical' setWrapperSize watchSlidesVisibility className={classes.root}>
-          <Close className={classes.closeIcon} onClick={goHome} />
-          <KeyboardArrowUpIcon className={classes.upIcon} />
-          {
-              map(recommendations,
-                ({
-                     id,
-                     type,
-                     content,
-                     preview,
-                     buttonTitle,
-                     resourceUrl,
-                     contentTitle,
-                     contentSubTitle,
-                }, index) => {
-                  return (
-                    <SwiperSlide key={index} className={classes.slide}>
-                        {
-                            ({ isVisible, isActive }) => (
-                              <Fragment>
-                                  {type === 'video' && (
-                                    <VideoComponent
-                                      index={index}
-                                      classes={classes}
-                                      content={content}
-                                      preview={preview}
-                                      isVisible={isVisible || isActive}
-                                    />
-                                  )}
-                                  {type === 'image' && renderImage({ content, index })}
-                                  <div className={classes.contentWrap} onClick={e => e.stopPropagation()}>
-                                      { contentTitle && (
-                                        <span className={classes.title}>{ contentTitle }</span>
-                                      )}
-                                      { contentSubTitle && (
-                                        <span className={classes.subTitle}>{ contentSubTitle }</span>
-                                      )}
-                                      <PrimaryButton className={classes.actionButton} onClick={() => handleCtaClick({ resourceUrl: `/${cafe}${resourceUrl}`, id })}>
-                                          { buttonTitle }
-                                      </PrimaryButton>
-                                  </div>
-                              </Fragment>
-                            )
-                        }
-                    </SwiperSlide>
-                  )
-              })
-          }
-      </Swiper>
+        <SlideM>
+            <div>
+                <Swiper loop initialSlide={toNumber(activeSlide) || 0} direction='vertical' setWrapperSize watchSlidesVisibility className={classes.root}>
+                    <Close className={classes.closeIcon} onClick={goHome} />
+                    <KeyboardArrowUpIcon className={classes.upIcon} />
+                    {
+                        map(recommendations,
+                          ({
+                               id,
+                               type,
+                               content,
+                               preview,
+                               buttonTitle,
+                               resourceUrl,
+                               contentTitle,
+                               contentSubTitle,
+                           }, index) => {
+                              return (
+                                <SwiperSlide key={index} className={classes.slide}>
+                                    {
+                                        ({ isVisible, isActive }) => (
+                                          <Fragment>
+                                              {type === 'video' && (
+                                                <VideoComponent
+                                                  index={index}
+                                                  classes={classes}
+                                                  content={content}
+                                                  preview={preview}
+                                                  isVisible={isVisible || isActive}
+                                                />
+                                              )}
+                                              {type === 'image' && renderImage({ content, index })}
+                                              <div className={classes.contentWrap} onClick={e => e.stopPropagation()}>
+                                                  { contentTitle && (
+                                                    <span className={classes.title}>{ contentTitle }</span>
+                                                  )}
+                                                  { contentSubTitle && (
+                                                    <span className={classes.subTitle}>{ contentSubTitle }</span>
+                                                  )}
+                                                  <PrimaryButton className={classes.actionButton} onClick={() => handleCtaClick({ resourceUrl: `/${cafe}${resourceUrl}`, id })}>
+                                                      { buttonTitle }
+                                                  </PrimaryButton>
+                                              </div>
+                                          </Fragment>
+                                        )
+                                    }
+                                </SwiperSlide>
+                              )
+                          })
+                    }
+                </Swiper>
+            </div>
+        </SlideM>
     );
 };

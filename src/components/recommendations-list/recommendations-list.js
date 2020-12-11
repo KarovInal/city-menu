@@ -4,6 +4,7 @@ import map from 'lodash/map';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { useHistory, useParams } from "react-router-dom";
+import {setUpSlideDirection} from "../../modules/slide";
 
 const useStyles = makeStyles(theme => ({
   wrap: {
@@ -47,6 +48,8 @@ export const RecommendationsList = ({ recommendations }) => {
   const { cafe } = params;
 
   const goStory = (index) => {
+    setUpSlideDirection();
+
     history.push(`/${cafe}/stories/${index}`)
   }
 
