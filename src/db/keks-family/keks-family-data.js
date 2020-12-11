@@ -242,6 +242,10 @@ const menuList = {
     "category": "pizza",
     "price": 90.00,
     "description": "С сыром Пармезан",
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c189a5c6dc.jpg"
   },
   "27": {
@@ -250,6 +254,10 @@ const menuList = {
     "title": "Фокачча с семечками",
     "category": "pizza",
     "price": 120.00,
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "description": "Сыр Пармезан, тыквенные семечки, подсолнечные семечки",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18cb6cb8d.jpg"
   },
@@ -259,6 +267,10 @@ const menuList = {
     "title": "Фокачча с песто",
     "category": "pizza",
     "price": 120.00,
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "description": "Соус песто",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c18f2b59ab.jpg"
   },
@@ -267,6 +279,10 @@ const menuList = {
     "availability": true,
     "title": "Ассорти",
     "category": "pizza",
+    "weight": {
+      type: EWeightType.Length,
+      mass: 25,
+    },
     "price": 280.00,
     "description": "Сыр Моцарелла,колбаса копченая халяль,грибы шампиньоны,соус томатный,специи,болгарский перец, маслины,зелень",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c193fa747e.jpg"
@@ -295,6 +311,10 @@ const menuList = {
     "title": "Пепперони",
     "category": "pizza",
     "price": 250.00,
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "description": "Сырмоцарелла, томатный соус\"Мутти\", колбаса копченая халяль, острый перец",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1a6bd2155.jpg"
   },
@@ -304,6 +324,10 @@ const menuList = {
     "title": "Маргарита",
     "category": "pizza",
     "price": 210.00,
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "description": "Сыр моцарелла, томатный соус \"Мутти\"",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1abc326fe.jpg"
   },
@@ -313,6 +337,10 @@ const menuList = {
     "title": "C курицей и болгарским перцем",
     "category": "pizza",
     "price": 270.00,
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "description": "Сыр моцарелла, курица, томатный соус \"Мутти\", болгарский перец",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1aefd92a2.jpg"
   },
@@ -322,6 +350,10 @@ const menuList = {
     "title": "Пицца Цезарь",
     "category": "pizza",
     "price": 295.00,
+    "weight": {
+      type: EWeightType.Length,
+      mass: 33,
+    },
     "description": "Соус цезарь, курица,сыр пармезан,перепиленное яйцо, помидоры черри,пекинская капуста",
     "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e563fd131b2d.jpg"
   },
