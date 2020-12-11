@@ -69,9 +69,9 @@ export const ContactsModule = ({ isOpen = false, onClose }) => {
         <Grid className={classes.contactItem} container direction='column' alignItems='center'>
           <Body1>Наши контакты:</Body1>
           <Grid container justify='center'>
-            <Link className={classes.socialNetworkLink} target='_blank' href={contacts.instagram}><InstagramIcon fontSize="large" /></Link>
-            <Link className={classes.socialNetworkLink} target='_blank' href={contacts.whatsapp}><WhatsAppIcon fontSize="large" /></Link>
-            <Link className={classes.socialNetworkLink} target='_blank' href={contacts.email}><AlternateEmailIcon fontSize="large" /></Link>
+            { contacts.instagram && <Link className={classes.socialNetworkLink} target='_blank' href={contacts.instagram}><InstagramIcon fontSize="large" /></Link> }
+            { contacts.whatsapp && <Link className={classes.socialNetworkLink} target='_blank' href={contacts.whatsapp}><WhatsAppIcon fontSize="large" /></Link> }
+            { contacts.email && <Link className={classes.socialNetworkLink} target='_blank' href={contacts.email}><AlternateEmailIcon fontSize="large" /></Link> }
           </Grid>
         </Grid>
         <Grid className={classes.contactItem} container direction='column' alignItems='center'>

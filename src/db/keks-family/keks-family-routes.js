@@ -1,1 +1,1 @@
-export const keksFamilyDomainPrefix = 'keks-family';
+export const keksFamilyDomainPrefix = 'umma-bar';

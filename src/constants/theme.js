@@ -9,7 +9,7 @@ export const colors = {
   secondaryBackgroundColor: '#231f20',
 };
 
-export const logo = 'https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF+%D0%BA%D0%B5%D0%BA%D1%81.png';
+export const logo = 'https://citymenu.s3.eu-north-1.amazonaws.com/79646935_1306532576204912_952738653807837184_n.jpg';
 
 export const createThemeConfig = (mode) => {
   const theme = {

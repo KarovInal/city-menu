@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   logo: {
     width: 'auto',
     height: '50px',
+    borderRadius: '100px',
   }
 }));
 
