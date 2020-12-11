@@ -152,7 +152,7 @@ const menuList = {
     "category": "forKids",
     "price": 125.00,
     "description": "Три сардельки, мясо халяль",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c1564e3525.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_7011.jpg"
   },
   "17": {
     "id": "17",
@@ -246,7 +246,7 @@ const menuList = {
       type: EWeightType.Length,
       mass: 33,
     },
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c189a5c6dc.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_6190.jpg"
   },
   "27": {
     "id": "27",
@@ -391,7 +391,7 @@ const menuList = {
     "category": "japaneseFood",
     "price": 245.00,
     "description": "Снежный краб, авокадо, огурец",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5f8c7db713c5f.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_6268.jpg"
   },
   "40": {
     "id": "40",
@@ -634,7 +634,7 @@ const menuList = {
     "category": "hotDishes",
     "price": 315.00,
     "description": "Куриная грудка маринованная в горчице, с рисово-овощным гарниром и сливочный соусом",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c219b6c653.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_6906.jpg"
   },
   "67": {
     "id": "67",
@@ -679,7 +679,7 @@ const menuList = {
     "category": "hotDishes",
     "price": 175.00,
     "description": "Шампиньоныв сливочном соусе, в злаковой булочке под сырной корочкой",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c2349bb8f2.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_6916.jpg"
   },
   "72": {
     "id": "72",
@@ -715,7 +715,7 @@ const menuList = {
     "category": "hotDishes",
     "price": 275.00,
     "description": "Форель жареная с овощами (стручковая фасоль, мини морковь)",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c23fef2d9a.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_7000.jpg"
   },
   "76": {
     "id": "76",
@@ -733,7 +733,7 @@ const menuList = {
     "category": "hotDishes",
     "price": 355.00,
     "description": "Бефстроганов из филе говядины с грибами в сливочном соусе. Подается в ржаной булке с картофельным пюре и маринованными корнишонами",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e566639b04a0.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_6939.jpg"
   },
   "78": {
     "id": "78",
@@ -967,7 +967,7 @@ const menuList = {
     "category": "soup",
     "price": 335.00,
     "description": "Традиционный тайский суп, готовится на основе кокосового молока, с добавлением соуса \"Том-ям\", креветки, грибы. Подается с рисом и лимоном.",
-    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/5e4c30d6bacba.jpg"
+    "preview": "https://citymenu.s3.eu-north-1.amazonaws.com/KeksFamily/dishes/DSC_7013.jpg"
   },
   "104": {
     "id": "104",
