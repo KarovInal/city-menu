@@ -55,7 +55,7 @@ export const RecommendationsList = ({ recommendations }) => {
       {
         map(recommendations, ({ previewTitle, preview }, index) => {
           return (
-            <Grid onClick={() => goStory(index)} container alignItems='flex-end' key={index} className={classes.previewItem} style={{ backgroundImage: `url('${preview}')`, }}>
+            <Grid onClick={() => goStory(index)} container alignItems='flex-end' key={index} className={classes.previewItem} style={{ backgroundImage: `linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, .73) 100%), url('${preview}')`, }}>
               <span className={classes.previewTitle}>{ previewTitle }</span>
             </Grid>
           )
