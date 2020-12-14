@@ -11,6 +11,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Button from "@material-ui/core/Button";
 import { useSelector } from "react-redux";
 import { getPriceSelector } from "../selectors/dishes-selector";
+import {setLeftSlideDirection} from "../modules/slide/slide-utils";
 
 const useStyles = makeStyles({
   root: {
@@ -64,6 +65,8 @@ export const ProceedButton = React.memo(({
 
   const goToCartPage = () => {
     onSearch('');
+
+    setLeftSlideDirection();
 
     history.push(`/${cafe}/cart`);
   }

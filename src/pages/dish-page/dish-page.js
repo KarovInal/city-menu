@@ -13,6 +13,7 @@ import { dictionarySelector } from "../../modules/dictionary-module";
 import { RecommendationsList } from "../../components/recommendations-list/recommendations-list";
 import { getRecommendationsSelector } from "../../modules/recommendations-module/recommendations-selector";
 import _ from "lodash/fp";
+import {SlideM} from "../../modules/slide";
 
 const useStyles = makeStyles({
   boxShadow: {
@@ -45,15 +46,17 @@ export const DishPage = () => {
       <BannerModule />
       <Header />
       <Toolbar />
-      <div className={styles.boxShadow}>
-        <RecommendationsList recommendations={recommendations} />
+      <SlideM>
+        <div className={styles.boxShadow}>
+          <RecommendationsList recommendations={recommendations} />
           <StickyContainer className={'bgWhite'}>
-          <Search onSearch={onSearch} />
-          <Categories categories={dictionary.dishCategories} />
-          <MenuList data={dishes} categories={dictionary.dishCategories} />
-          <ProceedButton onSearch={onSearch} />
-        </StickyContainer>
-      </div>
+            <Search onSearch={onSearch} />
+            <Categories categories={dictionary.dishCategories} />
+            <MenuList data={dishes} categories={dictionary.dishCategories} />
+            <ProceedButton onSearch={onSearch} />
+          </StickyContainer>
+        </div>
+      </SlideM>
     </>
   );
 }

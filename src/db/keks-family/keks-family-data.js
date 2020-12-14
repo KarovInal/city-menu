@@ -1,6 +1,6 @@
 import {
   EOptionType,
-  EWeightType,
+  // EWeightType,
 } from "../common-enums";
 
 // Pizza
